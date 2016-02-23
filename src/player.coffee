@@ -6,18 +6,22 @@ class Player
     RIGHT: 39
     DOWN: 40
 
-  constructor: (@speed) ->
+  constructor: (screen_width, screen_height, @speed) ->
     @image = new Image()
     @image.src = "img/player.png"
-    @x = main_screen.width.center() - @image.width.center()
-    @y = main_screen.height - @image.height - 20
+    @x = screen_width.center() - @image.width.center()
+    @y = screen_height - @image.height - 20
+    @pressed = new Array(240); # 240 = キーコードの最大値
 
   move: ->
-    # if pressed[KEY.SPACE]
-    @x -= @speed if pressed[KEY.LEFT]
-    @y -= @speed if pressed[KEY.UP]
-    @x += @speed if pressed[KEY.RIGHT]
-    @y += @speed if pressed[KEY.DOWN]
+    # if @pressed[KEY.SPACE]
+    @x -= @speed if @pressed[KEY.LEFT]
+    @y -= @speed if @pressed[KEY.UP]
+    @x += @speed if @pressed[KEY.RIGHT]
+    @y += @speed if @pressed[KEY.DOWN]
 
-  draw: ->
-    context.drawImage @image, @x, @y
+  instruct: (key) ->
+    @pressed[key.keyCode] = true
+
+  cancel: (key) ->
+    @pressed[key.keyCode] = false

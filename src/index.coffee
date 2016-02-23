@@ -1,26 +1,20 @@
-pressed = new Array(240); # 240 = キーコードの最大値
-
-document.onkeydown = (key) ->
-  pressed[key.keyCode] = true
-
-document.onkeyup = (key) ->
-  pressed[key.keyCode] = false
-
-clear_context = ->
-  context.clearRect 0, 0, main_screen.width, main_screen.height
-
-# ゲーム画面
-main_screen = $("#screen")[0]
-context = main_screen.getContext "2d"
-
 $("#start").click ->
+  $(this).attr "disabled", true
+  main_screen = $("#screen")[0]
+  context = main_screen.getContext "2d"
+  player = new Player(main_screen.width, main_screen.height, 20)
+  bullets = []
+
+  document.onkeydown = (key) ->
+    player.instruct(key)
+
+  document.onkeyup = (key) ->
+    player.cancel(key)
+
   main = ->
     player.move()
-    clear_context()
-    player.draw()
-
+    context.clearRect 0, 0, main_screen.width, main_screen.height
+    context.drawImage player.image, player.x, player.y
     setTimeout main, 20
 
-  $(this).attr "disabled", true
-  player = new Player(20)
   main()
