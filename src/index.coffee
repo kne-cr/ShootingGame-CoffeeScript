@@ -38,11 +38,6 @@ class Player
   draw: ->
     context.drawImage @image, @x, @y
 
-# ゲーム画面を初期化
-init_screen = ->
-  main_screen.width = 800
-  main_screen.height = 500
-
 clear_context = ->
   context.clearRect 0, 0, main_screen.width, main_screen.height
 
@@ -51,7 +46,6 @@ main_screen = $("#screen")[0]
 context = main_screen.getContext "2d"
 
 $ ->
-  init_screen()
 
 $("#start").click ->
   main = ->

@@ -1,4 +1,4 @@
-var KEY, Player, clear_context, context, init_screen, main_screen, pressed;
+var KEY, Player, clear_context, context, main_screen, pressed;
 
 Number.prototype.center = function() {
   return this / 2;
@@ -55,11 +55,6 @@ Player = (function() {
 
 })();
 
-init_screen = function() {
-  main_screen.width = 800;
-  return main_screen.height = 500;
-};
-
 clear_context = function() {
   return context.clearRect(0, 0, main_screen.width, main_screen.height);
 };
@@ -68,9 +63,7 @@ main_screen = $("#screen")[0];
 
 context = main_screen.getContext("2d");
 
-$(function() {
-  return init_screen();
-});
+$(function() {});
 
 $("#start").click(function() {
   var main, player;
