@@ -1,4 +1,4 @@
-class Player
+class Player extends Solid
   KEY =
     SPACE: 32
     LEFT: 37
@@ -6,12 +6,11 @@ class Player
     RIGHT: 39
     DOWN: 40
 
-  constructor: (screen_width, screen_height, @speed) ->
+  constructor: (x, y, speed) ->
     @image = new Image()
     @image.src = "img/player.png"
-    @x = screen_width.center() - @image.width.center()
-    @y = screen_height - @image.height - 20
     @pressed = new Array(240); # 240 = キーコードの最大値
+    super(x - @image.width.center(), y - @image.height.center(), speed)
 
   move: ->
     # if @pressed[KEY.SPACE]

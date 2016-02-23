@@ -3,7 +3,7 @@ $("#start").click(function() {
   $(this).attr("disabled", true);
   main_screen = $("#screen")[0];
   context = main_screen.getContext("2d");
-  player = new Player(main_screen.width, main_screen.height, 20);
+  player = new Player(main_screen.width.center(), main_screen.height - 50, 20);
   bullets = [];
   document.onkeydown = function(key) {
     return player.instruct(key);

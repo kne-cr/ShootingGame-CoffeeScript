@@ -1,7 +1,11 @@
-var Player;
+var Player,
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
 
-Player = (function() {
+Player = (function(superClass) {
   var KEY;
+
+  extend(Player, superClass);
 
   KEY = {
     SPACE: 32,
@@ -11,13 +15,11 @@ Player = (function() {
     DOWN: 40
   };
 
-  function Player(screen_width, screen_height, speed) {
-    this.speed = speed;
+  function Player(x, y, speed) {
     this.image = new Image();
     this.image.src = "img/player.png";
-    this.x = screen_width.center() - this.image.width.center();
-    this.y = screen_height - this.image.height - 20;
     this.pressed = new Array(240);
+    Player.__super__.constructor.call(this, x - this.image.width.center(), y - this.image.height.center(), speed);
   }
 
   Player.prototype.move = function() {
@@ -45,4 +47,4 @@ Player = (function() {
 
   return Player;
 
-})();
+})(Solid);
