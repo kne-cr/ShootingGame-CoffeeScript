@@ -1,4 +1,4 @@
-var KEY, Player, clear_context, context, init_screen, main_screen;
+var KEY, Player, clear_context, context, init_screen, main_screen, pressed;
 
 Number.prototype.center = function() {
   return this / 2;
@@ -12,12 +12,22 @@ KEY = {
   DOWN: 40
 };
 
+pressed = new Array(240);
+
+document.onkeydown = function(key) {
+  return pressed[key.keyCode] = true;
+};
+
+document.onkeyup = function(key) {
+  return pressed[key.keyCode] = false;
+};
+
 Player = (function() {
   function Player(speed) {
+    this.speed = speed;
     this.image = new Image();
     this.image.src = "img/player.png";
-    this.speed = speed;
-    this.x = (main_screen.width - this.image.width).center();
+    this.x = main_screen.width.center() - this.image.width.center();
     this.y = main_screen.height - this.image.height - 20;
   }
 
@@ -65,20 +75,17 @@ $(function() {
 $("#start").click(function() {
   var main, player;
   main = function() {
-    player.up();
-    document.onkeydown = function(pressed_key) {
-      if (pressed_key.keyCode === KEY.SPACE) {
+    if (pressed[KEY.SPACE]) {
 
-      } else if (pressed_key.keyCode === KEY.LEFT) {
-        return player.left();
-      } else if (pressed_key.keyCode === KEY.UP) {
-        return player.up();
-      } else if (pressed_key.keyCode === KEY.RIGHT) {
-        return player.right();
-      } else if (pressed_key.keyCode === KEY.DOWN) {
-        return player.down();
-      }
-    };
+    } else if (pressed[KEY.LEFT]) {
+      player.left();
+    } else if (pressed[KEY.UP]) {
+      player.up();
+    } else if (pressed[KEY.RIGHT]) {
+      player.right();
+    } else if (pressed[KEY.DOWN]) {
+      player.down();
+    }
     clear_context();
     player.draw();
     return setTimeout(main, 20);

@@ -8,13 +8,19 @@ KEY =
   RIGHT: 39
   DOWN: 40
 
+pressed = new Array(240); # 240 = キーコードの最大値
+
+document.onkeydown = (key) ->
+  pressed[key.keyCode] = true
+
+document.onkeyup = (key) ->
+  pressed[key.keyCode] = false
 
 class Player
-  constructor: (speed) ->
+  constructor: (@speed) ->
     @image = new Image()
     @image.src = "img/player.png"
-    @speed = speed
-    @x = (main_screen.width - @image.width).center()
+    @x = main_screen.width.center() - @image.width.center()
     @y = main_screen.height - @image.height - 20
 
   left: ->
@@ -49,18 +55,16 @@ $ ->
 
 $("#start").click ->
   main = ->
-    player.up()
-    document.onkeydown = (pressed_key) ->
-      if pressed_key.keyCode is KEY.SPACE
+    if pressed[KEY.SPACE]
 
-      else if pressed_key.keyCode is KEY.LEFT
-        player.left()
-      else if pressed_key.keyCode is KEY.UP
-        player.up()
-      else if pressed_key.keyCode is KEY.RIGHT
-        player.right()
-      else if pressed_key.keyCode is KEY.DOWN
-        player.down()
+    else if pressed[KEY.LEFT]
+      player.left()
+    else if pressed[KEY.UP]
+      player.up()
+    else if pressed[KEY.RIGHT]
+      player.right()
+    else if pressed[KEY.DOWN]
+      player.down()
 
     clear_context()
     player.draw()
