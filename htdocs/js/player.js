@@ -19,21 +19,37 @@ Player = (function(superClass) {
     this.image = new Image();
     this.image.src = "img/player.png";
     this.pressed = new Array(240);
-    Player.__super__.constructor.call(this, x - this.image.width.center(), y - this.image.height.center(), speed);
+    this.bullets = [];
+    Player.__super__.constructor.call(this, new Position(x - this.image.width.half(), y - this.image.height.half()), speed);
   }
+
+  Player.prototype.center = function() {
+    return new Position(this.position.x + this.image.width.half(), this.position.y, +this.image.height.half());
+  };
+
+  Player.prototype.action = function() {
+    this.move();
+    return this.shoot();
+  };
 
   Player.prototype.move = function() {
     if (this.pressed[KEY.LEFT]) {
-      this.x -= this.speed;
+      this.position.x -= this.speed;
     }
     if (this.pressed[KEY.UP]) {
-      this.y -= this.speed;
+      this.position.y -= this.speed;
     }
     if (this.pressed[KEY.RIGHT]) {
-      this.x += this.speed;
+      this.position.x += this.speed;
     }
     if (this.pressed[KEY.DOWN]) {
-      return this.y += this.speed;
+      return this.position.y += this.speed;
+    }
+  };
+
+  Player.prototype.shoot = function() {
+    if (this.pressed[KEY.SPACE]) {
+      return this.bullets.push(new Bullet(this.center(), 20));
     }
   };
 

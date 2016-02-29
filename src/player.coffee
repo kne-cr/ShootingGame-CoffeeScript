@@ -10,14 +10,24 @@ class Player extends Solid
     @image = new Image()
     @image.src = "img/player.png"
     @pressed = new Array(240); # 240 = キーコードの最大値
-    super(x - @image.width.center(), y - @image.height.center(), speed)
+    @bullets = []
+    super(new Position(x - @image.width.half(), y - @image.height.half()), speed)
+
+  center: ->
+    new Position(@position.x + @image.width.half(), @position.y, + @image.height.half())
+
+  action: ->
+    this.move()
+    this.shoot()
 
   move: ->
-    # if @pressed[KEY.SPACE]
-    @x -= @speed if @pressed[KEY.LEFT]
-    @y -= @speed if @pressed[KEY.UP]
-    @x += @speed if @pressed[KEY.RIGHT]
-    @y += @speed if @pressed[KEY.DOWN]
+    @position.x -= @speed if @pressed[KEY.LEFT]
+    @position.y -= @speed if @pressed[KEY.UP]
+    @position.x += @speed if @pressed[KEY.RIGHT]
+    @position.y += @speed if @pressed[KEY.DOWN]
+
+  shoot: ->
+      @bullets.push new Bullet this.center(), 20  if @pressed[KEY.SPACE]
 
   instruct: (key) ->
     @pressed[key.keyCode] = true

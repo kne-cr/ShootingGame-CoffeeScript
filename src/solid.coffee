@@ -1,4 +1,4 @@
 class Solid
-  constructor: (@x, @y, @speed) ->
+  constructor: (@position, @speed) ->
 
   move: ->

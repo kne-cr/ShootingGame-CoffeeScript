@@ -5,12 +5,15 @@ var Bullet,
 Bullet = (function(superClass) {
   extend(Bullet, superClass);
 
-  function Bullet() {
-    return Bullet.__super__.constructor.apply(this, arguments);
+  function Bullet(position, speed) {
+    this.width = 1;
+    this.height = 20;
+    position.y - this.height;
+    Bullet.__super__.constructor.call(this, position, speed);
   }
 
   Bullet.prototype.move = function() {
-    return this.y -= this.speed;
+    return this.position.y -= this.speed;
   };
 
   return Bullet;

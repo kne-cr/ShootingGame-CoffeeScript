@@ -1,9 +1,8 @@
 var Solid;
 
 Solid = (function() {
-  function Solid(x, y, speed) {
-    this.x = x;
-    this.y = y;
+  function Solid(position, speed) {
+    this.position = position;
     this.speed = speed;
   }
 

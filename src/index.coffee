@@ -3,7 +3,6 @@ $("#start").click ->
   main_screen = $("#screen")[0]
   context = main_screen.getContext "2d"
   player = new Player(main_screen.width.center(), main_screen.height - 50, 20)
-  bullets = []
 
   document.onkeydown = (key) ->
     player.instruct(key)
@@ -12,14 +11,18 @@ $("#start").click ->
     player.cancel(key)
 
   main = ->
-    # 移動
-    player.move()
-
     # 画面の削除
     context.clearRect 0, 0, main_screen.width, main_screen.height
 
-    # 画面の再描画
-    context.drawImage player.image, player.x, player.y
+    # プレイヤーの再描画
+    player.action()
+    context.drawImage player.image, player.position.x, player.position.y
+
+    # 弾の再描画
+    for bullet in player.bullets
+      bullet.move()
+      context.fillStyle = "rgb(255, 255, 255)"
+      context.fillRect bullet.position.x, bullet.position.y, bullet.width, bullet.height
 
     # 次のループへ
     setTimeout main, 20
