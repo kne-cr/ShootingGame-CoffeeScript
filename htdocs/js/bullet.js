@@ -8,6 +8,7 @@ Bullet = (function(superClass) {
   function Bullet(position, speed) {
     this.width = 1;
     this.height = 20;
+    this.style = "rgb(255, 255, 255)";
     position.y - this.height;
     Bullet.__super__.constructor.call(this, position, speed);
   }

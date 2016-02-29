@@ -21,7 +21,7 @@ $("#start").click ->
     # 弾の再描画
     for bullet in player.bullets
       bullet.move()
-      context.fillStyle = "rgb(255, 255, 255)"
+      context.fillStyle = bullet.style
       context.fillRect bullet.position.x, bullet.position.y, bullet.width, bullet.height
 
     # 次のループへ
