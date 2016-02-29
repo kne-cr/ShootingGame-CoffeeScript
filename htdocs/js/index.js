@@ -19,7 +19,7 @@ $("#start").click(function() {
     for (i = 0, len = ref.length; i < len; i++) {
       bullet = ref[i];
       bullet.move();
-      context.fillStyle = "rgb(255, 255, 255)";
+      context.fillStyle = bullet.style;
       context.fillRect(bullet.position.x, bullet.position.y, bullet.width, bullet.height);
     }
     return setTimeout(main, 20);
