@@ -16,13 +16,13 @@ $("#start").click ->
 
     # プレイヤーの再描画
     player.action()
-    context.drawImage player.image, player.position.x, player.position.y
+    context.drawImage player.image, player.x, player.y
 
     # 弾の再描画
     for bullet in player.bullets
       bullet.move()
       context.fillStyle = bullet.style
-      context.fillRect bullet.position.x, bullet.position.y, bullet.width, bullet.height
+      context.fillRect bullet.left(), bullet.top(), bullet.width, bullet.height
 
     # 次のループへ
     setTimeout main, 20

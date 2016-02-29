@@ -1,10 +1,7 @@
 class Bullet extends Solid
-  constructor: (position, speed) ->
-    @width = 1
-    @height = 20
+  constructor: (x, y, speed) ->
     @style = "rgb(255, 255, 255)"
-    position.y - @height
-    super position, speed
+    super x, y, 1, 20, speed
 
   move: ->
-    @position.y -= @speed
+    @y -= @speed

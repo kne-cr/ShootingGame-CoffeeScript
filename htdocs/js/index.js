@@ -14,13 +14,13 @@ $("#start").click(function() {
     var bullet, i, len, ref;
     context.clearRect(0, 0, main_screen.width, main_screen.height);
     player.action();
-    context.drawImage(player.image, player.position.x, player.position.y);
+    context.drawImage(player.image, player.x, player.y);
     ref = player.bullets;
     for (i = 0, len = ref.length; i < len; i++) {
       bullet = ref[i];
       bullet.move();
       context.fillStyle = bullet.style;
-      context.fillRect(bullet.position.x, bullet.position.y, bullet.width, bullet.height);
+      context.fillRect(bullet.left(), bullet.top(), bullet.width, bullet.height);
     }
     return setTimeout(main, 20);
   };
