@@ -3,58 +3,33 @@ var Player,
   hasProp = {}.hasOwnProperty;
 
 Player = (function(superClass) {
-  var KEY;
-
   extend(Player, superClass);
-
-  KEY = {
-    SPACE: 32,
-    LEFT: 37,
-    UP: 38,
-    RIGHT: 39,
-    DOWN: 40
-  };
 
   function Player(x, y, speed) {
     this.image = new Image();
     this.image.src = "img/player.png";
-    this.pressed = new Array(240);
     this.bullets = [];
     Player.__super__.constructor.call(this, x - this.image.width.half(), y - this.image.height.half(), this.image.width, this.image.height, speed);
   }
 
-  Player.prototype.action = function() {
-    this.move();
-    return this.shoot();
+  Player.prototype.left = function() {
+    return this.x -= this.speed;
   };
 
-  Player.prototype.move = function() {
-    if (this.pressed[KEY.LEFT]) {
-      this.x -= this.speed;
-    }
-    if (this.pressed[KEY.UP]) {
-      this.y -= this.speed;
-    }
-    if (this.pressed[KEY.RIGHT]) {
-      this.x += this.speed;
-    }
-    if (this.pressed[KEY.DOWN]) {
-      return this.y += this.speed;
-    }
+  Player.prototype.up = function() {
+    return this.y -= this.speed;
+  };
+
+  Player.prototype.right = function() {
+    return this.x += this.speed;
+  };
+
+  Player.prototype.down = function() {
+    return this.y += this.speed;
   };
 
   Player.prototype.shoot = function() {
-    if (this.pressed[KEY.SPACE]) {
-      return this.bullets.push(new Bullet(this.center_x(), this.top(), 20));
-    }
-  };
-
-  Player.prototype.instruct = function(key) {
-    return this.pressed[key.keyCode] = true;
-  };
-
-  Player.prototype.cancel = function(key) {
-    return this.pressed[key.keyCode] = false;
+    return this.bullets.push(new Bullet(this.center_x(), this.top_y(), 20));
   };
 
   return Player;

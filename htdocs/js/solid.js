@@ -9,28 +9,28 @@ Solid = (function() {
     this.speed = speed;
   }
 
-  Solid.prototype.left = function() {
+  Solid.prototype.left_x = function() {
     return this.x;
   };
 
-  Solid.prototype.right = function() {
+  Solid.prototype.right_x = function() {
     return this.x + this.width;
   };
 
-  Solid.prototype.top = function() {
+  Solid.prototype.top_y = function() {
     return this.y;
   };
 
-  Solid.prototype.bottom = function() {
+  Solid.prototype.bottom_y = function() {
     return this.y + this.height;
   };
 
   Solid.prototype.center_x = function() {
-    return (this.left() + this.right()).center();
+    return (this.left_x() + this.right_x()).center();
   };
 
   Solid.prototype.center_y = function() {
-    return (this.top() + this.bottom()).center();
+    return (this.top_y() + this.bottom_y()).center();
   };
 
   Solid.prototype.move = function() {};
