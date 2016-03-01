@@ -1,22 +1,22 @@
 class Solid
   constructor: (@x, @y, @width, @height, @speed) ->
 
-  left: ->
+  left_x: ->
     @x
 
-  right: ->
+  right_x: ->
     @x + @width
 
-  top: ->
+  top_y: ->
     @y
 
-  bottom: ->
+  bottom_y: ->
     @y + @height
 
   center_x: ->
-    (this.left() + this.right()).center()
+    (this.left_x() + this.right_x()).center()
 
   center_y: ->
-    (this.top() + this.bottom()).center()
+    (this.top_y() + this.bottom_y()).center()
 
   move: ->
