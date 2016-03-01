@@ -21,10 +21,10 @@ $("#start").click ->
   main = ->
     # ユーザーの操作
     player.shoot() if pressed[KEY.SPACE]
-    player.left() if pressed[KEY.LEFT]
-    player.up() if pressed[KEY.UP]
-    player.right() if pressed[KEY.RIGHT]
-    player.down() if pressed[KEY.DOWN]
+    player.left() if pressed[KEY.LEFT] and 0 < player.left_x()
+    player.up() if pressed[KEY.UP] and 0 < player.top_y()
+    player.right() if pressed[KEY.RIGHT] and player.right_x() < main_screen.width
+    player.down() if pressed[KEY.DOWN] and player.bottom_y() < main_screen.height
 
     # 画面の削除
     context.clearRect 0, 0, main_screen.width, main_screen.height

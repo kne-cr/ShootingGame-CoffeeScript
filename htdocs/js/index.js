@@ -23,16 +23,16 @@ $("#start").click(function() {
     if (pressed[KEY.SPACE]) {
       player.shoot();
     }
-    if (pressed[KEY.LEFT]) {
+    if (pressed[KEY.LEFT] && 0 < player.left_x()) {
       player.left();
     }
-    if (pressed[KEY.UP]) {
+    if (pressed[KEY.UP] && 0 < player.top_y()) {
       player.up();
     }
-    if (pressed[KEY.RIGHT]) {
+    if (pressed[KEY.RIGHT] && player.right_x() < main_screen.width) {
       player.right();
     }
-    if (pressed[KEY.DOWN]) {
+    if (pressed[KEY.DOWN] && player.bottom_y() < main_screen.height) {
       player.down();
     }
     context.clearRect(0, 0, main_screen.width, main_screen.height);
