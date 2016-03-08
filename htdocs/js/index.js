@@ -18,7 +18,7 @@ $("#start").click(function() {
   main_screen = $("#screen")[0];
   context = main_screen.getContext("2d");
   player = new Player(main_screen.width.center(), main_screen.height - 50, 20);
-  enemy = new Enemy1(main_screen.width.center(), 0, 10);
+  enemy = new Enemy1(Math.floor(Math.random() * main_screen.width), 0, 10);
   main = function() {
     var bullet, i, len, ref;
     context.clearRect(0, 0, main_screen.width, main_screen.height);
