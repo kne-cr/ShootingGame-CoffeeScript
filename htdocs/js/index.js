@@ -38,24 +38,23 @@ $("#start").click(function() {
       player.down();
     }
     context.drawImage(player.image, player.position.x, player.position.y);
+    player.bullets.action();
     ref = player.bullets.list;
     for (i = 0, len = ref.length; i < len; i++) {
       bullet = ref[i];
       if (bullet.is_dead) {
         continue;
       }
-      bullet.move();
       context.fillStyle = bullet.style;
       context.fillRect(bullet.position.x, bullet.position.y, bullet.position.width, bullet.position.height);
     }
-    enemies.apear();
+    enemies.action();
     ref1 = enemies.list;
     for (j = 0, len1 = ref1.length; j < len1; j++) {
       enemy = ref1[j];
       if (enemy.is_dead) {
         continue;
       }
-      enemy.move();
       context.drawImage(enemy.image, enemy.position.x, enemy.position.y);
     }
     return setTimeout(main, 20);

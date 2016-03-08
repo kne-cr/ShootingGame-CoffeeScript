@@ -20,6 +20,11 @@ Enemies = (function() {
     }).call(this);
   }
 
+  Enemies.prototype.action = function() {
+    this.apear();
+    return this.move();
+  };
+
   Enemies.prototype.apear = function() {
     var enemy, j, len, ref, results;
     if (this.appearance_rate <= Math.random() * 100) {
@@ -35,6 +40,17 @@ Enemies = (function() {
       } else {
         results.push(void 0);
       }
+    }
+    return results;
+  };
+
+  Enemies.prototype.move = function() {
+    var enemy, j, len, ref, results;
+    ref = this.list;
+    results = [];
+    for (j = 0, len = ref.length; j < len; j++) {
+      enemy = ref[j];
+      results.push(enemy.move());
     }
     return results;
   };

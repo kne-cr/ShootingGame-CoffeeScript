@@ -33,24 +33,24 @@ $("#start").click ->
     # プレイヤーの再描画
     context.drawImage player.image, player.position.x, player.position.y
 
+    # 弾の操作
+    player.bullets.action()
+
     for bullet in player.bullets.list
       # 死亡したインスタンスは描画しない
       continue if bullet.is_dead
-      # 弾の操作
-      bullet.move()
 
       # 弾の再描画
       context.fillStyle = bullet.style
       context.fillRect bullet.position.x, bullet.position.y, bullet.position.width, bullet.position.height
 
-    # 敵の出現
-    enemies.apear()
+    # 敵の操作
+    enemies.action()
 
     for enemy in enemies.list
       # 死亡したインスタンスは描画しない
       continue if enemy.is_dead
-      # 敵の操作
-      enemy.move()
+
       # 敵の再描画
       context.drawImage enemy.image, enemy.position.x, enemy.position.y
 

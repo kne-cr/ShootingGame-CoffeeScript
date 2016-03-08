@@ -34,6 +34,17 @@ Bullets = (function() {
     return results;
   };
 
+  Bullets.prototype.action = function() {
+    var bullet, j, len, ref, results;
+    ref = this.list;
+    results = [];
+    for (j = 0, len = ref.length; j < len; j++) {
+      bullet = ref[j];
+      results.push(bullet.move());
+    }
+    return results;
+  };
+
   return Bullets;
 
 })();

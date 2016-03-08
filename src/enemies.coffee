@@ -5,9 +5,17 @@ class Enemies
   constructor: (@x_range, @count, @appearance_rate) ->
     @list = (new Enemy1(0, 0, SPEED) for i in [0...@count])
 
+  action: ->
+    @apear()
+    @move()
+
   apear: ->
     return if @appearance_rate <= Math.random() * 100
     for enemy in @list
       if enemy.is_dead
         enemy.apear Math.floor(Math.random() * @x_range)
         break
+
+  move: ->
+    for enemy in @list
+      enemy.move()
