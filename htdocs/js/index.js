@@ -1,5 +1,5 @@
 $("#start").click(function() {
-  var KEY, context, main, main_screen, player, pressed;
+  var KEY, context, enemy, main, main_screen, player, pressed;
   KEY = {
     SPACE: 32,
     LEFT: 37,
@@ -18,6 +18,7 @@ $("#start").click(function() {
   main_screen = $("#screen")[0];
   context = main_screen.getContext("2d");
   player = new Player(main_screen.width.center(), main_screen.height - 50, 20);
+  enemy = new Enemy1(main_screen.width.center(), 0, 10);
   main = function() {
     var bullet, i, len, ref;
     context.clearRect(0, 0, main_screen.width, main_screen.height);
@@ -47,6 +48,8 @@ $("#start").click(function() {
       context.fillStyle = bullet.style;
       context.fillRect(bullet.position.x, bullet.position.y, bullet.position.width, bullet.position.height);
     }
+    enemy.move();
+    context.drawImage(enemy.image, enemy.position.x, enemy.position.y);
     return setTimeout(main, 20);
   };
   return main();
