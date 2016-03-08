@@ -11,13 +11,10 @@ class Enemy1 extends Solid
         @image.height,
         speed
       ),
-      false
+      true
     )
 
   move: ->
-    # 下には必ず移動する
-    @position.down()
-
     # ランダム移動
     # Math.round(Math.random()) -> 0 or 1を取得
     # 1 -> true, 0 -> falseで判定される
@@ -25,3 +22,8 @@ class Enemy1 extends Solid
     @position.up() if Math.round Math.random()
     @position.right() if Math.round Math.random()
     @position.down() if Math.round Math.random()
+
+    # 下には必ず移動する
+    @position.down()
+
+    # 画面外判定どうしよう

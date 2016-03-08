@@ -16,8 +16,8 @@ $("#start").click ->
   $(this).attr "disabled", true
   main_screen = $("#screen")[0]
   context = main_screen.getContext "2d"
-  player = new Player(main_screen.width.center(), main_screen.height - 50, 20)
-  enemy = new Enemy1(Math.floor(Math.random() * main_screen.width), 0, 10)
+  player = new Player main_screen.width.center(), main_screen.height - 50, 20
+  enemies = new Enemies main_screen.width, 3
 
   main = ->
     # 画面の削除
@@ -43,10 +43,16 @@ $("#start").click ->
       context.fillStyle = bullet.style
       context.fillRect bullet.position.x, bullet.position.y, bullet.position.width, bullet.position.height
 
-    # 敵の操作
-    enemy.move()
-    # 敵の再描画
-    context.drawImage enemy.image, enemy.position.x, enemy.position.y
+    # 敵の出現
+    enemies.apear()
+
+    for enemy in enemies.list
+      # 死亡したインスタンスは描画しない
+      continue if enemy.is_dead
+      # 敵の操作
+      enemy.move()
+      # 敵の再描画
+      context.drawImage enemy.image, enemy.position.x, enemy.position.y
 
     # 次のループへ
     setTimeout main, 20

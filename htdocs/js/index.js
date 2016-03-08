@@ -1,5 +1,5 @@
 $("#start").click(function() {
-  var KEY, context, enemy, main, main_screen, player, pressed;
+  var KEY, context, enemies, main, main_screen, player, pressed;
   KEY = {
     SPACE: 32,
     LEFT: 37,
@@ -18,9 +18,9 @@ $("#start").click(function() {
   main_screen = $("#screen")[0];
   context = main_screen.getContext("2d");
   player = new Player(main_screen.width.center(), main_screen.height - 50, 20);
-  enemy = new Enemy1(Math.floor(Math.random() * main_screen.width), 0, 10);
+  enemies = new Enemies(main_screen.width, 3);
   main = function() {
-    var bullet, i, len, ref;
+    var bullet, enemy, i, j, len, len1, ref, ref1;
     context.clearRect(0, 0, main_screen.width, main_screen.height);
     if (pressed[KEY.SPACE]) {
       player.shoot();
@@ -48,8 +48,16 @@ $("#start").click(function() {
       context.fillStyle = bullet.style;
       context.fillRect(bullet.position.x, bullet.position.y, bullet.position.width, bullet.position.height);
     }
-    enemy.move();
-    context.drawImage(enemy.image, enemy.position.x, enemy.position.y);
+    enemies.apear();
+    ref1 = enemies.list;
+    for (j = 0, len1 = ref1.length; j < len1; j++) {
+      enemy = ref1[j];
+      if (enemy.is_dead) {
+        continue;
+      }
+      enemy.move();
+      context.drawImage(enemy.image, enemy.position.x, enemy.position.y);
+    }
     return setTimeout(main, 20);
   };
   return main();

@@ -8,11 +8,10 @@ Enemy1 = (function(superClass) {
   function Enemy1(x, y, speed) {
     this.image = new Image();
     this.image.src = "img/enemy1.png";
-    Enemy1.__super__.constructor.call(this, new Position(x - this.image.width.half(), y - this.image.height, this.image.width, this.image.height, speed), false);
+    Enemy1.__super__.constructor.call(this, new Position(x - this.image.width.half(), y - this.image.height, this.image.width, this.image.height, speed), true);
   }
 
   Enemy1.prototype.move = function() {
-    this.position.down();
     if (Math.round(Math.random())) {
       this.position.left();
     }
@@ -23,8 +22,9 @@ Enemy1 = (function(superClass) {
       this.position.right();
     }
     if (Math.round(Math.random())) {
-      return this.position.down();
+      this.position.down();
     }
+    return this.position.down();
   };
 
   return Enemy1;
