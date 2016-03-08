@@ -12,7 +12,19 @@ Enemy1 = (function(superClass) {
   }
 
   Enemy1.prototype.move = function() {
-    return this.position.down();
+    this.position.down();
+    if (Math.round(Math.random())) {
+      this.position.left();
+    }
+    if (Math.round(Math.random())) {
+      this.position.up();
+    }
+    if (Math.round(Math.random())) {
+      this.position.right();
+    }
+    if (Math.round(Math.random())) {
+      return this.position.down();
+    }
   };
 
   return Enemy1;
