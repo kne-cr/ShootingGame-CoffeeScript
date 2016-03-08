@@ -5,10 +5,11 @@ Enemies = (function() {
 
   SPEED = 5;
 
-  function Enemies(x_range, count) {
+  function Enemies(x_range, count, appearance_rate) {
     var i;
     this.x_range = x_range;
     this.count = count;
+    this.appearance_rate = appearance_rate;
     this.list = (function() {
       var j, ref, results;
       results = [];
@@ -21,6 +22,9 @@ Enemies = (function() {
 
   Enemies.prototype.apear = function() {
     var enemy, j, len, ref, results;
+    if (this.appearance_rate <= Math.random() * 100) {
+      return;
+    }
     ref = this.list;
     results = [];
     for (j = 0, len = ref.length; j < len; j++) {

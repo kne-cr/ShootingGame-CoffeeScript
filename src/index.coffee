@@ -17,7 +17,7 @@ $("#start").click ->
   main_screen = $("#screen")[0]
   context = main_screen.getContext "2d"
   player = new Player main_screen.width.center(), main_screen.height - 50, 20
-  enemies = new Enemies main_screen.width, 3
+  enemies = new Enemies main_screen.width, 3, 5
 
   main = ->
     # 画面の削除
