@@ -19,24 +19,28 @@ $("#start").click ->
   player = new Player(main_screen.width.center(), main_screen.height - 50, 20)
 
   main = ->
-    # ユーザーの操作
-    player.shoot() if pressed[KEY.SPACE]
-    player.left() if pressed[KEY.LEFT] and 0 < player.left_x()
-    player.up() if pressed[KEY.UP] and 0 < player.top_y()
-    player.right() if pressed[KEY.RIGHT] and player.right_x() < main_screen.width
-    player.down() if pressed[KEY.DOWN] and player.bottom_y() < main_screen.height
-
     # 画面の削除
     context.clearRect 0, 0, main_screen.width, main_screen.height
 
-    # プレイヤーの再描画
-    context.drawImage player.image, player.x, player.y
+    # プレイヤーの操作
+    player.shoot() if pressed[KEY.SPACE]
+    player.left() if pressed[KEY.LEFT] and 0 < player.position.left_x()
+    player.up() if pressed[KEY.UP] and 0 < player.position.top_y()
+    player.right() if pressed[KEY.RIGHT] and player.position.right_x() < main_screen.width
+    player.down() if pressed[KEY.DOWN] and player.position.bottom_y() < main_screen.height
 
-    # 弾の再描画
-    for bullet in player.bullets
+    # プレイヤーの再描画
+    context.drawImage player.image, player.position.x, player.position.y
+
+    for bullet in player.bullets.list
+      # 死亡したインスタンスは描画しない
+      continue if bullet.is_dead
+      # 弾の操作
       bullet.move()
+
+      # 弾の再描画
       context.fillStyle = bullet.style
-      context.fillRect bullet.x, bullet.y, bullet.width, bullet.height
+      context.fillRect bullet.position.x, bullet.position.y, bullet.position.width, bullet.position.height
 
     # 次のループへ
     setTimeout main, 20

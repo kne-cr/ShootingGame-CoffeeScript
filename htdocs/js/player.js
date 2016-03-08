@@ -8,28 +8,28 @@ Player = (function(superClass) {
   function Player(x, y, speed) {
     this.image = new Image();
     this.image.src = "img/player.png";
-    this.bullets = [];
-    Player.__super__.constructor.call(this, x - this.image.width.half(), y - this.image.height.half(), this.image.width, this.image.height, speed);
+    this.bullets = new Bullets(10);
+    Player.__super__.constructor.call(this, new Position(x - this.image.width.half(), y - this.image.height.half(), this.image.width, this.image.height, speed), false);
   }
 
   Player.prototype.left = function() {
-    return this.x -= this.speed;
+    return this.position.left();
   };
 
   Player.prototype.up = function() {
-    return this.y -= this.speed;
+    return this.position.up();
   };
 
   Player.prototype.right = function() {
-    return this.x += this.speed;
+    return this.position.right();
   };
 
   Player.prototype.down = function() {
-    return this.y += this.speed;
+    return this.position.down();
   };
 
   Player.prototype.shoot = function() {
-    return this.bullets.push(new Bullet(this.center_x(), this.top_y(), 20));
+    return this.bullets.shoot(this.position.center_x(), this.position.top_y());
   };
 
   return Player;

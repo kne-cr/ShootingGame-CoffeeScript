@@ -7,11 +7,14 @@ Bullet = (function(superClass) {
 
   function Bullet(x, y, speed) {
     this.style = "rgb(255, 255, 255)";
-    Bullet.__super__.constructor.call(this, x, y, 1, 20, speed);
+    Bullet.__super__.constructor.call(this, new Position(x, y, 1, 20, speed), true);
   }
 
   Bullet.prototype.move = function() {
-    return this.y -= this.speed;
+    this.position.up();
+    if (this.position.bottom_y() < 0) {
+      return this.is_dead = true;
+    }
   };
 
   return Bullet;

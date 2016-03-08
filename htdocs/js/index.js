@@ -20,29 +20,32 @@ $("#start").click(function() {
   player = new Player(main_screen.width.center(), main_screen.height - 50, 20);
   main = function() {
     var bullet, i, len, ref;
+    context.clearRect(0, 0, main_screen.width, main_screen.height);
     if (pressed[KEY.SPACE]) {
       player.shoot();
     }
-    if (pressed[KEY.LEFT] && 0 < player.left_x()) {
+    if (pressed[KEY.LEFT] && 0 < player.position.left_x()) {
       player.left();
     }
-    if (pressed[KEY.UP] && 0 < player.top_y()) {
+    if (pressed[KEY.UP] && 0 < player.position.top_y()) {
       player.up();
     }
-    if (pressed[KEY.RIGHT] && player.right_x() < main_screen.width) {
+    if (pressed[KEY.RIGHT] && player.position.right_x() < main_screen.width) {
       player.right();
     }
-    if (pressed[KEY.DOWN] && player.bottom_y() < main_screen.height) {
+    if (pressed[KEY.DOWN] && player.position.bottom_y() < main_screen.height) {
       player.down();
     }
-    context.clearRect(0, 0, main_screen.width, main_screen.height);
-    context.drawImage(player.image, player.x, player.y);
-    ref = player.bullets;
+    context.drawImage(player.image, player.position.x, player.position.y);
+    ref = player.bullets.list;
     for (i = 0, len = ref.length; i < len; i++) {
       bullet = ref[i];
+      if (bullet.is_dead) {
+        continue;
+      }
       bullet.move();
       context.fillStyle = bullet.style;
-      context.fillRect(bullet.x, bullet.y, bullet.width, bullet.height);
+      context.fillRect(bullet.position.x, bullet.position.y, bullet.position.width, bullet.position.height);
     }
     return setTimeout(main, 20);
   };

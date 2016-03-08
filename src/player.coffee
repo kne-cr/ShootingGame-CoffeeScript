@@ -1,27 +1,31 @@
+# プレイヤークラス
 class Player extends Solid
   constructor: (x, y, speed) ->
     @image = new Image()
     @image.src = "img/player.png"
-    @bullets = []
+    @bullets = new Bullets(10)
     super(
-      x - @image.width.half(),
-      y - @image.height.half(),
-      @image.width,
-      @image.height,
-      speed
+      new Position(
+        x - @image.width.half(),
+        y - @image.height.half(),
+        @image.width,
+        @image.height,
+        speed
+      ),
+      false
     )
 
   left: ->
-    @x -= @speed
+    @position.left()
 
   up: ->
-    @y -= @speed
+    @position.up()
 
   right: ->
-    @x += @speed
+    @position.right()
 
   down: ->
-    @y += @speed
+    @position.down()
 
   shoot: ->
-    @bullets.push(new Bullet this.center_x(), this.top_y(), 20)
+    @bullets.shoot @position.center_x(), @position.top_y()
