@@ -30,9 +30,7 @@ Enemies = (function() {
     for (j = 0, len = ref.length; j < len; j++) {
       enemy = ref[j];
       if (enemy.is_dead) {
-        enemy.position.x = Math.floor(Math.random() * this.x_range);
-        enemy.position.y = 0 - enemy.image.height;
-        enemy.is_dead = false;
+        enemy.apear(Math.floor(Math.random() * this.x_range));
         break;
       } else {
         results.push(void 0);

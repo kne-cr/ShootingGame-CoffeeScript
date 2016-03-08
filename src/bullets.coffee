@@ -9,8 +9,6 @@ class Bullets
     for bullet in @list
       # 死亡判定されている弾があれば画面内に呼び戻し、復活させる
       if bullet.is_dead
-        bullet.position.x = x
-        bullet.position.y = y
-        bullet.is_dead = false
+        bullet.reset x, y
         break
       # なければ（全ての弾が画面内に生存している場合）は、弾は撃てない

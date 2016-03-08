@@ -27,3 +27,8 @@ class Enemy1 extends Solid
     @position.down()
 
     # 画面外判定どうしよう
+
+  apear: (x) ->
+    @position.x = x
+    @position.y = 0 - @image.height
+    @is_dead = false

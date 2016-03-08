@@ -25,9 +25,7 @@ Bullets = (function() {
     for (j = 0, len = ref.length; j < len; j++) {
       bullet = ref[j];
       if (bullet.is_dead) {
-        bullet.position.x = x;
-        bullet.position.y = y;
-        bullet.is_dead = false;
+        bullet.reset(x, y);
         break;
       } else {
         results.push(void 0);

@@ -17,6 +17,12 @@ Bullet = (function(superClass) {
     }
   };
 
+  Bullet.prototype.reset = function(x, y) {
+    this.position.x = x;
+    this.position.y = y;
+    return this.is_dead = false;
+  };
+
   return Bullet;
 
 })(Solid);

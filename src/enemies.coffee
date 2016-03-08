@@ -9,7 +9,5 @@ class Enemies
     return if @appearance_rate <= Math.random() * 100
     for enemy in @list
       if enemy.is_dead
-        enemy.position.x = Math.floor(Math.random() * @x_range)
-        enemy.position.y = 0 - enemy.image.height
-        enemy.is_dead = false
+        enemy.apear Math.floor(Math.random() * @x_range)
         break
