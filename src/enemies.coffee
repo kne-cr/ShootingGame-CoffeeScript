@@ -10,10 +10,10 @@ class Enemies
     @move()
 
   apear: ->
-    return if @appearance_rate <= Math.random() * 100
+    return if @appearance_rate <= Math.random_number 100
     for enemy in @list
       if enemy.is_dead
-        enemy.apear Math.floor(Math.random() * @x_range)
+        enemy.apear Math.random_number(@x_range)
         break
 
   move: ->

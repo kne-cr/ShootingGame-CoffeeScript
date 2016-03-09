@@ -27,7 +27,7 @@ Enemies = (function() {
 
   Enemies.prototype.apear = function() {
     var enemy, j, len, ref, results;
-    if (this.appearance_rate <= Math.random() * 100) {
+    if (this.appearance_rate <= Math.random_number(100)) {
       return;
     }
     ref = this.list;
@@ -35,7 +35,7 @@ Enemies = (function() {
     for (j = 0, len = ref.length; j < len; j++) {
       enemy = ref[j];
       if (enemy.is_dead) {
-        enemy.apear(Math.floor(Math.random() * this.x_range));
+        enemy.apear(Math.random_number(this.x_range));
         break;
       } else {
         results.push(void 0);

@@ -12,16 +12,16 @@ Enemy1 = (function(superClass) {
   }
 
   Enemy1.prototype.move = function() {
-    if (Math.round(Math.random())) {
+    if (Math.random_boolean()) {
       this.position.left();
     }
-    if (Math.round(Math.random())) {
+    if (Math.random_boolean()) {
       this.position.up();
     }
-    if (Math.round(Math.random())) {
+    if (Math.random_boolean()) {
       this.position.right();
     }
-    if (Math.round(Math.random())) {
+    if (Math.random_boolean()) {
       this.position.down();
     }
     return this.position.down();
