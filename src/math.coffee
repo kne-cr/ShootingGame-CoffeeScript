@@ -1,7 +1,8 @@
+# ランダムで0か1を返す
 Math.random_boolean = ->
-  # Math.round(Math.random()) -> 0 or 1を取得
-  # 1 -> true, 0 -> falseで判定される
+  # ランダムな数字を四捨五入して作成
   this.round this.random()
 
+# 指定された範囲内の数字をランダムで返す
 Math.random_number = (range) ->
   this.floor this.random() * range

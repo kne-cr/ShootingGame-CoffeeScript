@@ -3,25 +3,9 @@ $("#start").click(function() {
   $(this).attr("disabled", true);
   main_screen = $("#screen")[0];
   context = main_screen.getContext("2d");
+  ScreenAbility.give_to(main_screen);
   player = new Player(main_screen.width.center(), main_screen.height - 50, 20);
   enemies = new Enemies(main_screen.width, 5, 3);
-  main_screen.includes = function(solid) {
-    return 0 < solid.position.right_x() && solid.position.left_x() < this.width && 0 < solid.position.bottom_y() && solid.position.top_y() < this.height;
-  };
-  main_screen.clear_out_of_range = function(solids) {
-    var i, len, ref, results, solid;
-    ref = [].concat(solids);
-    results = [];
-    for (i = 0, len = ref.length; i < len; i++) {
-      solid = ref[i];
-      if (!this.includes(solid)) {
-        results.push(solid.die());
-      } else {
-        results.push(void 0);
-      }
-    }
-    return results;
-  };
   document.onkeydown = function(key) {
     return player.command.request(key.keyCode);
   };
@@ -39,10 +23,11 @@ $("#start").click(function() {
     ref = player.bullets.list;
     for (i = 0, len = ref.length; i < len; i++) {
       bullet = ref[i];
-      if (!bullet.is_dead) {
-        context.fillStyle = bullet.style;
-        context.fillRect(bullet.position.x, bullet.position.y, bullet.position.width, bullet.position.height);
+      if (!(!bullet.is_dead)) {
+        continue;
       }
+      context.fillStyle = bullet.style;
+      context.fillRect(bullet.position.x, bullet.position.y, bullet.position.width, bullet.position.height);
     }
     ref1 = enemies.list;
     for (j = 0, len1 = ref1.length; j < len1; j++) {

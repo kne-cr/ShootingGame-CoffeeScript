@@ -17,12 +17,13 @@ class Player extends Solid
     )
 
   action: ->
-    # プレイヤーの操作
-    @bullets.shoot @position.center_x(), @position.top_y() if @command.is_requested(Command.SPACE)
-    @position.left() if @command.is_requested(Command.LEFT)
-    @position.up() if @command.is_requested(Command.UP)
-    @position.right() if @command.is_requested(Command.RIGHT)
-    @position.down() if @command.is_requested(Command.DOWN)
+    # 弾を撃つ
+    @bullets.shoot @position.center_x(), @position.top_y() if @command.is_requested Command.SPACE
+    # 移動する
+    @position.left() if @command.is_requested Command.LEFT
+    @position.up() if @command.is_requested Command.UP
+    @position.right() if @command.is_requested Command.RIGHT
+    @position.down() if @command.is_requested Command.DOWN
 
     # 弾の操作
     @bullets.action()

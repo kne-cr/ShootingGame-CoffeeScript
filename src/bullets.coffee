@@ -11,8 +11,7 @@ class Bullets
       if bullet.is_dead
         bullet.reset x, y
         break
-      # なければ（全ての弾が画面内に生存している場合）は、弾は撃てない
+      # なければ、弾は撃てない
 
   action: ->
-    for bullet in @list
-      bullet.move()
+    bullet.move() for bullet in @list
