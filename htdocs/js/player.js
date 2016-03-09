@@ -6,30 +6,30 @@ Player = (function(superClass) {
   extend(Player, superClass);
 
   function Player(x, y, speed) {
-    this.image = new Image();
+    this.image = new Image;
     this.image.src = "img/player.png";
     this.bullets = new Bullets(10);
+    this.command = new Command;
     Player.__super__.constructor.call(this, new Position(x - this.image.width.half(), y - this.image.height.half(), this.image.width, this.image.height, speed), false);
   }
 
-  Player.prototype.left = function() {
-    return this.position.left();
-  };
-
-  Player.prototype.up = function() {
-    return this.position.up();
-  };
-
-  Player.prototype.right = function() {
-    return this.position.right();
-  };
-
-  Player.prototype.down = function() {
-    return this.position.down();
-  };
-
-  Player.prototype.shoot = function() {
-    return this.bullets.shoot(this.position.center_x(), this.position.top_y());
+  Player.prototype.action = function() {
+    if (this.command.is_requested(Command.SPACE)) {
+      this.bullets.shoot(this.position.center_x(), this.position.top_y());
+    }
+    if (this.command.is_requested(Command.LEFT)) {
+      this.position.left();
+    }
+    if (this.command.is_requested(Command.UP)) {
+      this.position.up();
+    }
+    if (this.command.is_requested(Command.RIGHT)) {
+      this.position.right();
+    }
+    if (this.command.is_requested(Command.DOWN)) {
+      this.position.down();
+    }
+    return this.bullets.action();
   };
 
   return Player;

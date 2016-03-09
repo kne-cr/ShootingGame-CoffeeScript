@@ -1,7 +1,7 @@
 # 敵1クラス
 class Enemy1 extends Solid
   constructor: (x, y, speed) ->
-    @image = new Image()
+    @image = new Image
     @image.src = "img/enemy1.png"
     super(
       new Position(
