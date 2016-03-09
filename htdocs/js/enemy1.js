@@ -29,7 +29,7 @@ Enemy1 = (function(superClass) {
 
   Enemy1.prototype.apear = function(x) {
     this.position.x = x;
-    this.position.y = 0 - this.image.height;
+    this.position.y = 1 - this.image.height;
     return this.is_dead = false;
   };
 

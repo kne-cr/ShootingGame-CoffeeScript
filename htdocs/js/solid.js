@@ -6,6 +6,10 @@ Solid = (function() {
     this.is_dead = is_dead;
   }
 
+  Solid.prototype.die = function() {
+    return this.is_dead = true;
+  };
+
   return Solid;
 
 })();

@@ -11,10 +11,7 @@ Bullet = (function(superClass) {
   }
 
   Bullet.prototype.move = function() {
-    this.position.up();
-    if (this.position.bottom_y() < 0) {
-      return this.is_dead = true;
-    }
+    return this.position.up();
   };
 
   Bullet.prototype.reset = function(x, y) {

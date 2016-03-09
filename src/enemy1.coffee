@@ -26,9 +26,7 @@ class Enemy1 extends Solid
     # 下には必ず移動する
     @position.down()
 
-    # 画面外判定どうしよう
-
   apear: (x) ->
     @position.x = x
-    @position.y = 0 - @image.height
+    @position.y = 1 - @image.height
     @is_dead = false
