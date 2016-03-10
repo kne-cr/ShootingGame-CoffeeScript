@@ -16,13 +16,10 @@ class Enemy1 extends Solid
 
   move: ->
     # ランダム移動
-    @position.left() if Math.random_boolean()
-    @position.up() if Math.random_boolean()
-    @position.right() if Math.random_boolean()
+    # 左右
+    if Math.random_boolean() then @position.left() else @position.right()
+    # 下
     @position.down() if Math.random_boolean()
-
-    # 下には必ず移動する
-    @position.down()
 
   apear: (x) ->
     @position.x = x

@@ -3,7 +3,7 @@ var Enemies;
 Enemies = (function() {
   var SPEED;
 
-  SPEED = 5;
+  SPEED = 10;
 
   function Enemies(x_range, count, appearance_rate) {
     var i;

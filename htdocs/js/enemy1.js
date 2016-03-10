@@ -14,17 +14,12 @@ Enemy1 = (function(superClass) {
   Enemy1.prototype.move = function() {
     if (Math.random_boolean()) {
       this.position.left();
-    }
-    if (Math.random_boolean()) {
-      this.position.up();
-    }
-    if (Math.random_boolean()) {
+    } else {
       this.position.right();
     }
     if (Math.random_boolean()) {
-      this.position.down();
+      return this.position.down();
     }
-    return this.position.down();
   };
 
   Enemy1.prototype.apear = function(x) {
