@@ -18,7 +18,7 @@ class Player extends Solid
 
   action: ->
     # 弾を撃つ
-    @bullets.shoot @position.center_x(), @position.top_y() if @command.is_requested Command.SPACE
+    @bullets.shoot @position if @command.is_requested Command.SPACE
     # 移動する
     @position.left() if @command.is_requested Command.LEFT
     @position.up() if @command.is_requested Command.UP

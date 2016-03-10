@@ -15,7 +15,7 @@ Player = (function(superClass) {
 
   Player.prototype.action = function() {
     if (this.command.is_requested(Command.SPACE)) {
-      this.bullets.shoot(this.position.center_x(), this.position.top_y());
+      this.bullets.shoot(this.position);
     }
     if (this.command.is_requested(Command.LEFT)) {
       this.position.left();

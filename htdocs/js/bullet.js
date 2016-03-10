@@ -14,9 +14,9 @@ Bullet = (function(superClass) {
     return this.position.up();
   };
 
-  Bullet.prototype.reset = function(x, y) {
-    this.position.x = x;
-    this.position.y = y;
+  Bullet.prototype.reset = function(position) {
+    this.position.x = position.center_x();
+    this.position.y = position.top_y();
     return this.is_dead = false;
   };
 

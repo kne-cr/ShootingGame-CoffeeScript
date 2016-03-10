@@ -7,7 +7,7 @@ class Bullet extends Solid
   move: ->
     @position.up()
 
-  reset: (x, y) ->
-    @position.x = x
-    @position.y = y
+  reset: (position) ->
+    @position.x = position.center_x()
+    @position.y = position.top_y()
     @is_dead = false

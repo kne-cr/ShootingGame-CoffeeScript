@@ -18,14 +18,14 @@ Bullets = (function() {
     }).call(this);
   }
 
-  Bullets.prototype.shoot = function(x, y) {
+  Bullets.prototype.shoot = function(position) {
     var bullet, j, len, ref, results;
     ref = this.list;
     results = [];
     for (j = 0, len = ref.length; j < len; j++) {
       bullet = ref[j];
       if (bullet.is_dead) {
-        bullet.reset(x, y);
+        bullet.reset(position);
         break;
       } else {
         results.push(void 0);
