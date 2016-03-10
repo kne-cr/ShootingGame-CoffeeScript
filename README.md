@@ -6,9 +6,9 @@
 - index
   - player
     - solid
-  - bullets
-    - bullet
-      - solid
+    - bullets
+      - bullet
+        - solid
   - enemies
     - enemy1
       - solid
