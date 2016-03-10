@@ -5,6 +5,7 @@
 #### index
 - index
   - player
+    - command
     - solid
     - bullets
       - bullet
