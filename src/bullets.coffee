@@ -3,7 +3,7 @@ class Bullets
   SPEED = 20
   constructor: (@count) ->
     # forの戻り値が配列になるcoffeeっぽい書き方
-    @list = (new Bullet(0, 0, SPEED) for i in [0...@count])
+    @list = (new Bullet SPEED for i in [0...@count])
 
   shoot: (position) ->
     for bullet in @list

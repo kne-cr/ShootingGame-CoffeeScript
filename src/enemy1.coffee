@@ -1,18 +1,9 @@
 # 敵1クラス
 class Enemy1 extends Solid
-  constructor: (x, y, speed) ->
+  constructor: (speed) ->
     @image = new Image
     @image.src = "img/enemy1.png"
-    super(
-      new Position(
-        x - @image.width.half(),
-        y - @image.height,
-        @image.width,
-        @image.height,
-        speed
-      ),
-      true
-    )
+    super new Position(0, 0, @image.width, @image.height, speed), true
 
   move: ->
     # ランダム移動

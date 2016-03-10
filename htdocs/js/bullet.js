@@ -5,9 +5,9 @@ var Bullet,
 Bullet = (function(superClass) {
   extend(Bullet, superClass);
 
-  function Bullet(x, y, speed) {
+  function Bullet(speed) {
     this.style = "rgb(255, 255, 255)";
-    Bullet.__super__.constructor.call(this, new Position(x, y, 1, 20, speed), true);
+    Bullet.__super__.constructor.call(this, new Position(0, 0, 1, 20, speed), true);
   }
 
   Bullet.prototype.move = function() {

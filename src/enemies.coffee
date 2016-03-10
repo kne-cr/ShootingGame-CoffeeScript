@@ -3,7 +3,7 @@ class Enemies
   SPEED = 10
   # @appearance_rate -> 出現率 0..100で指定
   constructor: (@x_range, @count, @appearance_rate) ->
-    @list = (new Enemy1(0, 0, SPEED) for i in [0...@count])
+    @list = (new Enemy1 SPEED for i in [0...@count])
 
   action: ->
     @apear()

@@ -14,7 +14,7 @@ Enemies = (function() {
       var j, ref, results;
       results = [];
       for (i = j = 0, ref = this.count; 0 <= ref ? j < ref : j > ref; i = 0 <= ref ? ++j : --j) {
-        results.push(new Enemy1(0, 0, SPEED));
+        results.push(new Enemy1(SPEED));
       }
       return results;
     }).call(this);

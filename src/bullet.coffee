@@ -1,8 +1,8 @@
 # 弾クラス
 class Bullet extends Solid
-  constructor: (x, y, speed) ->
+  constructor: (speed) ->
     @style = "rgb(255, 255, 255)"
-    super new Position(x, y, 1, 20, speed), true
+    super new Position(0, 0, 1, 20, speed), true
 
   move: ->
     @position.up()
