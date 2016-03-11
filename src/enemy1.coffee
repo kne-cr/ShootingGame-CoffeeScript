@@ -12,7 +12,7 @@ class Enemy1 extends Solid
     # 下
     @position.down() if Math.random_boolean()
 
-  apear: (x) ->
+  come_back: (x) ->
     @position.x = x
     @position.y = 1 - @image.height
     @is_dead = false

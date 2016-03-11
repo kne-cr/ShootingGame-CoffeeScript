@@ -12,10 +12,10 @@ class Enemies
   apear: ->
     # 出現率を下回った場合のみ敵を出現させる
     # 出現率70の場合、70を下回った場合出現、上回った場合は出現しない
-    return if @appearance_rate <= Math.random_number 100
+    return if @appearance_rate < Math.random_number 100
     for enemy in @list
       if enemy.is_dead
-        enemy.apear Math.random_number(@x_range)
+        enemy.come_back Math.random_number(@x_range)
         break
 
   move: ->

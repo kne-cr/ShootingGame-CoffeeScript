@@ -9,7 +9,7 @@ ScreenAbility = (function() {
     },
     clear_out_of_range: function(solids) {
       var i, len, ref, results, solid;
-      ref = [].concat(solids);
+      ref = [].concat.apply([], solids);
       results = [];
       for (i = 0, len = ref.length; i < len; i++) {
         solid = ref[i];

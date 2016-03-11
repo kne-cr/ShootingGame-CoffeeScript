@@ -22,7 +22,7 @@ Enemy1 = (function(superClass) {
     }
   };
 
-  Enemy1.prototype.apear = function(x) {
+  Enemy1.prototype.come_back = function(x) {
     this.position.x = x;
     this.position.y = 1 - this.image.height;
     return this.is_dead = false;

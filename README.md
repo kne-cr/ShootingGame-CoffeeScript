@@ -4,6 +4,12 @@
 
 #### index
 - index
+  - command
+  - screen_ablity
+    - solid
+  - context_ablity
+    - solid
+    - bullet
   - player
     - solid
     - command
@@ -13,8 +19,6 @@
   - enemies
     - enemy1
       - solid
-  - screen_ablity
-    - solid
 
 #### 物体
 - solid
