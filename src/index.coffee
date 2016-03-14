@@ -20,9 +20,9 @@ $("#start").click ->
 
   main = ->
     # プレイヤーの操作
-    player.action()
+    player.behave()
     # 敵の操作
-    enemies.action()
+    enemies.behave()
 
     # 画面外のものを死亡判定
     main_screen.clear_out_of_range [player.bullets.list, enemies.list]

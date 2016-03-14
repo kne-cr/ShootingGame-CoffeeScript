@@ -34,7 +34,7 @@ Bullets = (function() {
     return results;
   };
 
-  Bullets.prototype.action = function() {
+  Bullets.prototype.behave = function() {
     var bullet, j, len, ref, results;
     ref = this.list;
     results = [];

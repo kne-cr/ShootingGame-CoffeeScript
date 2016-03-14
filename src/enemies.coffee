@@ -5,7 +5,7 @@ class Enemies
   constructor: (@x_range, @count, @appearance_rate) ->
     @list = (new Enemy1 SPEED for i in [0...@count])
 
-  action: ->
+  behave: ->
     @apear()
     @move()
 

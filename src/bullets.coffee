@@ -13,5 +13,5 @@ class Bullets
         break
       # なければ、弾は撃てない
 
-  action: ->
+  behave: ->
     bullet.move() for bullet in @list

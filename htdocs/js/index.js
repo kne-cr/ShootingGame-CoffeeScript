@@ -14,8 +14,8 @@ $("#start").click(function() {
     return player.command.cancel(key.keyCode);
   };
   main = function() {
-    player.action();
-    enemies.action();
+    player.behave();
+    enemies.behave();
     main_screen.clear_out_of_range([player.bullets.list, enemies.list]);
     context.clearRect(0, 0, main_screen.width, main_screen.height);
     context.draw_image_of(player);

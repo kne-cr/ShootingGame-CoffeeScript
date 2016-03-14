@@ -13,7 +13,7 @@ Player = (function(superClass) {
     Player.__super__.constructor.call(this, new Position(x - this.image.width.half(), y - this.image.height.half(), this.image.width, this.image.height, speed), false);
   }
 
-  Player.prototype.action = function() {
+  Player.prototype.behave = function() {
     if (this.command.is_requested(Command.SPACE)) {
       this.bullets.shoot(this.position);
     }
@@ -29,7 +29,7 @@ Player = (function(superClass) {
     if (this.command.is_requested(Command.DOWN)) {
       this.position.down();
     }
-    return this.bullets.action();
+    return this.bullets.behave();
   };
 
   return Player;

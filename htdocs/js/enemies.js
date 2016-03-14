@@ -20,7 +20,7 @@ Enemies = (function() {
     }).call(this);
   }
 
-  Enemies.prototype.action = function() {
+  Enemies.prototype.behave = function() {
     this.apear();
     return this.move();
   };
