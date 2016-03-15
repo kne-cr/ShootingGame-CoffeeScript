@@ -1,3 +1,9 @@
+html, body {
+  width: 90%;
+  height: 90%;
+  margin: 30 auto;
+}
+
 #screen {
   display: block;
   margin: 30 auto;
