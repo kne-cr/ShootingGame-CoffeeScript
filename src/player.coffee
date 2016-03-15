@@ -16,7 +16,7 @@ class Player extends Solid
       false
     )
 
-  behave: ->
+  behave: (enemy_list) ->
     # 弾を撃つ
     @bullets.shoot @position if @command.is_requested Command.SPACE
     # 移動する
@@ -26,4 +26,4 @@ class Player extends Solid
     @position.down() if @command.is_requested Command.DOWN
 
     # 弾の操作
-    @bullets.behave()
+    @bullets.behave enemy_list

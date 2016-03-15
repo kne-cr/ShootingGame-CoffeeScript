@@ -13,5 +13,15 @@ class Bullets
         break
       # なければ、弾は撃てない
 
-  behave: ->
+  behave: (enemy_list) ->
+    @move()
+    @kill enemy_list
+
+  move: ->
     bullet.move() for bullet in @list
+
+  kill: (enemy_list) ->
+    enemy.die() for enemy in enemy_list when @hits_to enemy
+
+  hits_to: (other) ->
+    @list.some (bullet) -> not bullet.is_dead and bullet.hits_to other

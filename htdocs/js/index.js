@@ -14,11 +14,11 @@ $("#start").click(function() {
     return player.command.cancel(key.keyCode);
   };
   main = function() {
-    player.behave();
-    enemies.behave();
+    player.behave(enemies.list);
+    enemies.behave(player);
     main_screen.clear_out_of_range([player.bullets.list, enemies.list]);
     context.clearRect(0, 0, main_screen.width, main_screen.height);
-    context.draw_image_of(player);
+    context.draw_image_of_alive([player]);
     context.draw_rect_of_alive(player.bullets.list);
     context.draw_image_of_alive(enemies.list);
     return setTimeout(main, 20);

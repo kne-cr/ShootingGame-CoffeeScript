@@ -4,3 +4,6 @@ class Solid
 
   die: ->
     @is_dead = true
+
+  hits_to: (other) ->
+    @position.overlaps other.position

@@ -34,7 +34,12 @@ Bullets = (function() {
     return results;
   };
 
-  Bullets.prototype.behave = function() {
+  Bullets.prototype.behave = function(enemy_list) {
+    this.move();
+    return this.kill(enemy_list);
+  };
+
+  Bullets.prototype.move = function() {
     var bullet, j, len, ref, results;
     ref = this.list;
     results = [];
@@ -43,6 +48,24 @@ Bullets = (function() {
       results.push(bullet.move());
     }
     return results;
+  };
+
+  Bullets.prototype.kill = function(enemy_list) {
+    var enemy, j, len, results;
+    results = [];
+    for (j = 0, len = enemy_list.length; j < len; j++) {
+      enemy = enemy_list[j];
+      if (this.hits_to(enemy)) {
+        results.push(enemy.die());
+      }
+    }
+    return results;
+  };
+
+  Bullets.prototype.hits_to = function(other) {
+    return this.list.some(function(bullet) {
+      return !bullet.is_dead && bullet.hits_to(other);
+    });
   };
 
   return Bullets;

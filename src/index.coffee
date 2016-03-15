@@ -20,9 +20,9 @@ $("#start").click ->
 
   main = ->
     # プレイヤーの操作
-    player.behave()
+    player.behave enemies.list
     # 敵の操作
-    enemies.behave()
+    enemies.behave player
 
     # 画面外のものを死亡判定
     main_screen.clear_out_of_range [player.bullets.list, enemies.list]
@@ -31,7 +31,7 @@ $("#start").click ->
     context.clearRect 0, 0, main_screen.width, main_screen.height
 
     # プレイヤーの再描画
-    context.draw_image_of player
+    context.draw_image_of_alive [player]
     # 弾の再描画
     context.draw_rect_of_alive player.bullets.list
     # 敵の再描画

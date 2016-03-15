@@ -34,3 +34,10 @@ class Position
 
   center_y: ->
     (@top_y() + @bottom_y()).center()
+
+  # 引数の図形と重なっている場合はtrueを返す
+  overlaps: (other) ->
+    @left_x() < other.right_x() and
+    other.left_x() < @right_x() and
+    @top_y() < other.bottom_y() and
+    other.top_y() < @bottom_y()

@@ -10,6 +10,10 @@ Solid = (function() {
     return this.is_dead = true;
   };
 
+  Solid.prototype.hits_to = function(other) {
+    return this.position.overlaps(other.position);
+  };
+
   return Solid;
 
 })();

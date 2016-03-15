@@ -5,9 +5,10 @@ class Enemies
   constructor: (@x_range, @count, @appearance_rate) ->
     @list = (new Enemy1 SPEED for i in [0...@count])
 
-  behave: ->
+  behave: (player) ->
     @apear()
     @move()
+    @kill player
 
   apear: ->
     # 出現率を下回った場合のみ敵を出現させる
@@ -20,3 +21,9 @@ class Enemies
 
   move: ->
     enemy.move() for enemy in @list
+
+  kill: (player) ->
+    player.die() if @hits_to player
+
+  hits_to: (other) ->
+    @list.some (enemy) -> not enemy.is_dead and enemy.hits_to other

@@ -20,9 +20,10 @@ Enemies = (function() {
     }).call(this);
   }
 
-  Enemies.prototype.behave = function() {
+  Enemies.prototype.behave = function(player) {
     this.apear();
-    return this.move();
+    this.move();
+    return this.kill(player);
   };
 
   Enemies.prototype.apear = function() {
@@ -53,6 +54,18 @@ Enemies = (function() {
       results.push(enemy.move());
     }
     return results;
+  };
+
+  Enemies.prototype.kill = function(player) {
+    if (this.hits_to(player)) {
+      return player.die();
+    }
+  };
+
+  Enemies.prototype.hits_to = function(other) {
+    return this.list.some(function(enemy) {
+      return !enemy.is_dead && enemy.hits_to(other);
+    });
   };
 
   return Enemies;

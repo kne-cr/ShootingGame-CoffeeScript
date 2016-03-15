@@ -49,6 +49,10 @@ Position = (function() {
     return (this.top_y() + this.bottom_y()).center();
   };
 
+  Position.prototype.overlaps = function(other) {
+    return this.left_x() < other.right_x() && other.left_x() < this.right_x() && this.top_y() < other.bottom_y() && other.top_y() < this.bottom_y();
+  };
+
   return Position;
 
 })();
