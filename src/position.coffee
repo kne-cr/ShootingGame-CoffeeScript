@@ -3,16 +3,16 @@ class Position
   constructor: (@x, @y, @width, @height, @speed) ->
 
   # 移動
-  left: ->
+  move_left: ->
     @x -= @speed
 
-  up: ->
+  move_up: ->
     @y -= @speed
 
-  right: ->
+  move_right: ->
     @x += @speed
 
-  down: ->
+  move_down: ->
     @y += @speed
 
   # 端の座標
@@ -27,6 +27,19 @@ class Position
 
   bottom_y: ->
     @y + @height
+
+  # 画面端にいる場合はtrueを返す
+  is_left_end: ->
+    @left_x() < 0
+
+  is_top_end: ->
+    @top_y() < 0
+
+  is_right_end: ->
+    Settings.SCREEN.WIDTH < @right_x()
+
+  is_bottom_end: ->
+    Settings.SCREEN.HEIGHT < @bottom_y()
 
   # 真ん中の座標
   center_x: ->

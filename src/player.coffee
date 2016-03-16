@@ -20,10 +20,10 @@ class Player extends Solid
     # 弾を撃つ
     @bullets.shoot @position if @command.is_requested Command.SPACE
     # 移動する
-    @position.left() if @command.is_requested Command.LEFT
-    @position.up() if @command.is_requested Command.UP
-    @position.right() if @command.is_requested Command.RIGHT
-    @position.down() if @command.is_requested Command.DOWN
+    @position.move_left() if @command.is_requested(Command.LEFT) and not @position.is_left_end()
+    @position.move_up() if @command.is_requested(Command.UP) and not @position.is_top_end()
+    @position.move_right() if @command.is_requested(Command.RIGHT) and not @position.is_right_end()
+    @position.move_down() if @command.is_requested(Command.DOWN) and not @position.is_bottom_end()
 
     # 弾の操作
     @bullets.behave enemy_list

@@ -8,9 +8,9 @@ class Enemy1 extends Solid
   move: ->
     # ランダム移動
     # 左右
-    if Math.random_boolean() then @position.left() else @position.right()
+    if Math.random_boolean() then @position.move_left() else @position.move_right()
     # 下
-    @position.down() if Math.random_boolean()
+    @position.move_down() if Math.random_boolean()
 
   come_back: ->
     @position.x = Math.random_number(Settings.SCREEN.WIDTH)

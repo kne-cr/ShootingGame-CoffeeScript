@@ -5,7 +5,7 @@ class Bullet extends Solid
     super new Position(0, 0, Settings.PLAYER.BULLET.WIDTH, Settings.PLAYER.BULLET.HEIGHT, Settings.PLAYER.BULLET.SPEED), false
 
   move: ->
-    @position.up()
+    @position.move_up()
 
   reset: (position) ->
     @position.x = position.center_x()

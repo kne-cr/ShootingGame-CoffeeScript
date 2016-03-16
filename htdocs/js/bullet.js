@@ -11,7 +11,7 @@ Bullet = (function(superClass) {
   }
 
   Bullet.prototype.move = function() {
-    return this.position.up();
+    return this.position.move_up();
   };
 
   Bullet.prototype.reset = function(position) {

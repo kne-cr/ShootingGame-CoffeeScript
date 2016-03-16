@@ -9,19 +9,19 @@ Position = (function() {
     this.speed = speed;
   }
 
-  Position.prototype.left = function() {
+  Position.prototype.move_left = function() {
     return this.x -= this.speed;
   };
 
-  Position.prototype.up = function() {
+  Position.prototype.move_up = function() {
     return this.y -= this.speed;
   };
 
-  Position.prototype.right = function() {
+  Position.prototype.move_right = function() {
     return this.x += this.speed;
   };
 
-  Position.prototype.down = function() {
+  Position.prototype.move_down = function() {
     return this.y += this.speed;
   };
 
@@ -39,6 +39,22 @@ Position = (function() {
 
   Position.prototype.bottom_y = function() {
     return this.y + this.height;
+  };
+
+  Position.prototype.is_left_end = function() {
+    return this.left_x() < 0;
+  };
+
+  Position.prototype.is_top_end = function() {
+    return this.top_y() < 0;
+  };
+
+  Position.prototype.is_right_end = function() {
+    return Settings.SCREEN.WIDTH < this.right_x();
+  };
+
+  Position.prototype.is_bottom_end = function() {
+    return Settings.SCREEN.HEIGHT < this.bottom_y();
   };
 
   Position.prototype.center_x = function() {

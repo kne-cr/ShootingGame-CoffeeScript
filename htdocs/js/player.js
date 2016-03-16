@@ -17,17 +17,17 @@ Player = (function(superClass) {
     if (this.command.is_requested(Command.SPACE)) {
       this.bullets.shoot(this.position);
     }
-    if (this.command.is_requested(Command.LEFT)) {
-      this.position.left();
+    if (this.command.is_requested(Command.LEFT) && !this.position.is_left_end()) {
+      this.position.move_left();
     }
-    if (this.command.is_requested(Command.UP)) {
-      this.position.up();
+    if (this.command.is_requested(Command.UP) && !this.position.is_top_end()) {
+      this.position.move_up();
     }
-    if (this.command.is_requested(Command.RIGHT)) {
-      this.position.right();
+    if (this.command.is_requested(Command.RIGHT) && !this.position.is_right_end()) {
+      this.position.move_right();
     }
-    if (this.command.is_requested(Command.DOWN)) {
-      this.position.down();
+    if (this.command.is_requested(Command.DOWN) && !this.position.is_bottom_end()) {
+      this.position.move_down();
     }
     return this.bullets.behave(enemy_list);
   };
