@@ -10,8 +10,8 @@ Solid = (function() {
     return this.is_alive = false;
   };
 
-  Solid.prototype.hits_to = function(other) {
-    return this.position.overlaps(other.position);
+  Solid.prototype.hits = function(another) {
+    return this.is_alive && another.is_alive && this.position.overlaps(another.position);
   };
 
   return Solid;

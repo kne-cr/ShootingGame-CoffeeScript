@@ -34,9 +34,9 @@ Bullets = (function() {
     return results;
   };
 
-  Bullets.prototype.behave = function(enemy_list) {
+  Bullets.prototype.behave = function(opponents) {
     this.move();
-    return this.kill(enemy_list);
+    return this.attack(opponents);
   };
 
   Bullets.prototype.move = function() {
@@ -50,22 +50,15 @@ Bullets = (function() {
     return results;
   };
 
-  Bullets.prototype.kill = function(enemy_list) {
-    var enemy, j, len, results;
+  Bullets.prototype.attack = function(opponents) {
+    var bullet, j, len, ref, results;
+    ref = this.list;
     results = [];
-    for (j = 0, len = enemy_list.length; j < len; j++) {
-      enemy = enemy_list[j];
-      if (this.hits_to(enemy)) {
-        results.push(enemy.die());
-      }
+    for (j = 0, len = ref.length; j < len; j++) {
+      bullet = ref[j];
+      results.push(bullet.attack(opponents));
     }
     return results;
-  };
-
-  Bullets.prototype.hits_to = function(other) {
-    return this.list.some(function(bullet) {
-      return bullet.is_alive && bullet.hits_to(other);
-    });
   };
 
   return Bullets;

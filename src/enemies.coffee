@@ -8,7 +8,7 @@ class Enemies
   behave: (player) ->
     @apear()
     @move()
-    @kill player
+    @attack player
 
   apear: ->
     # 出現率を下回った場合のみ敵を出現させる
@@ -22,8 +22,8 @@ class Enemies
   move: ->
     enemy.move() for enemy in @list
 
-  kill: (player) ->
-    player.die() if @hits_to player
+  attack: (player) ->
+    player.die() if @hits player
 
-  hits_to: (other) ->
-    @list.some (enemy) -> enemy.is_alive and enemy.hits_to other
+  hits: (other) ->
+    @list.some (enemy) -> enemy.hits other

@@ -20,6 +20,20 @@ Bullet = (function(superClass) {
     return this.is_alive = true;
   };
 
+  Bullet.prototype.attack = function(opponents) {
+    var i, len, opponent, results;
+    results = [];
+    for (i = 0, len = opponents.length; i < len; i++) {
+      opponent = opponents[i];
+      if (!(this.hits(opponent))) {
+        continue;
+      }
+      opponent.die();
+      results.push(this.die());
+    }
+    return results;
+  };
+
   return Bullet;
 
 })(Solid);

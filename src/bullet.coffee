@@ -11,3 +11,9 @@ class Bullet extends Solid
     @position.x = position.center_x()
     @position.y = position.top_y()
     @is_alive = true
+
+  # 当たった場合、相手も倒して自分も消える
+  attack: (opponents) ->
+    for opponent in opponents when @hits opponent
+      opponent.die()
+      @die()
