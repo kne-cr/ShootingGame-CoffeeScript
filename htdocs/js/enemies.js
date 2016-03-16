@@ -15,21 +15,20 @@ Enemies = (function() {
 
   Enemies.prototype.apear = function() {
     var enemy, j, len, ref, results;
-    if (Settings.ENEMY.APPEARANCE_RATE < Math.random_number(100)) {
-      return;
-    }
-    ref = this.list;
-    results = [];
-    for (j = 0, len = ref.length; j < len; j++) {
-      enemy = ref[j];
-      if (!enemy.is_alive) {
-        enemy.come_back();
-        break;
-      } else {
-        results.push(void 0);
+    if (Math.random_number(100) < Settings.ENEMY.APPEARANCE_RATE) {
+      ref = this.list;
+      results = [];
+      for (j = 0, len = ref.length; j < len; j++) {
+        enemy = ref[j];
+        if (!enemy.is_alive) {
+          enemy.come_back();
+          break;
+        } else {
+          results.push(void 0);
+        }
       }
+      return results;
     }
-    return results;
   };
 
   Enemies.prototype.behave = function(player) {

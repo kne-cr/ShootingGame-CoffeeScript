@@ -27,3 +27,6 @@
 ### ライブラリ
 - number
 - math
+
+### 設定ファイル
+- settings

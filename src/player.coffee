@@ -8,7 +8,7 @@ class Player extends Solid
     super(
       new Position(
         Settings.SCREEN.WIDTH.center() - @image.width.half(),
-        Settings.SCREEN.HEIGHT - 50 - @image.height.half(),
+        Settings.SCREEN.HEIGHT - @image.height,
         @image.width,
         @image.height,
         Settings.PLAYER.SPEED

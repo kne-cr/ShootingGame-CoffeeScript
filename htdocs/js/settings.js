@@ -7,7 +7,7 @@ Settings = (function() {
 
   Settings.SCREEN = {
     WIDTH: 800,
-    HEIGHT: 500
+    HEIGHT: 600
   };
 
   Settings.PLAYER = {

@@ -3,7 +3,7 @@ class Settings
 
   @SCREEN:
     WIDTH: 800
-    HEIGHT: 500
+    HEIGHT: 600
 
   @PLAYER:
     IMAGE: "img/player.png"
