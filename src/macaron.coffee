@@ -1,5 +1,5 @@
 # 敵1クラス
-class Enemy1 extends Solid
+class Macaron extends Actor
   constructor: ->
     @image = new Image
     @image.src = Settings.ENEMY.MACARON.IMAGE
@@ -8,14 +8,14 @@ class Enemy1 extends Solid
   move: ->
     # ランダム移動
     # 左右
-    if Math.random_boolean() then @position.move_left() else @position.move_right()
+    if Math.randomBoolean() then @position.moveLeft() else @position.moveRight()
     # 下
-    @position.move_down() if Math.random_boolean()
+    @position.moveDown() if Math.randomBoolean()
 
-  come_back: ->
-    @position.x = Math.random_number(Settings.SCREEN.WIDTH)
+  comeBack: ->
+    @position.x = Math.randomNumber(Settings.SCREEN.WIDTH)
     @position.y = 1 - @image.height
-    @is_alive = true
+    @isAlive = true
 
   attack: (opponent) ->
     opponent.die() if @hits opponent

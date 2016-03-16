@@ -7,7 +7,7 @@ Enemies = (function() {
       var j, ref, results;
       results = [];
       for (i = j = 0, ref = Settings.ENEMY.COUNT; 0 <= ref ? j < ref : j > ref; i = 0 <= ref ? ++j : --j) {
-        results.push(new Enemy1);
+        results.push(new Macaron);
       }
       return results;
     })();
@@ -15,13 +15,13 @@ Enemies = (function() {
 
   Enemies.prototype.apear = function() {
     var enemy, j, len, ref, results;
-    if (Math.random_number(100) < Settings.ENEMY.APPEARANCE_RATE) {
+    if (Math.randomNumber(100) < Settings.ENEMY.APPEARANCE_RATE) {
       ref = this.list;
       results = [];
       for (j = 0, len = ref.length; j < len; j++) {
         enemy = ref[j];
-        if (!enemy.is_alive) {
-          enemy.come_back();
+        if (!enemy.isAlive) {
+          enemy.comeBack();
           break;
         } else {
           results.push(void 0);
@@ -39,7 +39,7 @@ Enemies = (function() {
       enemy = ref[j];
       enemy.move();
       enemy.attack(player);
-      results.push(enemy.clear_offscreen());
+      results.push(enemy.clearOffscreen());
     }
     return results;
   };

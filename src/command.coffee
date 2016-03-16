@@ -15,5 +15,5 @@ class Command
   cancel: (type) ->
     @requested[type] = false
 
-  is_requested: (type) ->
+  isRequested: (type) ->
     @requested[type]

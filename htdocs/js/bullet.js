@@ -11,13 +11,13 @@ Bullet = (function(superClass) {
   }
 
   Bullet.prototype.move = function() {
-    return this.position.move_up();
+    return this.position.moveUp();
   };
 
   Bullet.prototype.reset = function(position) {
-    this.position.x = position.center_x();
-    this.position.y = position.top_y();
-    return this.is_alive = true;
+    this.position.x = position.centerX();
+    this.position.y = position.topY();
+    return this.isAlive = true;
   };
 
   Bullet.prototype.attack = function(opponents) {
@@ -36,4 +36,4 @@ Bullet = (function(superClass) {
 
   return Bullet;
 
-})(Solid);
+})(Actor);

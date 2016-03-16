@@ -3,61 +3,61 @@ class Position
   constructor: (@x, @y, @width, @height, @speed) ->
 
   # 移動
-  move_left: ->
+  moveLeft: ->
     @x -= @speed
 
-  move_up: ->
+  moveUp: ->
     @y -= @speed
 
-  move_right: ->
+  moveRight: ->
     @x += @speed
 
-  move_down: ->
+  moveDown: ->
     @y += @speed
 
   # 端の座標
-  left_x: ->
+  leftX: ->
     @x
 
-  right_x: ->
+  rightX: ->
     @x + @width
 
-  top_y: ->
+  topY: ->
     @y
 
-  bottom_y: ->
+  bottomY: ->
     @y + @height
 
   # 画面端にいる場合はtrueを返す
-  is_left_end: ->
-    @left_x() < 0
+  isLeftEnd: ->
+    @leftX() < 0
 
-  is_top_end: ->
-    @top_y() < 0
+  isTopEnd: ->
+    @topY() < 0
 
-  is_right_end: ->
-    Settings.SCREEN.WIDTH < @right_x()
+  isRightEnd: ->
+    Settings.SCREEN.WIDTH < @rightX()
 
-  is_bottom_end: ->
-    Settings.SCREEN.HEIGHT < @bottom_y()
+  isBottomEnd: ->
+    Settings.SCREEN.HEIGHT < @bottomY()
 
   # 真ん中の座標
-  center_x: ->
-    (@left_x() + @right_x()).center()
+  centerX: ->
+    (@leftX() + @rightX()).center()
 
-  center_y: ->
-    (@top_y() + @bottom_y()).center()
+  centerY: ->
+    (@topY() + @bottomY()).center()
 
   # 少しでも画面に入っていればtrueを返す
-  is_in_screen: ->
-    0 < @right_x() and
-    @left_x() < Settings.SCREEN.WIDTH and
-    0 < @bottom_y() and
-    @top_y() < Settings.SCREEN.HEIGHT
+  isInScreen: ->
+    0 < @rightX() and
+    @leftX() < Settings.SCREEN.WIDTH and
+    0 < @bottomY() and
+    @topY() < Settings.SCREEN.HEIGHT
 
   # 引数の図形と重なっている場合はtrueを返す
   overlaps: (another) ->
-    @left_x() < another.right_x() and
-    another.left_x() < @right_x() and
-    @top_y() < another.bottom_y() and
-    another.top_y() < @bottom_y()
+    @leftX() < another.rightX() and
+    another.leftX() < @rightX() and
+    @topY() < another.bottomY() and
+    another.topY() < @bottomY()

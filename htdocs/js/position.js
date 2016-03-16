@@ -9,68 +9,68 @@ Position = (function() {
     this.speed = speed;
   }
 
-  Position.prototype.move_left = function() {
+  Position.prototype.moveLeft = function() {
     return this.x -= this.speed;
   };
 
-  Position.prototype.move_up = function() {
+  Position.prototype.moveUp = function() {
     return this.y -= this.speed;
   };
 
-  Position.prototype.move_right = function() {
+  Position.prototype.moveRight = function() {
     return this.x += this.speed;
   };
 
-  Position.prototype.move_down = function() {
+  Position.prototype.moveDown = function() {
     return this.y += this.speed;
   };
 
-  Position.prototype.left_x = function() {
+  Position.prototype.leftX = function() {
     return this.x;
   };
 
-  Position.prototype.right_x = function() {
+  Position.prototype.rightX = function() {
     return this.x + this.width;
   };
 
-  Position.prototype.top_y = function() {
+  Position.prototype.topY = function() {
     return this.y;
   };
 
-  Position.prototype.bottom_y = function() {
+  Position.prototype.bottomY = function() {
     return this.y + this.height;
   };
 
-  Position.prototype.is_left_end = function() {
-    return this.left_x() < 0;
+  Position.prototype.isLeftEnd = function() {
+    return this.leftX() < 0;
   };
 
-  Position.prototype.is_top_end = function() {
-    return this.top_y() < 0;
+  Position.prototype.isTopEnd = function() {
+    return this.topY() < 0;
   };
 
-  Position.prototype.is_right_end = function() {
-    return Settings.SCREEN.WIDTH < this.right_x();
+  Position.prototype.isRightEnd = function() {
+    return Settings.SCREEN.WIDTH < this.rightX();
   };
 
-  Position.prototype.is_bottom_end = function() {
-    return Settings.SCREEN.HEIGHT < this.bottom_y();
+  Position.prototype.isBottomEnd = function() {
+    return Settings.SCREEN.HEIGHT < this.bottomY();
   };
 
-  Position.prototype.center_x = function() {
-    return (this.left_x() + this.right_x()).center();
+  Position.prototype.centerX = function() {
+    return (this.leftX() + this.rightX()).center();
   };
 
-  Position.prototype.center_y = function() {
-    return (this.top_y() + this.bottom_y()).center();
+  Position.prototype.centerY = function() {
+    return (this.topY() + this.bottomY()).center();
   };
 
-  Position.prototype.is_in_screen = function() {
-    return 0 < this.right_x() && this.left_x() < Settings.SCREEN.WIDTH && 0 < this.bottom_y() && this.top_y() < Settings.SCREEN.HEIGHT;
+  Position.prototype.isInScreen = function() {
+    return 0 < this.rightX() && this.leftX() < Settings.SCREEN.WIDTH && 0 < this.bottomY() && this.topY() < Settings.SCREEN.HEIGHT;
   };
 
   Position.prototype.overlaps = function(another) {
-    return this.left_x() < another.right_x() && another.left_x() < this.right_x() && this.top_y() < another.bottom_y() && another.top_y() < this.bottom_y();
+    return this.leftX() < another.rightX() && another.leftX() < this.rightX() && this.topY() < another.bottomY() && another.topY() < this.bottomY();
   };
 
   return Position;

@@ -19,7 +19,7 @@ Bullets = (function() {
     results = [];
     for (j = 0, len = ref.length; j < len; j++) {
       bullet = ref[j];
-      if (!bullet.is_alive) {
+      if (!bullet.isAlive) {
         bullet.reset(position);
         break;
       } else {
@@ -37,7 +37,7 @@ Bullets = (function() {
       bullet = ref[j];
       bullet.move();
       bullet.attack(opponents);
-      results.push(bullet.clear_offscreen());
+      results.push(bullet.clearOffscreen());
     }
     return results;
   };

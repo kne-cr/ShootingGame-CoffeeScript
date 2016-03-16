@@ -23,7 +23,7 @@ Command = (function() {
     return this.requested[type] = false;
   };
 
-  Command.prototype.is_requested = function(type) {
+  Command.prototype.isRequested = function(type) {
     return this.requested[type];
   };
 

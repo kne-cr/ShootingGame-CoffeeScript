@@ -19,5 +19,5 @@ class Settings
     COUNT: 7
     APPEARANCE_RATE: 3
     MACARON:
-      IMAGE: "img/enemy1.png"
+      IMAGE: "img/macaron.png"
       SPEED: 10

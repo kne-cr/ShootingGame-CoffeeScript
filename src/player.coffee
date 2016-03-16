@@ -1,5 +1,5 @@
 # プレイヤークラス
-class Player extends Solid
+class Player extends Actor
   constructor: ->
     @image = new Image
     @image.src = Settings.PLAYER.IMAGE
@@ -16,14 +16,14 @@ class Player extends Solid
       true
     )
 
-  behave: (enemy_list) ->
+  behave: (enemyList) ->
     # 弾を撃つ
-    @bullets.shoot @position if @command.is_requested Command.SPACE
+    @bullets.shoot @position if @command.isRequested Command.SPACE
     # 移動する
-    @position.move_left() if @command.is_requested(Command.LEFT) and not @position.is_left_end()
-    @position.move_up() if @command.is_requested(Command.UP) and not @position.is_top_end()
-    @position.move_right() if @command.is_requested(Command.RIGHT) and not @position.is_right_end()
-    @position.move_down() if @command.is_requested(Command.DOWN) and not @position.is_bottom_end()
+    @position.moveLeft() if @command.isRequested(Command.LEFT) and not @position.isLeftEnd()
+    @position.moveUp() if @command.isRequested(Command.UP) and not @position.isTopEnd()
+    @position.moveRight() if @command.isRequested(Command.RIGHT) and not @position.isRightEnd()
+    @position.moveDown() if @command.isRequested(Command.DOWN) and not @position.isBottomEnd()
 
     # 弾の操作
-    @bullets.behave enemy_list
+    @bullets.behave enemyList

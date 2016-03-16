@@ -6,22 +6,22 @@
 - index
   - command
   - screen_ablity
-    - solid
+    - actor
   - context_ablity
-    - solid
+    - actor
     - bullet
   - player
-    - solid
+    - actor
     - command
     - bullets
       - bullet
-        - solid
+        - actor
   - enemies
-    - enemy1
-      - solid
+    - macaron
+      - actor
 
 #### 物体
-- solid
+- actor
   - position
 
 ### ライブラリ

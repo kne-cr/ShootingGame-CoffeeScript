@@ -1,10 +1,10 @@
 $(function() {
-  var context, main_screen;
-  main_screen = $("#screen")[0];
-  context = main_screen.getContext("2d");
-  ContextAbility.give_to(context);
-  main_screen.width = Settings.SCREEN.WIDTH;
-  main_screen.height = Settings.SCREEN.HEIGHT;
+  var context, mainScreen;
+  mainScreen = $("#screen")[0];
+  context = mainScreen.getContext("2d");
+  ContextAbility.giveTo(context);
+  mainScreen.width = Settings.SCREEN.WIDTH;
+  mainScreen.height = Settings.SCREEN.HEIGHT;
   return $("#start").click(function() {
     var enemies, main, player;
     $(this).attr("disabled", true);
@@ -21,9 +21,9 @@ $(function() {
       player.behave(enemies.list);
       enemies.behave(player);
       context.clear();
-      context.draw_image_of_alive([player]);
-      context.draw_rect_of_alive(player.bullets.list);
-      context.draw_image_of_alive(enemies.list);
+      context.drawImageOfAlive([player]);
+      context.drawRectOfAlive(player.bullets.list);
+      context.drawImageOfAlive(enemies.list);
       return setTimeout(main, Settings.INTERVAL);
     };
     return main();

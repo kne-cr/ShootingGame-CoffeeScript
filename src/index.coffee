@@ -1,13 +1,13 @@
 $ ->
-  main_screen = $("#screen")[0]
-  context = main_screen.getContext "2d"
+  mainScreen = $("#screen")[0]
+  context = mainScreen.getContext "2d"
 
   # スクリーンとしての能力を与える
-  ContextAbility.give_to context
+  ContextAbility.giveTo context
 
   # メイン画像の初期化
-  main_screen.width = Settings.SCREEN.WIDTH
-  main_screen.height = Settings.SCREEN.HEIGHT
+  mainScreen.width = Settings.SCREEN.WIDTH
+  mainScreen.height = Settings.SCREEN.HEIGHT
 
   $("#start").click ->
     $(this).attr "disabled", true
@@ -33,11 +33,11 @@ $ ->
       context.clear()
 
       # プレイヤーの再描画
-      context.draw_image_of_alive [player]
+      context.drawImageOfAlive [player]
       # 弾の再描画
-      context.draw_rect_of_alive player.bullets.list
+      context.drawRectOfAlive player.bullets.list
       # 敵の再描画
-      context.draw_image_of_alive enemies.list
+      context.drawImageOfAlive enemies.list
 
       # 次のループへ
       setTimeout main, Settings.INTERVAL
