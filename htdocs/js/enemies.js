@@ -20,12 +20,6 @@ Enemies = (function() {
     }).call(this);
   }
 
-  Enemies.prototype.behave = function(player) {
-    this.apear();
-    this.move();
-    return this.attack(player);
-  };
-
   Enemies.prototype.apear = function() {
     var enemy, j, len, ref, results;
     if (this.appearance_rate < Math.random_number(100)) {
@@ -45,27 +39,16 @@ Enemies = (function() {
     return results;
   };
 
-  Enemies.prototype.move = function() {
+  Enemies.prototype.behave = function(player) {
     var enemy, j, len, ref, results;
     ref = this.list;
     results = [];
     for (j = 0, len = ref.length; j < len; j++) {
       enemy = ref[j];
-      results.push(enemy.move());
+      enemy.move();
+      results.push(enemy.attack(player));
     }
     return results;
-  };
-
-  Enemies.prototype.attack = function(player) {
-    if (this.hits(player)) {
-      return player.die();
-    }
-  };
-
-  Enemies.prototype.hits = function(other) {
-    return this.list.some(function(enemy) {
-      return enemy.hits(other);
-    });
   };
 
   return Enemies;

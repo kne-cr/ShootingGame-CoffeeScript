@@ -14,6 +14,7 @@ $("#start").click(function() {
     return player.command.cancel(key.keyCode);
   };
   main = function() {
+    enemies.apear();
     player.behave(enemies.list);
     enemies.behave(player);
     main_screen.clear_out_of_range([player.bullets.list, enemies.list]);

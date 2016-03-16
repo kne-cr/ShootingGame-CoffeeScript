@@ -19,6 +19,8 @@ $("#start").click ->
     player.command.cancel key.keyCode
 
   main = ->
+    # 敵の出現
+    enemies.apear()
     # プレイヤーの操作
     player.behave enemies.list
     # 敵の操作

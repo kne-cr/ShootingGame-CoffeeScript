@@ -16,3 +16,6 @@ class Enemy1 extends Solid
     @position.x = x
     @position.y = 1 - @image.height
     @is_alive = true
+
+  attack: (opponent) ->
+    opponent.die() if @hits opponent

@@ -35,27 +35,12 @@ Bullets = (function() {
   };
 
   Bullets.prototype.behave = function(opponents) {
-    this.move();
-    return this.attack(opponents);
-  };
-
-  Bullets.prototype.move = function() {
     var bullet, j, len, ref, results;
     ref = this.list;
     results = [];
     for (j = 0, len = ref.length; j < len; j++) {
       bullet = ref[j];
-      results.push(bullet.move());
-    }
-    return results;
-  };
-
-  Bullets.prototype.attack = function(opponents) {
-    var bullet, j, len, ref, results;
-    ref = this.list;
-    results = [];
-    for (j = 0, len = ref.length; j < len; j++) {
-      bullet = ref[j];
+      bullet.move();
       results.push(bullet.attack(opponents));
     }
     return results;

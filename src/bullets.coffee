@@ -14,11 +14,6 @@ class Bullets
       # なければ、弾は撃てない
 
   behave: (opponents) ->
-    @move()
-    @attack opponents
-
-  move: ->
-    bullet.move() for bullet in @list
-
-  attack: (opponents) ->
-    bullet.attack opponents for bullet in @list
+    for bullet in @list
+      bullet.move()
+      bullet.attack opponents

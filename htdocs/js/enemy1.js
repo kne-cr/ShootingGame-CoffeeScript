@@ -28,6 +28,12 @@ Enemy1 = (function(superClass) {
     return this.is_alive = true;
   };
 
+  Enemy1.prototype.attack = function(opponent) {
+    if (this.hits(opponent)) {
+      return opponent.die();
+    }
+  };
+
   return Enemy1;
 
 })(Solid);
