@@ -5,12 +5,12 @@ var Player,
 Player = (function(superClass) {
   extend(Player, superClass);
 
-  function Player(x, y, speed) {
+  function Player() {
     this.image = new Image;
-    this.image.src = "img/player.png";
-    this.bullets = new Bullets(10);
+    this.image.src = Settings.PLAYER.IMAGE;
+    this.bullets = new Bullets;
     this.command = new Command;
-    Player.__super__.constructor.call(this, new Position(x - this.image.width.half(), y - this.image.height.half(), this.image.width, this.image.height, speed), true);
+    Player.__super__.constructor.call(this, new Position(Settings.SCREEN.WIDTH.center() - this.image.width.half(), Settings.SCREEN.HEIGHT - 50 - this.image.height.half(), this.image.width, this.image.height, Settings.PLAYER.SPEED), true);
   }
 
   Player.prototype.behave = function(enemy_list) {

@@ -5,9 +5,9 @@ var Bullet,
 Bullet = (function(superClass) {
   extend(Bullet, superClass);
 
-  function Bullet(speed) {
-    this.style = "rgb(255, 255, 255)";
-    Bullet.__super__.constructor.call(this, new Position(0, 0, 1, 20, speed), false);
+  function Bullet() {
+    this.style = Settings.PLAYER.BULLET.STYLE;
+    Bullet.__super__.constructor.call(this, new Position(0, 0, Settings.PLAYER.BULLET.WIDTH, Settings.PLAYER.BULLET.HEIGHT, Settings.PLAYER.BULLET.SPEED), false);
   }
 
   Bullet.prototype.move = function() {

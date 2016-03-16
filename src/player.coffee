@@ -1,17 +1,17 @@
 # プレイヤークラス
 class Player extends Solid
-  constructor: (x, y, speed) ->
+  constructor: ->
     @image = new Image
-    @image.src = "img/player.png"
-    @bullets = new Bullets 10
+    @image.src = Settings.PLAYER.IMAGE
+    @bullets = new Bullets
     @command = new Command
     super(
       new Position(
-        x - @image.width.half(),
-        y - @image.height.half(),
+        Settings.SCREEN.WIDTH.center() - @image.width.half(),
+        Settings.SCREEN.HEIGHT - 50 - @image.height.half(),
         @image.width,
         @image.height,
-        speed
+        Settings.PLAYER.SPEED
       ),
       true
     )

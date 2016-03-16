@@ -1,28 +1,21 @@
 var Enemies;
 
 Enemies = (function() {
-  var SPEED;
-
-  SPEED = 10;
-
-  function Enemies(x_range, count, appearance_rate) {
+  function Enemies() {
     var i;
-    this.x_range = x_range;
-    this.count = count;
-    this.appearance_rate = appearance_rate;
     this.list = (function() {
       var j, ref, results;
       results = [];
-      for (i = j = 0, ref = this.count; 0 <= ref ? j < ref : j > ref; i = 0 <= ref ? ++j : --j) {
-        results.push(new Enemy1(SPEED));
+      for (i = j = 0, ref = Settings.ENEMY.COUNT; 0 <= ref ? j < ref : j > ref; i = 0 <= ref ? ++j : --j) {
+        results.push(new Enemy1);
       }
       return results;
-    }).call(this);
+    })();
   }
 
   Enemies.prototype.apear = function() {
     var enemy, j, len, ref, results;
-    if (this.appearance_rate < Math.random_number(100)) {
+    if (Settings.ENEMY.APPEARANCE_RATE < Math.random_number(100)) {
       return;
     }
     ref = this.list;
@@ -30,7 +23,7 @@ Enemies = (function() {
     for (j = 0, len = ref.length; j < len; j++) {
       enemy = ref[j];
       if (!enemy.is_alive) {
-        enemy.come_back(Math.random_number(this.x_range));
+        enemy.come_back();
         break;
       } else {
         results.push(void 0);

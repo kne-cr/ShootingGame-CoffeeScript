@@ -1,9 +1,8 @@
 # 弾のリストクラス。ファーストクラスコレクション設計
 class Bullets
-  SPEED = 20
-  constructor: (@count) ->
+  constructor: ->
     # forの戻り値が配列になるcoffeeっぽい書き方
-    @list = (new Bullet SPEED for i in [0...@count])
+    @list = (new Bullet for i in [0...Settings.PLAYER.BULLET.COUNT])
 
   shoot: (position) ->
     for bullet in @list

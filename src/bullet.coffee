@@ -1,8 +1,8 @@
 # 弾クラス
 class Bullet extends Solid
-  constructor: (speed) ->
-    @style = "rgb(255, 255, 255)"
-    super new Position(0, 0, 1, 20, speed), false
+  constructor: ->
+    @style = Settings.PLAYER.BULLET.STYLE
+    super new Position(0, 0, Settings.PLAYER.BULLET.WIDTH, Settings.PLAYER.BULLET.HEIGHT, Settings.PLAYER.BULLET.SPEED), false
 
   move: ->
     @position.up()

@@ -1,9 +1,9 @@
 # 敵1クラス
 class Enemy1 extends Solid
-  constructor: (speed) ->
+  constructor: ->
     @image = new Image
-    @image.src = "img/enemy1.png"
-    super new Position(0, 0, @image.width, @image.height, speed), false
+    @image.src = Settings.ENEMY.MACARON.IMAGE
+    super new Position(0, 0, @image.width, @image.height, Settings.ENEMY.MACARON.SPEED), false
 
   move: ->
     # ランダム移動
@@ -12,8 +12,8 @@ class Enemy1 extends Solid
     # 下
     @position.down() if Math.random_boolean()
 
-  come_back: (x) ->
-    @position.x = x
+  come_back: ->
+    @position.x = Math.random_number(Settings.SCREEN.WIDTH)
     @position.y = 1 - @image.height
     @is_alive = true
 

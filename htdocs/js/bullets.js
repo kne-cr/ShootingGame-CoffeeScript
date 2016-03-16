@@ -1,21 +1,16 @@
 var Bullets;
 
 Bullets = (function() {
-  var SPEED;
-
-  SPEED = 20;
-
-  function Bullets(count) {
+  function Bullets() {
     var i;
-    this.count = count;
     this.list = (function() {
       var j, ref, results;
       results = [];
-      for (i = j = 0, ref = this.count; 0 <= ref ? j < ref : j > ref; i = 0 <= ref ? ++j : --j) {
-        results.push(new Bullet(SPEED));
+      for (i = j = 0, ref = Settings.PLAYER.BULLET.COUNT; 0 <= ref ? j < ref : j > ref; i = 0 <= ref ? ++j : --j) {
+        results.push(new Bullet);
       }
       return results;
-    }).call(this);
+    })();
   }
 
   Bullets.prototype.shoot = function(position) {

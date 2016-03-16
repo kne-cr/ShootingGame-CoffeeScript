@@ -5,10 +5,10 @@ var Enemy1,
 Enemy1 = (function(superClass) {
   extend(Enemy1, superClass);
 
-  function Enemy1(speed) {
+  function Enemy1() {
     this.image = new Image;
-    this.image.src = "img/enemy1.png";
-    Enemy1.__super__.constructor.call(this, new Position(0, 0, this.image.width, this.image.height, speed), false);
+    this.image.src = Settings.ENEMY.MACARON.IMAGE;
+    Enemy1.__super__.constructor.call(this, new Position(0, 0, this.image.width, this.image.height, Settings.ENEMY.MACARON.SPEED), false);
   }
 
   Enemy1.prototype.move = function() {
@@ -22,8 +22,8 @@ Enemy1 = (function(superClass) {
     }
   };
 
-  Enemy1.prototype.come_back = function(x) {
-    this.position.x = x;
+  Enemy1.prototype.come_back = function() {
+    this.position.x = Math.random_number(Settings.SCREEN.WIDTH);
     this.position.y = 1 - this.image.height;
     return this.is_alive = true;
   };
