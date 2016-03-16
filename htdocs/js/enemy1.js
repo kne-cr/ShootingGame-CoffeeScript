@@ -8,7 +8,7 @@ Enemy1 = (function(superClass) {
   function Enemy1(speed) {
     this.image = new Image;
     this.image.src = "img/enemy1.png";
-    Enemy1.__super__.constructor.call(this, new Position(0, 0, this.image.width, this.image.height, speed), true);
+    Enemy1.__super__.constructor.call(this, new Position(0, 0, this.image.width, this.image.height, speed), false);
   }
 
   Enemy1.prototype.move = function() {
@@ -25,7 +25,7 @@ Enemy1 = (function(superClass) {
   Enemy1.prototype.come_back = function(x) {
     this.position.x = x;
     this.position.y = 1 - this.image.height;
-    return this.is_dead = false;
+    return this.is_alive = true;
   };
 
   return Enemy1;

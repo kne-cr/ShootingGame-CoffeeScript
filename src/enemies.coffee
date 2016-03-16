@@ -15,7 +15,7 @@ class Enemies
     # 出現率70の場合、70を下回った場合出現、上回った場合は出現しない
     return if @appearance_rate < Math.random_number 100
     for enemy in @list
-      if enemy.is_dead
+      unless enemy.is_alive
         enemy.come_back Math.random_number(@x_range)
         break
 
@@ -26,4 +26,4 @@ class Enemies
     player.die() if @hits_to player
 
   hits_to: (other) ->
-    @list.some (enemy) -> not enemy.is_dead and enemy.hits_to other
+    @list.some (enemy) -> enemy.is_alive and enemy.hits_to other

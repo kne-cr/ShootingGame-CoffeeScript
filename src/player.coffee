@@ -13,7 +13,7 @@ class Player extends Solid
         @image.height,
         speed
       ),
-      false
+      true
     )
 
   behave: (enemy_list) ->

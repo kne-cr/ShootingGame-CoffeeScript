@@ -12,7 +12,7 @@ ContextAbility = (function() {
       results = [];
       for (i = 0, len = solids.length; i < len; i++) {
         solid = solids[i];
-        if (!solid.is_dead) {
+        if (solid.is_alive) {
           results.push(this.draw_image_of(solid));
         }
       }
@@ -27,7 +27,7 @@ ContextAbility = (function() {
       results = [];
       for (i = 0, len = solids.length; i < len; i++) {
         solid = solids[i];
-        if (!solid.is_dead) {
+        if (solid.is_alive) {
           results.push(this.draw_rect_of(solid));
         }
       }

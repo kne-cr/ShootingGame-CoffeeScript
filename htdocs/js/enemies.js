@@ -35,7 +35,7 @@ Enemies = (function() {
     results = [];
     for (j = 0, len = ref.length; j < len; j++) {
       enemy = ref[j];
-      if (enemy.is_dead) {
+      if (!enemy.is_alive) {
         enemy.come_back(Math.random_number(this.x_range));
         break;
       } else {
@@ -64,7 +64,7 @@ Enemies = (function() {
 
   Enemies.prototype.hits_to = function(other) {
     return this.list.some(function(enemy) {
-      return !enemy.is_dead && enemy.hits_to(other);
+      return enemy.is_alive && enemy.hits_to(other);
     });
   };
 

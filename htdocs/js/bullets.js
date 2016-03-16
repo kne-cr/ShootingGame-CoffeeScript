@@ -24,7 +24,7 @@ Bullets = (function() {
     results = [];
     for (j = 0, len = ref.length; j < len; j++) {
       bullet = ref[j];
-      if (bullet.is_dead) {
+      if (!bullet.is_alive) {
         bullet.reset(position);
         break;
       } else {
@@ -64,7 +64,7 @@ Bullets = (function() {
 
   Bullets.prototype.hits_to = function(other) {
     return this.list.some(function(bullet) {
-      return !bullet.is_dead && bullet.hits_to(other);
+      return bullet.is_alive && bullet.hits_to(other);
     });
   };
 

@@ -1,13 +1,13 @@
 var Solid;
 
 Solid = (function() {
-  function Solid(position, is_dead) {
+  function Solid(position, is_alive) {
     this.position = position;
-    this.is_dead = is_dead;
+    this.is_alive = is_alive;
   }
 
   Solid.prototype.die = function() {
-    return this.is_dead = true;
+    return this.is_alive = false;
   };
 
   Solid.prototype.hits_to = function(other) {

@@ -7,7 +7,7 @@ class ContextAbility
 
     # 生きている物体のみ画像を描画する
     draw_image_of_alive: (solids) ->
-      for solid in solids when not solid.is_dead
+      for solid in solids when solid.is_alive
         @draw_image_of solid
 
     # 図形を描画する
@@ -17,7 +17,7 @@ class ContextAbility
 
     # 生きている物体のみ図形を描画する
     draw_rect_of_alive: (solids) ->
-      for solid in solids when not solid.is_dead
+      for solid in solids when solid.is_alive
         @draw_rect_of solid
 
   # 引数にメソッドを付与する

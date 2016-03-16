@@ -8,7 +8,7 @@ class Bullets
   shoot: (position) ->
     for bullet in @list
       # 死亡判定されている弾があれば画面内に呼び戻し、復活させる
-      if bullet.is_dead
+      unless bullet.is_alive
         bullet.reset position
         break
       # なければ、弾は撃てない
@@ -24,4 +24,4 @@ class Bullets
     enemy.die() for enemy in enemy_list when @hits_to enemy
 
   hits_to: (other) ->
-    @list.some (bullet) -> not bullet.is_dead and bullet.hits_to other
+    @list.some (bullet) -> bullet.is_alive and bullet.hits_to other

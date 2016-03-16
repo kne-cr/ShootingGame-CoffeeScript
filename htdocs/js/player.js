@@ -10,7 +10,7 @@ Player = (function(superClass) {
     this.image.src = "img/player.png";
     this.bullets = new Bullets(10);
     this.command = new Command;
-    Player.__super__.constructor.call(this, new Position(x - this.image.width.half(), y - this.image.height.half(), this.image.width, this.image.height, speed), false);
+    Player.__super__.constructor.call(this, new Position(x - this.image.width.half(), y - this.image.height.half(), this.image.width, this.image.height, speed), true);
   }
 
   Player.prototype.behave = function(enemy_list) {
