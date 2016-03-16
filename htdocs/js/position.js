@@ -49,6 +49,10 @@ Position = (function() {
     return (this.top_y() + this.bottom_y()).center();
   };
 
+  Position.prototype.is_in_screen = function() {
+    return 0 < this.right_x() && this.left_x() < Settings.SCREEN.WIDTH && 0 < this.bottom_y() && this.top_y() < Settings.SCREEN.HEIGHT;
+  };
+
   Position.prototype.overlaps = function(another) {
     return this.left_x() < another.right_x() && another.left_x() < this.right_x() && this.top_y() < another.bottom_y() && another.top_y() < this.bottom_y();
   };

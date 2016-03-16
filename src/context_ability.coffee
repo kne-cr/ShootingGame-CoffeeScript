@@ -1,6 +1,10 @@
 # canvas.contextの拡張
 class ContextAbility
   @methods:
+    # 画面内をすべて削除
+    clear: ->
+      this.clearRect 0, 0, Settings.SCREEN.WIDTH, Settings.SCREEN.HEIGHT
+
     # 画像を描画する
     draw_image_of: (solid) ->
       this.drawImage solid.image, solid.position.x, solid.position.y

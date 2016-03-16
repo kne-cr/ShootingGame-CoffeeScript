@@ -2,7 +2,6 @@ $(function() {
   var context, main_screen;
   main_screen = $("#screen")[0];
   context = main_screen.getContext("2d");
-  ScreenAbility.give_to(main_screen);
   ContextAbility.give_to(context);
   main_screen.width = Settings.SCREEN.WIDTH;
   main_screen.height = Settings.SCREEN.HEIGHT;
@@ -21,8 +20,7 @@ $(function() {
       enemies.apear();
       player.behave(enemies.list);
       enemies.behave(player);
-      main_screen.clear_out_of_range([player.bullets.list, enemies.list]);
-      context.clearRect(0, 0, Settings.SCREEN.WIDTH, Settings.SCREEN.HEIGHT);
+      context.clear();
       context.draw_image_of_alive([player]);
       context.draw_rect_of_alive(player.bullets.list);
       context.draw_image_of_alive(enemies.list);

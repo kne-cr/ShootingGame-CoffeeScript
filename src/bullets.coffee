@@ -16,3 +16,4 @@ class Bullets
     for bullet in @list
       bullet.move()
       bullet.attack opponents
+      bullet.clear_offscreen()

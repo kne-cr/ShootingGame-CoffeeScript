@@ -9,3 +9,6 @@ class Solid
     @is_alive and
     another.is_alive and
     @position.overlaps another.position
+
+  clear_offscreen: ->
+    @die() unless @position.is_in_screen()

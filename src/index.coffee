@@ -3,7 +3,6 @@ $ ->
   context = main_screen.getContext "2d"
 
   # スクリーンとしての能力を与える
-  ScreenAbility.give_to main_screen
   ContextAbility.give_to context
 
   # メイン画像の初期化
@@ -13,9 +12,7 @@ $ ->
   $("#start").click ->
     $(this).attr "disabled", true
 
-    # プレイヤー
     player = new Player
-    # 敵
     enemies = new Enemies
 
     document.onkeydown = (key) ->
@@ -32,11 +29,8 @@ $ ->
       # 敵の操作
       enemies.behave player
 
-      # 画面外のものを死亡判定
-      main_screen.clear_out_of_range [player.bullets.list, enemies.list]
-
       # 画面の削除
-      context.clearRect 0, 0, Settings.SCREEN.WIDTH, Settings.SCREEN.HEIGHT
+      context.clear()
 
       # プレイヤーの再描画
       context.draw_image_of_alive [player]

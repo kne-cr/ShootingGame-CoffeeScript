@@ -4,6 +4,9 @@ ContextAbility = (function() {
   function ContextAbility() {}
 
   ContextAbility.methods = {
+    clear: function() {
+      return this.clearRect(0, 0, Settings.SCREEN.WIDTH, Settings.SCREEN.HEIGHT);
+    },
     draw_image_of: function(solid) {
       return this.drawImage(solid.image, solid.position.x, solid.position.y);
     },

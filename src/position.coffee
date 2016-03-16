@@ -35,6 +35,13 @@ class Position
   center_y: ->
     (@top_y() + @bottom_y()).center()
 
+  # 少しでも画面に入っていればtrueを返す
+  is_in_screen: ->
+    0 < @right_x() and
+    @left_x() < Settings.SCREEN.WIDTH and
+    0 < @bottom_y() and
+    @top_y() < Settings.SCREEN.HEIGHT
+
   # 引数の図形と重なっている場合はtrueを返す
   overlaps: (another) ->
     @left_x() < another.right_x() and

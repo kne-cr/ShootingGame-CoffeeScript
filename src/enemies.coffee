@@ -16,3 +16,4 @@ class Enemies
     for enemy in @list
       enemy.move()
       enemy.attack player
+      enemy.clear_offscreen()

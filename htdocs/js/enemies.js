@@ -39,7 +39,8 @@ Enemies = (function() {
     for (j = 0, len = ref.length; j < len; j++) {
       enemy = ref[j];
       enemy.move();
-      results.push(enemy.attack(player));
+      enemy.attack(player);
+      results.push(enemy.clear_offscreen());
     }
     return results;
   };

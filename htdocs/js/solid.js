@@ -14,6 +14,12 @@ Solid = (function() {
     return this.is_alive && another.is_alive && this.position.overlaps(another.position);
   };
 
+  Solid.prototype.clear_offscreen = function() {
+    if (!this.position.is_in_screen()) {
+      return this.die();
+    }
+  };
+
   return Solid;
 
 })();
