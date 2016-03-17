@@ -3,28 +3,28 @@
 ### 依存関係ツリー
 
 #### index
-- index
-  - command
-  - context_ablity
-    - actor
-    - bullet
-  - player
-    - actor
-    - command
-    - bullets
-      - bullet
-        - actor
-  - enemies
-    - macaron
-      - actor
+- **index**
+  - use **command**
+  - use **context_ablity**
+    - use **actor**
+    - use **bullet**
+  - use **player**
+    - extend **actor**
+    - have **command**
+    - use **bullets**
+      - aggregate **bullet**
+        - extend **actor**
+  - use **enemies**
+    - aggregate **macaron**
+      - extend **actor**
 
 #### 物体
-- actor
-  - position
+- **actor**
+  - have **position**
 
 ### ライブラリ
-- number
-- math
+- **number**
+- **math**
 
 ### 設定ファイル
-- setting
+- **setting**
