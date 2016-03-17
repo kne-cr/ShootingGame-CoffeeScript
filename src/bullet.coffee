@@ -1,8 +1,8 @@
 # 弾クラス
 class Bullet extends Actor
   constructor: ->
-    @style = Settings.PLAYER.BULLET.STYLE
-    super new Position(0, 0, Settings.PLAYER.BULLET.WIDTH, Settings.PLAYER.BULLET.HEIGHT, Settings.PLAYER.BULLET.SPEED), false
+    @style = Setting.PLAYER.BULLET.STYLE
+    super new Position(0, 0, Setting.PLAYER.BULLET.WIDTH, Setting.PLAYER.BULLET.HEIGHT, Setting.PLAYER.BULLET.SPEED), false
 
   move: ->
     @position.moveUp()

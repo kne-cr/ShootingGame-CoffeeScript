@@ -7,10 +7,10 @@ Player = (function(superClass) {
 
   function Player() {
     this.image = new Image;
-    this.image.src = Settings.PLAYER.IMAGE;
+    this.image.src = Setting.PLAYER.IMAGE;
     this.bullets = new Bullets;
     this.command = new Command;
-    Player.__super__.constructor.call(this, new Position(Settings.SCREEN.WIDTH.center() - this.image.width.half(), Settings.SCREEN.HEIGHT - this.image.height, this.image.width, this.image.height, Settings.PLAYER.SPEED), true);
+    Player.__super__.constructor.call(this, new Position(Setting.SCREEN.WIDTH.center() - this.image.width.half(), Setting.SCREEN.HEIGHT - this.image.height, this.image.width, this.image.height, Setting.PLAYER.SPEED), true);
   }
 
   Player.prototype.behave = function(enemyList) {

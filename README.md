@@ -5,8 +5,6 @@
 #### index
 - index
   - command
-  - screen_ablity
-    - actor
   - context_ablity
     - actor
     - bullet

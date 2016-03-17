@@ -6,8 +6,8 @@ Bullet = (function(superClass) {
   extend(Bullet, superClass);
 
   function Bullet() {
-    this.style = Settings.PLAYER.BULLET.STYLE;
-    Bullet.__super__.constructor.call(this, new Position(0, 0, Settings.PLAYER.BULLET.WIDTH, Settings.PLAYER.BULLET.HEIGHT, Settings.PLAYER.BULLET.SPEED), false);
+    this.style = Setting.PLAYER.BULLET.STYLE;
+    Bullet.__super__.constructor.call(this, new Position(0, 0, Setting.PLAYER.BULLET.WIDTH, Setting.PLAYER.BULLET.HEIGHT, Setting.PLAYER.BULLET.SPEED), false);
   }
 
   Bullet.prototype.move = function() {

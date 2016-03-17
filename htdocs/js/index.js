@@ -3,8 +3,8 @@ $(function() {
   mainScreen = $("#screen")[0];
   context = mainScreen.getContext("2d");
   ContextAbility.giveTo(context);
-  mainScreen.width = Settings.SCREEN.WIDTH;
-  mainScreen.height = Settings.SCREEN.HEIGHT;
+  mainScreen.width = Setting.SCREEN.WIDTH;
+  mainScreen.height = Setting.SCREEN.HEIGHT;
   return $("#start").click(function() {
     var enemies, main, player;
     $(this).attr("disabled", true);
@@ -24,7 +24,7 @@ $(function() {
       context.drawImageOfAlive([player]);
       context.drawRectOfAlive(player.bullets.list);
       context.drawImageOfAlive(enemies.list);
-      return setTimeout(main, Settings.INTERVAL);
+      return setTimeout(main, Setting.INTERVAL);
     };
     return main();
   });

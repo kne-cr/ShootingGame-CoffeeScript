@@ -2,8 +2,8 @@
 class Macaron extends Actor
   constructor: ->
     @image = new Image
-    @image.src = Settings.ENEMY.MACARON.IMAGE
-    super new Position(0, 0, @image.width, @image.height, Settings.ENEMY.MACARON.SPEED), false
+    @image.src = Setting.ENEMY.MACARON.IMAGE
+    super new Position(0, 0, @image.width, @image.height, Setting.ENEMY.MACARON.SPEED), false
 
   move: ->
     # ランダム移動
@@ -13,7 +13,7 @@ class Macaron extends Actor
     @position.moveDown() if Math.randomBoolean()
 
   comeBack: ->
-    @position.x = Math.randomNumber(Settings.SCREEN.WIDTH)
+    @position.x = Math.randomNumber(Setting.SCREEN.WIDTH)
     @position.y = 1 - @image.height
     @isAlive = true
 

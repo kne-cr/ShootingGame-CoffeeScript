@@ -2,16 +2,16 @@
 class Player extends Actor
   constructor: ->
     @image = new Image
-    @image.src = Settings.PLAYER.IMAGE
+    @image.src = Setting.PLAYER.IMAGE
     @bullets = new Bullets
     @command = new Command
     super(
       new Position(
-        Settings.SCREEN.WIDTH.center() - @image.width.half(),
-        Settings.SCREEN.HEIGHT - @image.height,
+        Setting.SCREEN.WIDTH.center() - @image.width.half(),
+        Setting.SCREEN.HEIGHT - @image.height,
         @image.width,
         @image.height,
-        Settings.PLAYER.SPEED
+        Setting.PLAYER.SPEED
       ),
       true
     )

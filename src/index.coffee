@@ -6,8 +6,8 @@ $ ->
   ContextAbility.giveTo context
 
   # メイン画像の初期化
-  mainScreen.width = Settings.SCREEN.WIDTH
-  mainScreen.height = Settings.SCREEN.HEIGHT
+  mainScreen.width = Setting.SCREEN.WIDTH
+  mainScreen.height = Setting.SCREEN.HEIGHT
 
   $("#start").click ->
     $(this).attr "disabled", true
@@ -40,6 +40,6 @@ $ ->
       context.drawImageOfAlive enemies.list
 
       # 次のループへ
-      setTimeout main, Settings.INTERVAL
+      setTimeout main, Setting.INTERVAL
 
     main()

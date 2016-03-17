@@ -50,11 +50,11 @@ Position = (function() {
   };
 
   Position.prototype.isRightEnd = function() {
-    return Settings.SCREEN.WIDTH < this.rightX();
+    return Setting.SCREEN.WIDTH < this.rightX();
   };
 
   Position.prototype.isBottomEnd = function() {
-    return Settings.SCREEN.HEIGHT < this.bottomY();
+    return Setting.SCREEN.HEIGHT < this.bottomY();
   };
 
   Position.prototype.centerX = function() {
@@ -66,7 +66,7 @@ Position = (function() {
   };
 
   Position.prototype.isInScreen = function() {
-    return 0 < this.rightX() && this.leftX() < Settings.SCREEN.WIDTH && 0 < this.bottomY() && this.topY() < Settings.SCREEN.HEIGHT;
+    return 0 < this.rightX() && this.leftX() < Setting.SCREEN.WIDTH && 0 < this.bottomY() && this.topY() < Setting.SCREEN.HEIGHT;
   };
 
   Position.prototype.overlaps = function(another) {

@@ -6,7 +6,7 @@ Bullets = (function() {
     this.list = (function() {
       var j, ref, results;
       results = [];
-      for (i = j = 0, ref = Settings.PLAYER.BULLET.COUNT; 0 <= ref ? j < ref : j > ref; i = 0 <= ref ? ++j : --j) {
+      for (i = j = 0, ref = Setting.PLAYER.BULLET.COUNT; 0 <= ref ? j < ref : j > ref; i = 0 <= ref ? ++j : --j) {
         results.push(new Bullet);
       }
       return results;

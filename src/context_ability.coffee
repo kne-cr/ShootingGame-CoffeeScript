@@ -3,7 +3,7 @@ class ContextAbility
   @methods:
     # 画面内をすべて削除
     clear: ->
-      this.clearRect 0, 0, Settings.SCREEN.WIDTH, Settings.SCREEN.HEIGHT
+      this.clearRect 0, 0, Setting.SCREEN.WIDTH, Setting.SCREEN.HEIGHT
 
     # 画像を描画する
     drawImageOf: (actor) ->

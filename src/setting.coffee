@@ -1,4 +1,4 @@
-class Settings
+class Setting
   @INTERVAL: 20
 
   @SCREEN:

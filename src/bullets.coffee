@@ -2,7 +2,7 @@
 class Bullets
   constructor: ->
     # forの戻り値が配列になるcoffeeっぽい書き方
-    @list = (new Bullet for i in [0...Settings.PLAYER.BULLET.COUNT])
+    @list = (new Bullet for i in [0...Setting.PLAYER.BULLET.COUNT])
 
   shoot: (position) ->
     for bullet in @list

@@ -7,8 +7,8 @@ Macaron = (function(superClass) {
 
   function Macaron() {
     this.image = new Image;
-    this.image.src = Settings.ENEMY.MACARON.IMAGE;
-    Macaron.__super__.constructor.call(this, new Position(0, 0, this.image.width, this.image.height, Settings.ENEMY.MACARON.SPEED), false);
+    this.image.src = Setting.ENEMY.MACARON.IMAGE;
+    Macaron.__super__.constructor.call(this, new Position(0, 0, this.image.width, this.image.height, Setting.ENEMY.MACARON.SPEED), false);
   }
 
   Macaron.prototype.move = function() {
@@ -23,7 +23,7 @@ Macaron = (function(superClass) {
   };
 
   Macaron.prototype.comeBack = function() {
-    this.position.x = Math.randomNumber(Settings.SCREEN.WIDTH);
+    this.position.x = Math.randomNumber(Setting.SCREEN.WIDTH);
     this.position.y = 1 - this.image.height;
     return this.isAlive = true;
   };

@@ -1,16 +1,16 @@
-var Settings;
+var Setting;
 
-Settings = (function() {
-  function Settings() {}
+Setting = (function() {
+  function Setting() {}
 
-  Settings.INTERVAL = 20;
+  Setting.INTERVAL = 20;
 
-  Settings.SCREEN = {
+  Setting.SCREEN = {
     WIDTH: 800,
     HEIGHT: 600
   };
 
-  Settings.PLAYER = {
+  Setting.PLAYER = {
     IMAGE: "img/player.png",
     SPEED: 20,
     BULLET: {
@@ -22,7 +22,7 @@ Settings = (function() {
     }
   };
 
-  Settings.ENEMY = {
+  Setting.ENEMY = {
     COUNT: 7,
     APPEARANCE_RATE: 3,
     MACARON: {
@@ -31,6 +31,6 @@ Settings = (function() {
     }
   };
 
-  return Settings;
+  return Setting;
 
 })();

@@ -5,7 +5,7 @@ ContextAbility = (function() {
 
   ContextAbility.methods = {
     clear: function() {
-      return this.clearRect(0, 0, Settings.SCREEN.WIDTH, Settings.SCREEN.HEIGHT);
+      return this.clearRect(0, 0, Setting.SCREEN.WIDTH, Setting.SCREEN.HEIGHT);
     },
     drawImageOf: function(actor) {
       return this.drawImage(actor.image, actor.position.x, actor.position.y);

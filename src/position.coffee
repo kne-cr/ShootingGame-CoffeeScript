@@ -36,10 +36,10 @@ class Position
     @topY() < 0
 
   isRightEnd: ->
-    Settings.SCREEN.WIDTH < @rightX()
+    Setting.SCREEN.WIDTH < @rightX()
 
   isBottomEnd: ->
-    Settings.SCREEN.HEIGHT < @bottomY()
+    Setting.SCREEN.HEIGHT < @bottomY()
 
   # 真ん中の座標
   centerX: ->
@@ -51,9 +51,9 @@ class Position
   # 少しでも画面に入っていればtrueを返す
   isInScreen: ->
     0 < @rightX() and
-    @leftX() < Settings.SCREEN.WIDTH and
+    @leftX() < Setting.SCREEN.WIDTH and
     0 < @bottomY() and
-    @topY() < Settings.SCREEN.HEIGHT
+    @topY() < Setting.SCREEN.HEIGHT
 
   # 引数の図形と重なっている場合はtrueを返す
   overlaps: (another) ->

@@ -6,7 +6,7 @@ Enemies = (function() {
     this.list = (function() {
       var j, ref, results;
       results = [];
-      for (i = j = 0, ref = Settings.ENEMY.COUNT; 0 <= ref ? j < ref : j > ref; i = 0 <= ref ? ++j : --j) {
+      for (i = j = 0, ref = Setting.ENEMY.COUNT; 0 <= ref ? j < ref : j > ref; i = 0 <= ref ? ++j : --j) {
         results.push(new Macaron);
       }
       return results;
@@ -15,7 +15,7 @@ Enemies = (function() {
 
   Enemies.prototype.apear = function() {
     var enemy, j, len, ref, results;
-    if (Math.randomNumber(100) < Settings.ENEMY.APPEARANCE_RATE) {
+    if (Math.randomNumber(100) < Setting.ENEMY.APPEARANCE_RATE) {
       ref = this.list;
       results = [];
       for (j = 0, len = ref.length; j < len; j++) {
