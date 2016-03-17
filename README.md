@@ -27,4 +27,4 @@
 - math
 
 ### 設定ファイル
-- settings
+- setting
