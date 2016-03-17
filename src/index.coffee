@@ -33,13 +33,14 @@ $ ->
       context.clear()
 
       # プレイヤーの再描画
-      context.drawImageOfAlive [player]
+      context.drawImageOf player
       # 弾の再描画
       context.drawRectOfAlive player.bullets.list
       # 敵の再描画
       context.drawImageOfAlive enemies.list
 
       # 次のループへ
-      setTimeout main, Setting.INTERVAL
+      timer = setTimeout main, Setting.INTERVAL
+      clearTimeout timer unless player.isAlive
 
     main()

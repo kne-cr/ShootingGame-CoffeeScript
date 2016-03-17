@@ -17,14 +17,18 @@ $(function() {
       return player.command.cancel(key.keyCode);
     };
     main = function() {
+      var timer;
       enemies.apear();
       player.behave(enemies.list);
       enemies.behave(player);
       context.clear();
-      context.drawImageOfAlive([player]);
+      context.drawImageOf(player);
       context.drawRectOfAlive(player.bullets.list);
       context.drawImageOfAlive(enemies.list);
-      return setTimeout(main, Setting.INTERVAL);
+      timer = setTimeout(main, Setting.INTERVAL);
+      if (!player.isAlive) {
+        return clearTimeout(timer);
+      }
     };
     return main();
   });
