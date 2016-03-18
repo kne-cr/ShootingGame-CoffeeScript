@@ -7,7 +7,7 @@ class Bullet extends Actor
   move: ->
     @position.moveUp()
 
-  reset: (position) ->
+  shoot: (position) ->
     @position.x = position.centerX()
     @position.y = position.topY()
     @isAlive = true

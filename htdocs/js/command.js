@@ -15,6 +15,14 @@ Command = (function() {
     this.requested = new Array(240);
   }
 
+  Command.prototype.reset = function() {
+    this.requested[Command.SPACE] = false;
+    this.requested[Command.LEFT] = false;
+    this.requested[Command.UP] = false;
+    this.requested[Command.RIGHT] = false;
+    return this.requested[Command.DOWN] = false;
+  };
+
   Command.prototype.request = function(type) {
     return this.requested[type] = true;
   };

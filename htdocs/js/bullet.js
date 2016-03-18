@@ -14,7 +14,7 @@ Bullet = (function(superClass) {
     return this.position.moveUp();
   };
 
-  Bullet.prototype.reset = function(position) {
+  Bullet.prototype.shoot = function(position) {
     this.position.x = position.centerX();
     this.position.y = position.topY();
     return this.isAlive = true;

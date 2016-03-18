@@ -13,6 +13,17 @@ Bullets = (function() {
     })();
   }
 
+  Bullets.prototype.reset = function() {
+    var bullet, j, len, ref, results;
+    ref = this.list;
+    results = [];
+    for (j = 0, len = ref.length; j < len; j++) {
+      bullet = ref[j];
+      results.push(bullet.die());
+    }
+    return results;
+  };
+
   Bullets.prototype.shoot = function(position) {
     var bullet, j, len, ref, results;
     ref = this.list;
@@ -20,7 +31,7 @@ Bullets = (function() {
     for (j = 0, len = ref.length; j < len; j++) {
       bullet = ref[j];
       if (!bullet.isAlive) {
-        bullet.reset(position);
+        bullet.shoot(position);
         break;
       } else {
         results.push(void 0);

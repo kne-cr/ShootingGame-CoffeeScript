@@ -1,20 +1,25 @@
 $(function() {
-  var context, mainScreen;
+  var context, enemies, mainScreen, player;
   mainScreen = $("#screen")[0];
-  context = mainScreen.getContext("2d");
-  ContextAbility.giveTo(context);
   mainScreen.width = Setting.SCREEN.WIDTH;
   mainScreen.height = Setting.SCREEN.HEIGHT;
+  context = mainScreen.getContext("2d");
+  ContextAbility.giveTo(context);
+  context.show("PUSH START");
+  player = new Player;
+  enemies = new Enemies;
   return $("#start").click(function() {
-    var enemies, main, player;
+    var main;
     $(this).attr("disabled", true);
-    player = new Player;
-    enemies = new Enemies;
-    document.onkeydown = function(key) {
-      return player.command.request(key.keyCode);
+    player.reset();
+    enemies.reset();
+    document.onkeydown = function(event) {
+      event.preventDefault();
+      return player.command.request(event.keyCode);
     };
-    document.onkeyup = function(key) {
-      return player.command.cancel(key.keyCode);
+    document.onkeyup = function(event) {
+      event.preventDefault();
+      return player.command.cancel(event.keyCode);
     };
     main = function() {
       var timer;
@@ -27,7 +32,11 @@ $(function() {
       context.drawImageOfAlive(enemies.list);
       timer = setTimeout(main, Setting.INTERVAL);
       if (!player.isAlive) {
-        return clearTimeout(timer);
+        clearTimeout(timer);
+        alert("GAME OVER");
+        player.reset();
+        enemies.reset();
+        return main();
       }
     };
     return main();

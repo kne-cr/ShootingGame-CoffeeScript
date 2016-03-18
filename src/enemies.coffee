@@ -3,6 +3,9 @@ class Enemies
   constructor: ->
     @list = (new Macaron for i in [0...Setting.ENEMY.COUNT])
 
+  reset: ->
+    enemy.die() for enemy in @list
+
   apear: ->
     # 出現率を下回った場合のみ敵を出現させる
     # 出現率70の場合、70を下回った場合出現、上回った場合は出現しない

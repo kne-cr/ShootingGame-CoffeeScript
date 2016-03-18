@@ -1,25 +1,30 @@
 $ ->
+  # スクリーンの初期化
   mainScreen = $("#screen")[0]
-  context = mainScreen.getContext "2d"
-
-  # スクリーンとしての能力を与える
-  ContextAbility.giveTo context
-
-  # メイン画像の初期化
   mainScreen.width = Setting.SCREEN.WIDTH
   mainScreen.height = Setting.SCREEN.HEIGHT
+
+  # スクリーンとしての能力を与える
+  context = mainScreen.getContext "2d"
+  ContextAbility.giveTo context
+
+  context.show "PUSH START"
+  player = new Player
+  enemies = new Enemies
 
   $("#start").click ->
     $(this).attr "disabled", true
 
-    player = new Player
-    enemies = new Enemies
+    player.reset()
+    enemies.reset()
 
-    document.onkeydown = (key) ->
-      player.command.request key.keyCode
+    document.onkeydown = (event) ->
+      event.preventDefault()
+      player.command.request event.keyCode
 
-    document.onkeyup = (key) ->
-      player.command.cancel key.keyCode
+    document.onkeyup = (event) ->
+      event.preventDefault()
+      player.command.cancel event.keyCode
 
     main = ->
       # 敵の出現
@@ -41,6 +46,12 @@ $ ->
 
       # 次のループへ
       timer = setTimeout main, Setting.INTERVAL
-      clearTimeout timer unless player.isAlive
+
+      unless player.isAlive
+        clearTimeout timer
+        alert "GAME OVER"
+        player.reset()
+        enemies.reset()
+        main()
 
     main()

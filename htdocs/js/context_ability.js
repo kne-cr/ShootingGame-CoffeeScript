@@ -35,6 +35,13 @@ ContextAbility = (function() {
         }
       }
       return results;
+    },
+    show: function(text) {
+      this.textAlign = "center";
+      this.textBaseline = "middle";
+      this.font = "90px 'ヒラギノ角ゴ'";
+      this.fillStyle = "#FFF";
+      return this.fillText(text, Setting.SCREEN.WIDTH.center(), Setting.SCREEN.HEIGHT.center());
     }
   };
 

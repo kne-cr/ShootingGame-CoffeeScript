@@ -16,6 +16,13 @@ class Player extends Actor
       true
     )
 
+  reset: ->
+    @command.reset()
+    @position.x = Setting.SCREEN.WIDTH.center() - @image.width.half()
+    @position.y = Setting.SCREEN.HEIGHT - @image.height
+    @isAlive = true
+    @bullets.reset()
+
   behave: (enemyList) ->
     # 弾を撃つ
     @bullets.shoot @position if @command.isRequested Command.SPACE

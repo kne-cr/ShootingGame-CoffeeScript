@@ -13,6 +13,14 @@ Player = (function(superClass) {
     Player.__super__.constructor.call(this, new Position(Setting.SCREEN.WIDTH.center() - this.image.width.half(), Setting.SCREEN.HEIGHT - this.image.height, this.image.width, this.image.height, Setting.PLAYER.SPEED), true);
   }
 
+  Player.prototype.reset = function() {
+    this.command.reset();
+    this.position.x = Setting.SCREEN.WIDTH.center() - this.image.width.half();
+    this.position.y = Setting.SCREEN.HEIGHT - this.image.height;
+    this.isAlive = true;
+    return this.bullets.reset();
+  };
+
   Player.prototype.behave = function(enemyList) {
     if (this.command.isRequested(Command.SPACE)) {
       this.bullets.shoot(this.position);

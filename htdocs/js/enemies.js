@@ -13,6 +13,17 @@ Enemies = (function() {
     })();
   }
 
+  Enemies.prototype.reset = function() {
+    var enemy, j, len, ref, results;
+    ref = this.list;
+    results = [];
+    for (j = 0, len = ref.length; j < len; j++) {
+      enemy = ref[j];
+      results.push(enemy.die());
+    }
+    return results;
+  };
+
   Enemies.prototype.apear = function() {
     var enemy, j, len, ref, results;
     if (Math.randomNumber(100) < Setting.ENEMY.APPEARANCE_RATE) {
