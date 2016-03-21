@@ -1,4 +1,4 @@
-$(function() {
+$(window).load(function() {
   var context, enemies, main, mainScreen, player, start;
   mainScreen = $("#screen")[0];
   mainScreen.width = Setting.SCREEN.WIDTH;
@@ -27,10 +27,10 @@ $(function() {
     player.behave(enemies.list);
     enemies.behave(player);
     context.clear();
+    context.showUpperLeft("SCORE : " + (enemies.totalEXP()));
     context.drawImageOf(player);
     context.drawRectOfAlive(player.bullets.list);
     context.drawImageOfAlive(enemies.list);
-    context.showUpperLeft("SCORE : " + (enemies.totalEXP()));
     timer = setTimeout(main, Setting.INTERVAL);
     if (!player.isAlive) {
       clearTimeout(timer);

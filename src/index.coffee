@@ -1,4 +1,4 @@
-$ ->
+$(window).load ->
   # スクリーンの初期化
   mainScreen = $("#screen")[0]
   mainScreen.width = Setting.SCREEN.WIDTH
@@ -36,14 +36,14 @@ $ ->
     # 画面の削除
     context.clear()
 
+    # スコアの描画
+    context.showUpperLeft "SCORE : #{enemies.totalEXP()}"
     # プレイヤーの再描画
     context.drawImageOf player
     # 弾の再描画
     context.drawRectOfAlive player.bullets.list
     # 敵の再描画
     context.drawImageOfAlive enemies.list
-    # スコアの描画
-    context.showUpperLeft "SCORE : #{enemies.totalEXP()}"
 
     # 次のループへ
     timer = setTimeout main, Setting.INTERVAL
