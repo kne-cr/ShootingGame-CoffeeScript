@@ -4,7 +4,11 @@ class Enemies
     @list = (new Macaron for i in [0...Setting.ENEMY.COUNT])
 
   reset: ->
-    enemy.die() for enemy in @list
+    enemy.reset() for enemy in @list
+
+  totalEXP: ->
+    (enemy.totalEXP for enemy in @list).reduce (a, b) ->
+      a + b
 
   apear: ->
     # 出現率を下回った場合のみ敵を出現させる

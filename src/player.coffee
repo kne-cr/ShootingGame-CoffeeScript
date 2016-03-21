@@ -7,8 +7,8 @@ class Player extends Actor
     @command = new Command
     super(
       new Position(
-        Setting.SCREEN.WIDTH.center() - @image.width.half(),
-        Setting.SCREEN.HEIGHT - @image.height,
+        0,
+        0,
         @image.width,
         @image.height,
         Setting.PLAYER.SPEED

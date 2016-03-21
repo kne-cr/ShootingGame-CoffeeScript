@@ -36,12 +36,19 @@ ContextAbility = (function() {
       }
       return results;
     },
-    show: function(text) {
+    showCenter: function(text) {
       this.textAlign = "center";
       this.textBaseline = "middle";
       this.font = "90px 'ヒラギノ角ゴ'";
       this.fillStyle = "#FFF";
       return this.fillText(text, Setting.SCREEN.WIDTH.center(), Setting.SCREEN.HEIGHT.center());
+    },
+    showUpperLeft: function(text) {
+      this.textAlign = "left";
+      this.textBaseline = "top";
+      this.font = "30px 'ヒラギノ角ゴ'";
+      this.fillStyle = "#FFF";
+      return this.fillText(text, 0, 0);
     }
   };
 

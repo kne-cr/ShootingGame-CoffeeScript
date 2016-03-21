@@ -2,7 +2,7 @@
 class Actor
   constructor: (@position, @isAlive) ->
 
-  die: ->
+  clear: ->
     @isAlive = false
 
   hits: (another) ->
@@ -11,4 +11,4 @@ class Actor
     @position.overlaps another.position
 
   clearOffscreen: ->
-    @die() unless @position.isInScreen()
+    @clear() unless @position.isInScreen()

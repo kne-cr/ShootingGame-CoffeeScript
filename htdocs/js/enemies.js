@@ -19,9 +19,25 @@ Enemies = (function() {
     results = [];
     for (j = 0, len = ref.length; j < len; j++) {
       enemy = ref[j];
-      results.push(enemy.die());
+      results.push(enemy.reset());
     }
     return results;
+  };
+
+  Enemies.prototype.totalEXP = function() {
+    var enemy;
+    return ((function() {
+      var j, len, ref, results;
+      ref = this.list;
+      results = [];
+      for (j = 0, len = ref.length; j < len; j++) {
+        enemy = ref[j];
+        results.push(enemy.totalEXP);
+      }
+      return results;
+    }).call(this)).reduce(function(a, b) {
+      return a + b;
+    });
   };
 
   Enemies.prototype.apear = function() {

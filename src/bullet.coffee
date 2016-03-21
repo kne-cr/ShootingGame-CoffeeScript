@@ -16,4 +16,4 @@ class Bullet extends Actor
   attack: (opponents) ->
     for opponent in opponents when @hits opponent
       opponent.die()
-      @die()
+      @clear()

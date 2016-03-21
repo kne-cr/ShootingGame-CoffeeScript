@@ -19,7 +19,7 @@ Bullets = (function() {
     results = [];
     for (j = 0, len = ref.length; j < len; j++) {
       bullet = ref[j];
-      results.push(bullet.die());
+      results.push(bullet.clear());
     }
     return results;
   };

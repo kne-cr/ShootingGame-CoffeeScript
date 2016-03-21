@@ -24,13 +24,19 @@ class ContextAbility
       for actor in actors when actor.isAlive
         @drawRectOf actor
 
-    show: (text) ->
+    showCenter: (text) ->
       this.textAlign = "center"
       this.textBaseline = "middle"
       this.font = "90px 'ヒラギノ角ゴ'"
       this.fillStyle = "#FFF"
       this.fillText text, Setting.SCREEN.WIDTH.center(), Setting.SCREEN.HEIGHT.center()
 
+    showUpperLeft: (text) ->
+      this.textAlign = "left"
+      this.textBaseline = "top"
+      this.font = "30px 'ヒラギノ角ゴ'"
+      this.fillStyle = "#FFF"
+      this.fillText text, 0, 0
 
   # 引数にメソッドを付与する
   @giveTo: (target) ->

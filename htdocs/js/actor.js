@@ -6,7 +6,7 @@ Actor = (function() {
     this.isAlive = isAlive;
   }
 
-  Actor.prototype.die = function() {
+  Actor.prototype.clear = function() {
     return this.isAlive = false;
   };
 
@@ -16,7 +16,7 @@ Actor = (function() {
 
   Actor.prototype.clearOffscreen = function() {
     if (!this.position.isInScreen()) {
-      return this.die();
+      return this.clear();
     }
   };
 

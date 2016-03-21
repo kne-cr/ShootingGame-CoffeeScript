@@ -21,3 +21,4 @@ class Setting
     MACARON:
       IMAGE: "img/macaron.png"
       SPEED: 10
+      EXP: 100

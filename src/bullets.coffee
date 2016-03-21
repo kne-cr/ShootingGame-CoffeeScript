@@ -5,7 +5,7 @@ class Bullets
     @list = (new Bullet for i in [0...Setting.PLAYER.BULLET.COUNT])
 
   reset: ->
-    bullet.die() for bullet in @list
+    bullet.clear() for bullet in @list
 
   shoot: (position) ->
     for bullet in @list

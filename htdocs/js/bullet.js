@@ -29,7 +29,7 @@ Bullet = (function(superClass) {
         continue;
       }
       opponent.die();
-      results.push(this.die());
+      results.push(this.clear());
     }
     return results;
   };

@@ -10,7 +10,7 @@ Player = (function(superClass) {
     this.image.src = Setting.PLAYER.IMAGE;
     this.bullets = new Bullets;
     this.command = new Command;
-    Player.__super__.constructor.call(this, new Position(Setting.SCREEN.WIDTH.center() - this.image.width.half(), Setting.SCREEN.HEIGHT - this.image.height, this.image.width, this.image.height, Setting.PLAYER.SPEED), true);
+    Player.__super__.constructor.call(this, new Position(0, 0, this.image.width, this.image.height, Setting.PLAYER.SPEED), true);
   }
 
   Player.prototype.reset = function() {

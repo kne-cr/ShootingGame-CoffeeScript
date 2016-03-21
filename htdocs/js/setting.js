@@ -27,7 +27,8 @@ Setting = (function() {
     APPEARANCE_RATE: 3,
     MACARON: {
       IMAGE: "img/macaron.png",
-      SPEED: 10
+      SPEED: 10,
+      EXP: 100
     }
   };
 
