@@ -1,22 +1,28 @@
 var Bullets;
 
 Bullets = (function() {
-  var SPEED;
-
-  SPEED = 20;
-
-  function Bullets(count) {
+  function Bullets() {
     var i;
-    this.count = count;
     this.list = (function() {
       var j, ref, results;
       results = [];
-      for (i = j = 0, ref = this.count; 0 <= ref ? j < ref : j > ref; i = 0 <= ref ? ++j : --j) {
-        results.push(new Bullet(SPEED));
+      for (i = j = 0, ref = Setting.PLAYER.BULLET.COUNT; 0 <= ref ? j < ref : j > ref; i = 0 <= ref ? ++j : --j) {
+        results.push(new Bullet);
       }
       return results;
-    }).call(this);
+    })();
   }
+
+  Bullets.prototype.reset = function() {
+    var bullet, j, len, ref, results;
+    ref = this.list;
+    results = [];
+    for (j = 0, len = ref.length; j < len; j++) {
+      bullet = ref[j];
+      results.push(bullet.clear());
+    }
+    return results;
+  };
 
   Bullets.prototype.shoot = function(position) {
     var bullet, j, len, ref, results;
@@ -24,8 +30,8 @@ Bullets = (function() {
     results = [];
     for (j = 0, len = ref.length; j < len; j++) {
       bullet = ref[j];
-      if (bullet.is_dead) {
-        bullet.reset(position);
+      if (!bullet.isAlive) {
+        bullet.shoot(position);
         break;
       } else {
         results.push(void 0);
@@ -34,13 +40,15 @@ Bullets = (function() {
     return results;
   };
 
-  Bullets.prototype.behave = function() {
+  Bullets.prototype.behave = function(opponents) {
     var bullet, j, len, ref, results;
     ref = this.list;
     results = [];
     for (j = 0, len = ref.length; j < len; j++) {
       bullet = ref[j];
-      results.push(bullet.move());
+      bullet.move();
+      bullet.attack(opponents);
+      results.push(bullet.clearOffscreen());
     }
     return results;
   };

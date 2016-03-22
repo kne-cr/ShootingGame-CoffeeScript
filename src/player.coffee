@@ -1,29 +1,36 @@
 # プレイヤークラス
-class Player extends Solid
-  constructor: (x, y, speed) ->
+class Player extends Actor
+  constructor: ->
     @image = new Image
-    @image.src = "img/player.png"
-    @bullets = new Bullets 10
+    @image.src = Setting.PLAYER.IMAGE
+    @bullets = new Bullets
     @command = new Command
     super(
       new Position(
-        x - @image.width.half(),
-        y - @image.height.half(),
+        0,
+        0,
         @image.width,
         @image.height,
-        speed
+        Setting.PLAYER.SPEED
       ),
-      false
+      true
     )
 
-  behave: ->
+  reset: ->
+    @command.reset()
+    @position.x = Setting.SCREEN.WIDTH.center() - @image.width.half()
+    @position.y = Setting.SCREEN.HEIGHT - @image.height
+    @isAlive = true
+    @bullets.reset()
+
+  behave: (enemyList) ->
     # 弾を撃つ
-    @bullets.shoot @position if @command.is_requested Command.SPACE
+    @bullets.shoot @position if @command.isRequested Command.SPACE
     # 移動する
-    @position.left() if @command.is_requested Command.LEFT
-    @position.up() if @command.is_requested Command.UP
-    @position.right() if @command.is_requested Command.RIGHT
-    @position.down() if @command.is_requested Command.DOWN
+    @position.moveLeft() if @command.isRequested(Command.LEFT) and not @position.isLeftEnd()
+    @position.moveUp() if @command.isRequested(Command.UP) and not @position.isTopEnd()
+    @position.moveRight() if @command.isRequested(Command.RIGHT) and not @position.isRightEnd()
+    @position.moveDown() if @command.isRequested(Command.DOWN) and not @position.isBottomEnd()
 
     # 弾の操作
-    @bullets.behave()
+    @bullets.behave enemyList

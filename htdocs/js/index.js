@@ -1,27 +1,45 @@
-$("#start").click(function() {
-  var context, enemies, main, main_screen, player;
-  $(this).attr("disabled", true);
-  main_screen = $("#screen")[0];
-  context = main_screen.getContext("2d");
-  ScreenAbility.give_to(main_screen);
-  ContextAbility.give_to(context);
-  player = new Player(main_screen.width.center(), main_screen.height - 50, 20);
-  enemies = new Enemies(main_screen.width, 5, 3);
-  document.onkeydown = function(key) {
-    return player.command.request(key.keyCode);
+$(window).load(function() {
+  var context, enemies, main, mainScreen, player, start;
+  mainScreen = $("#screen")[0];
+  mainScreen.width = Setting.SCREEN.WIDTH;
+  mainScreen.height = Setting.SCREEN.HEIGHT;
+  player = new Player;
+  enemies = new Enemies;
+  context = mainScreen.getContext("2d");
+  ContextAbility.giveTo(context);
+  context.showCenter("PUSH START");
+  document.onkeydown = function(event) {
+    event.preventDefault();
+    return player.command.request(event.keyCode);
   };
-  document.onkeyup = function(key) {
-    return player.command.cancel(key.keyCode);
+  document.onkeyup = function(event) {
+    event.preventDefault();
+    return player.command.cancel(event.keyCode);
+  };
+  start = function() {
+    player.reset();
+    enemies.reset();
+    return main();
   };
   main = function() {
-    player.behave();
-    enemies.behave();
-    main_screen.clear_out_of_range([player.bullets.list, enemies.list]);
-    context.clearRect(0, 0, main_screen.width, main_screen.height);
-    context.draw_image_of(player);
-    context.draw_rect_of_alive(player.bullets.list);
-    context.draw_image_of_alive(enemies.list);
-    return setTimeout(main, 20);
+    var timer;
+    enemies.apear();
+    player.behave(enemies.list);
+    enemies.behave(player);
+    context.clear();
+    context.showUpperLeft("SCORE : " + (enemies.totalEXP()));
+    context.drawImageOf(player);
+    context.drawRectOfAlive(player.bullets.list);
+    context.drawImageOfAlive(enemies.list);
+    timer = setTimeout(main, Setting.INTERVAL);
+    if (!player.isAlive) {
+      clearTimeout(timer);
+      alert("GAME OVER : " + (enemies.totalEXP()));
+      return start();
+    }
   };
-  return main();
+  return $("#start").click(function() {
+    $(this).attr("disabled", true);
+    return start();
+  });
 });

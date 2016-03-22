@@ -1,13 +1,19 @@
 # 弾クラス
-class Bullet extends Solid
-  constructor: (speed) ->
-    @style = "rgb(255, 255, 255)"
-    super new Position(0, 0, 1, 20, speed), true
+class Bullet extends Actor
+  constructor: ->
+    @style = Setting.PLAYER.BULLET.STYLE
+    super new Position(0, 0, Setting.PLAYER.BULLET.WIDTH, Setting.PLAYER.BULLET.HEIGHT, Setting.PLAYER.BULLET.SPEED), false
 
   move: ->
-    @position.up()
+    @position.moveUp()
 
-  reset: (position) ->
-    @position.x = position.center_x()
-    @position.y = position.top_y()
-    @is_dead = false
+  shoot: (position) ->
+    @position.x = position.centerX()
+    @position.y = position.topY()
+    @isAlive = true
+
+  # 当たった場合、相手も倒して自分も消える
+  attack: (opponents) ->
+    for opponent in opponents when @hits opponent
+      opponent.die()
+      @clear()

@@ -3,27 +3,28 @@
 ### 依存関係ツリー
 
 #### index
-- index
-  - command
-  - screen_ablity
-    - solid
-  - context_ablity
-    - solid
-    - bullet
-  - player
-    - solid
-    - command
-    - bullets
-      - bullet
-        - solid
-  - enemies
-    - enemy1
-      - solid
+- **index**
+  - use **command**
+  - use **context_ablity**
+    - use **actor**
+    - use **bullet**
+  - use **player**
+    - extend **actor**
+    - have **command**
+    - use **bullets**
+      - aggregate **bullet**
+        - extend **actor**
+  - use **enemies**
+    - aggregate **macaron**
+      - extend **actor**
 
 #### 物体
-- solid
-  - position
+- **actor**
+  - have **position**
 
 ### ライブラリ
-- number
-- math
+- **number**
+- **math**
+
+### 設定ファイル
+- **setting**

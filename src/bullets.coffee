@@ -1,17 +1,22 @@
 # 弾のリストクラス。ファーストクラスコレクション設計
 class Bullets
-  SPEED = 20
-  constructor: (@count) ->
+  constructor: ->
     # forの戻り値が配列になるcoffeeっぽい書き方
-    @list = (new Bullet SPEED for i in [0...@count])
+    @list = (new Bullet for i in [0...Setting.PLAYER.BULLET.COUNT])
+
+  reset: ->
+    bullet.clear() for bullet in @list
 
   shoot: (position) ->
     for bullet in @list
       # 死亡判定されている弾があれば画面内に呼び戻し、復活させる
-      if bullet.is_dead
-        bullet.reset position
+      unless bullet.isAlive
+        bullet.shoot position
         break
       # なければ、弾は撃てない
 
-  behave: ->
-    bullet.move() for bullet in @list
+  behave: (opponents) ->
+    for bullet in @list
+      bullet.move()
+      bullet.attack opponents
+      bullet.clearOffscreen()

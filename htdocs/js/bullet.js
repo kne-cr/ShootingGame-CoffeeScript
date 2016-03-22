@@ -5,21 +5,35 @@ var Bullet,
 Bullet = (function(superClass) {
   extend(Bullet, superClass);
 
-  function Bullet(speed) {
-    this.style = "rgb(255, 255, 255)";
-    Bullet.__super__.constructor.call(this, new Position(0, 0, 1, 20, speed), true);
+  function Bullet() {
+    this.style = Setting.PLAYER.BULLET.STYLE;
+    Bullet.__super__.constructor.call(this, new Position(0, 0, Setting.PLAYER.BULLET.WIDTH, Setting.PLAYER.BULLET.HEIGHT, Setting.PLAYER.BULLET.SPEED), false);
   }
 
   Bullet.prototype.move = function() {
-    return this.position.up();
+    return this.position.moveUp();
   };
 
-  Bullet.prototype.reset = function(position) {
-    this.position.x = position.center_x();
-    this.position.y = position.top_y();
-    return this.is_dead = false;
+  Bullet.prototype.shoot = function(position) {
+    this.position.x = position.centerX();
+    this.position.y = position.topY();
+    return this.isAlive = true;
+  };
+
+  Bullet.prototype.attack = function(opponents) {
+    var i, len, opponent, results;
+    results = [];
+    for (i = 0, len = opponents.length; i < len; i++) {
+      opponent = opponents[i];
+      if (!(this.hits(opponent))) {
+        continue;
+      }
+      opponent.die();
+      results.push(this.clear());
+    }
+    return results;
   };
 
   return Bullet;
 
-})(Solid);
+})(Actor);

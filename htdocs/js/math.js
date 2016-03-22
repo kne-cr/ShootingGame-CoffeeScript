@@ -1,7 +1,7 @@
-Math.random_boolean = function() {
+Math.randomBoolean = function() {
   return this.round(this.random());
 };
 
-Math.random_number = function(range) {
+Math.randomNumber = function(range) {
   return this.floor(this.random() * range);
 };

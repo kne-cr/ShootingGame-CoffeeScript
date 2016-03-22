@@ -1,43 +1,58 @@
-$("#start").click ->
-  $(this).attr "disabled", true
-  main_screen = $("#screen")[0]
-  context = main_screen.getContext "2d"
+$(window).load ->
+  # スクリーンの初期化
+  mainScreen = $("#screen")[0]
+  mainScreen.width = Setting.SCREEN.WIDTH
+  mainScreen.height = Setting.SCREEN.HEIGHT
+
+  player = new Player
+  enemies = new Enemies
 
   # スクリーンとしての能力を与える
-  ScreenAbility.give_to main_screen
-  ContextAbility.give_to context
+  context = mainScreen.getContext "2d"
+  ContextAbility.giveTo context
+  context.showCenter "PUSH START"
 
-  # プレイヤー
-  player = new Player main_screen.width.center(), main_screen.height - 50, 20
-  # 敵
-  enemies = new Enemies main_screen.width, 5, 3
+  document.onkeydown = (event) ->
+    event.preventDefault()
+    player.command.request event.keyCode
 
-  document.onkeydown = (key) ->
-    player.command.request key.keyCode
+  document.onkeyup = (event) ->
+    event.preventDefault()
+    player.command.cancel event.keyCode
 
-  document.onkeyup = (key) ->
-    player.command.cancel key.keyCode
+  start = ->
+    player.reset()
+    enemies.reset()
+    main()
 
   main = ->
+    # 敵の出現
+    enemies.apear()
     # プレイヤーの操作
-    player.behave()
+    player.behave enemies.list
     # 敵の操作
-    enemies.behave()
-
-    # 画面外のものを死亡判定
-    main_screen.clear_out_of_range [player.bullets.list, enemies.list]
+    enemies.behave player
 
     # 画面の削除
-    context.clearRect 0, 0, main_screen.width, main_screen.height
+    context.clear()
 
+    # スコアの描画
+    context.showUpperLeft "SCORE : #{enemies.totalEXP()}"
     # プレイヤーの再描画
-    context.draw_image_of player
+    context.drawImageOf player
     # 弾の再描画
-    context.draw_rect_of_alive player.bullets.list
+    context.drawRectOfAlive player.bullets.list
     # 敵の再描画
-    context.draw_image_of_alive enemies.list
+    context.drawImageOfAlive enemies.list
 
     # 次のループへ
-    setTimeout main, 20
+    timer = setTimeout main, Setting.INTERVAL
 
-  main()
+    unless player.isAlive
+      clearTimeout timer
+      alert "GAME OVER : #{enemies.totalEXP()}"
+      start()
+
+  $("#start").click ->
+    $(this).attr "disabled", true
+    start()

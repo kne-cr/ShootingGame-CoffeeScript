@@ -1,25 +1,43 @@
 # canvas.contextの拡張
 class ContextAbility
   @methods:
+    # 画面内をすべて削除
+    clear: ->
+      this.clearRect 0, 0, Setting.SCREEN.WIDTH, Setting.SCREEN.HEIGHT
+
     # 画像を描画する
-    draw_image_of: (solid) ->
-      this.drawImage solid.image, solid.position.x, solid.position.y
+    drawImageOf: (actor) ->
+      this.drawImage actor.image, actor.position.x, actor.position.y
 
     # 生きている物体のみ画像を描画する
-    draw_image_of_alive: (solids) ->
-      for solid in solids when not solid.is_dead
-        @draw_image_of solid
+    drawImageOfAlive: (actors) ->
+      for actor in actors when actor.isAlive
+        @drawImageOf actor
 
     # 図形を描画する
-    draw_rect_of: (solid) ->
-      this.fillStyle = solid.style
-      this.fillRect solid.position.x, solid.position.y, solid.position.width, solid.position.height
+    drawRectOf: (actor) ->
+      this.fillStyle = actor.style
+      this.fillRect actor.position.x, actor.position.y, actor.position.width, actor.position.height
 
     # 生きている物体のみ図形を描画する
-    draw_rect_of_alive: (solids) ->
-      for solid in solids when not solid.is_dead
-        @draw_rect_of solid
+    drawRectOfAlive: (actors) ->
+      for actor in actors when actor.isAlive
+        @drawRectOf actor
+
+    showCenter: (text) ->
+      this.textAlign = "center"
+      this.textBaseline = "middle"
+      this.font = "90px 'ヒラギノ角ゴ'"
+      this.fillStyle = "#FFF"
+      this.fillText text, Setting.SCREEN.WIDTH.center(), Setting.SCREEN.HEIGHT.center()
+
+    showUpperLeft: (text) ->
+      this.textAlign = "left"
+      this.textBaseline = "top"
+      this.font = "30px 'ヒラギノ角ゴ'"
+      this.fillStyle = "#FFF"
+      this.fillText text, Setting.SCREEN.SCORE.PADDING, Setting.SCREEN.SCORE.PADDING
 
   # 引数にメソッドを付与する
-  @give_to: (target) ->
-    target[method_name] = method_content for method_name, method_content of @methods
+  @giveTo: (target) ->
+    target[methodName] = methodContent for methodName, methodContent of @methods

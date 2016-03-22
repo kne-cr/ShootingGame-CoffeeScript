@@ -4,44 +4,61 @@ ContextAbility = (function() {
   function ContextAbility() {}
 
   ContextAbility.methods = {
-    draw_image_of: function(solid) {
-      return this.drawImage(solid.image, solid.position.x, solid.position.y);
+    clear: function() {
+      return this.clearRect(0, 0, Setting.SCREEN.WIDTH, Setting.SCREEN.HEIGHT);
     },
-    draw_image_of_alive: function(solids) {
-      var i, len, results, solid;
+    drawImageOf: function(actor) {
+      return this.drawImage(actor.image, actor.position.x, actor.position.y);
+    },
+    drawImageOfAlive: function(actors) {
+      var actor, i, len, results;
       results = [];
-      for (i = 0, len = solids.length; i < len; i++) {
-        solid = solids[i];
-        if (!solid.is_dead) {
-          results.push(this.draw_image_of(solid));
+      for (i = 0, len = actors.length; i < len; i++) {
+        actor = actors[i];
+        if (actor.isAlive) {
+          results.push(this.drawImageOf(actor));
         }
       }
       return results;
     },
-    draw_rect_of: function(solid) {
-      this.fillStyle = solid.style;
-      return this.fillRect(solid.position.x, solid.position.y, solid.position.width, solid.position.height);
+    drawRectOf: function(actor) {
+      this.fillStyle = actor.style;
+      return this.fillRect(actor.position.x, actor.position.y, actor.position.width, actor.position.height);
     },
-    draw_rect_of_alive: function(solids) {
-      var i, len, results, solid;
+    drawRectOfAlive: function(actors) {
+      var actor, i, len, results;
       results = [];
-      for (i = 0, len = solids.length; i < len; i++) {
-        solid = solids[i];
-        if (!solid.is_dead) {
-          results.push(this.draw_rect_of(solid));
+      for (i = 0, len = actors.length; i < len; i++) {
+        actor = actors[i];
+        if (actor.isAlive) {
+          results.push(this.drawRectOf(actor));
         }
       }
       return results;
+    },
+    showCenter: function(text) {
+      this.textAlign = "center";
+      this.textBaseline = "middle";
+      this.font = "90px 'ヒラギノ角ゴ'";
+      this.fillStyle = "#FFF";
+      return this.fillText(text, Setting.SCREEN.WIDTH.center(), Setting.SCREEN.HEIGHT.center());
+    },
+    showUpperLeft: function(text) {
+      this.textAlign = "left";
+      this.textBaseline = "top";
+      this.font = "30px 'ヒラギノ角ゴ'";
+      this.fillStyle = "#FFF";
+      return this.fillText(text, Setting.SCREEN.SCORE.PADDING, Setting.SCREEN.SCORE.PADDING);
     }
   };
 
-  ContextAbility.give_to = function(target) {
-    var method_content, method_name, ref, results;
+  ContextAbility.giveTo = function(target) {
+    var methodContent, methodName, ref, results;
     ref = this.methods;
     results = [];
-    for (method_name in ref) {
-      method_content = ref[method_name];
-      results.push(target[method_name] = method_content);
+    for (methodName in ref) {
+      methodContent = ref[methodName];
+      results.push(target[methodName] = methodContent);
     }
     return results;
   };

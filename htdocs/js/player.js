@@ -5,33 +5,41 @@ var Player,
 Player = (function(superClass) {
   extend(Player, superClass);
 
-  function Player(x, y, speed) {
+  function Player() {
     this.image = new Image;
-    this.image.src = "img/player.png";
-    this.bullets = new Bullets(10);
+    this.image.src = Setting.PLAYER.IMAGE;
+    this.bullets = new Bullets;
     this.command = new Command;
-    Player.__super__.constructor.call(this, new Position(x - this.image.width.half(), y - this.image.height.half(), this.image.width, this.image.height, speed), false);
+    Player.__super__.constructor.call(this, new Position(0, 0, this.image.width, this.image.height, Setting.PLAYER.SPEED), true);
   }
 
-  Player.prototype.behave = function() {
-    if (this.command.is_requested(Command.SPACE)) {
+  Player.prototype.reset = function() {
+    this.command.reset();
+    this.position.x = Setting.SCREEN.WIDTH.center() - this.image.width.half();
+    this.position.y = Setting.SCREEN.HEIGHT - this.image.height;
+    this.isAlive = true;
+    return this.bullets.reset();
+  };
+
+  Player.prototype.behave = function(enemyList) {
+    if (this.command.isRequested(Command.SPACE)) {
       this.bullets.shoot(this.position);
     }
-    if (this.command.is_requested(Command.LEFT)) {
-      this.position.left();
+    if (this.command.isRequested(Command.LEFT) && !this.position.isLeftEnd()) {
+      this.position.moveLeft();
     }
-    if (this.command.is_requested(Command.UP)) {
-      this.position.up();
+    if (this.command.isRequested(Command.UP) && !this.position.isTopEnd()) {
+      this.position.moveUp();
     }
-    if (this.command.is_requested(Command.RIGHT)) {
-      this.position.right();
+    if (this.command.isRequested(Command.RIGHT) && !this.position.isRightEnd()) {
+      this.position.moveRight();
     }
-    if (this.command.is_requested(Command.DOWN)) {
-      this.position.down();
+    if (this.command.isRequested(Command.DOWN) && !this.position.isBottomEnd()) {
+      this.position.moveDown();
     }
-    return this.bullets.behave();
+    return this.bullets.behave(enemyList);
   };
 
   return Player;
 
-})(Solid);
+})(Actor);

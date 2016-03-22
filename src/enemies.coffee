@@ -1,22 +1,26 @@
 # 敵のリストクラス
 class Enemies
-  SPEED = 10
-  # @appearance_rate -> 出現率 0..100で指定
-  constructor: (@x_range, @count, @appearance_rate) ->
-    @list = (new Enemy1 SPEED for i in [0...@count])
+  constructor: ->
+    @list = (new Macaron for i in [0...Setting.ENEMY.COUNT])
 
-  behave: ->
-    @apear()
-    @move()
+  reset: ->
+    enemy.reset() for enemy in @list
+
+  totalEXP: ->
+    (enemy.totalEXP for enemy in @list).reduce (a, b) ->
+      a + b
 
   apear: ->
     # 出現率を下回った場合のみ敵を出現させる
     # 出現率70の場合、70を下回った場合出現、上回った場合は出現しない
-    return if @appearance_rate < Math.random_number 100
-    for enemy in @list
-      if enemy.is_dead
-        enemy.come_back Math.random_number(@x_range)
-        break
+    if Math.randomNumber(100) < Setting.ENEMY.APPEARANCE_RATE
+      for enemy in @list
+        unless enemy.isAlive
+          enemy.comeBack()
+          break
 
-  move: ->
-    enemy.move() for enemy in @list
+  behave: (player) ->
+    for enemy in @list
+      enemy.move()
+      enemy.attack player
+      enemy.clearOffscreen()
