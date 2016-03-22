@@ -11,7 +11,7 @@ class ContextAbility
 
     # 生きている物体のみ画像を描画する
     drawImageOfAlive: (actors) ->
-      for actor in actors when actor.isAlive
+      for actor in actors when actor.isAlive()
         @drawImageOf actor
 
     # 図形を描画する
@@ -21,7 +21,7 @@ class ContextAbility
 
     # 生きている物体のみ図形を描画する
     drawRectOfAlive: (actors) ->
-      for actor in actors when actor.isAlive
+      for actor in actors when actor.isAlive()
         @drawRectOf actor
 
     showCenter: (text) ->

@@ -20,7 +20,7 @@ class Enemies
     if Math.randomNumber(100) < Setting.ENEMY.APPEARANCE_RATE
       @list.sort -> Math.randomBoolean()
       for enemy in @list
-        unless enemy.isAlive
+        unless enemy.isAlive()
           enemy.comeBack()
           break
 

@@ -55,7 +55,7 @@ Enemies = (function() {
       results = [];
       for (j = 0, len = ref.length; j < len; j++) {
         enemy = ref[j];
-        if (!enemy.isAlive) {
+        if (!enemy.isAlive()) {
           enemy.comeBack();
           break;
         } else {

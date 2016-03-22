@@ -30,7 +30,7 @@ Bullets = (function() {
     results = [];
     for (j = 0, len = ref.length; j < len; j++) {
       bullet = ref[j];
-      if (!bullet.isAlive) {
+      if (!bullet.isAlive()) {
         bullet.shoot(position);
         break;
       } else {

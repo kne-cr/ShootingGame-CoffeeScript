@@ -15,7 +15,7 @@ ContextAbility = (function() {
       results = [];
       for (i = 0, len = actors.length; i < len; i++) {
         actor = actors[i];
-        if (actor.isAlive) {
+        if (actor.isAlive()) {
           results.push(this.drawImageOf(actor));
         }
       }
@@ -30,7 +30,7 @@ ContextAbility = (function() {
       results = [];
       for (i = 0, len = actors.length; i < len; i++) {
         actor = actors[i];
-        if (actor.isAlive) {
+        if (actor.isAlive()) {
           results.push(this.drawRectOf(actor));
         }
       }

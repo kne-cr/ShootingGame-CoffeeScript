@@ -10,14 +10,14 @@ Player = (function(superClass) {
     this.image.src = Setting.PLAYER.IMAGE;
     this.bullets = new Bullets;
     this.command = new Command;
-    Player.__super__.constructor.call(this, new Position(0, 0, this.image.width, this.image.height, Setting.PLAYER.SPEED), true);
+    Player.__super__.constructor.call(this, new Position(0, 0, this.image.width, this.image.height, Setting.PLAYER.SPEED), Setting.PLAYER.HIT_POINT);
   }
 
   Player.prototype.reset = function() {
-    this.command.reset();
+    this.hitPoint = Setting.PLAYER.HIT_POINT;
     this.position.x = Setting.SCREEN.WIDTH.center() - this.image.width.half();
     this.position.y = Setting.SCREEN.HEIGHT - this.image.height;
-    this.isAlive = true;
+    this.command.reset();
     return this.bullets.reset();
   };
 

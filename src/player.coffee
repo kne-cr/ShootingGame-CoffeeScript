@@ -13,14 +13,14 @@ class Player extends Actor
         @image.height,
         Setting.PLAYER.SPEED
       ),
-      true
+      Setting.PLAYER.HIT_POINT
     )
 
   reset: ->
-    @command.reset()
+    @hitPoint = Setting.PLAYER.HIT_POINT
     @position.x = Setting.SCREEN.WIDTH.center() - @image.width.half()
     @position.y = Setting.SCREEN.HEIGHT - @image.height
-    @isAlive = true
+    @command.reset()
     @bullets.reset()
 
   behave: (enemyList) ->

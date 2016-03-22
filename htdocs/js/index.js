@@ -32,7 +32,7 @@ $(window).load(function() {
     context.drawRectOfAlive(player.bullets.list);
     context.drawImageOfAlive(enemies.list);
     timer = setTimeout(main, Setting.INTERVAL);
-    if (!player.isAlive) {
+    if (!player.isAlive()) {
       clearTimeout(timer);
       alert("GAME OVER : " + (enemies.totalEXP()));
       return start();

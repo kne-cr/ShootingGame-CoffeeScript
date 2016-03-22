@@ -10,11 +10,13 @@ class Setting
   @PLAYER:
     IMAGE: "img/player.png"
     SPEED: 20
+    HIT_POINT: 1
     BULLET:
       WIDTH: 1
       HEIGHT: 20
       COUNT: 10
       SPEED: 20
+      HIT_POINT: 1
       STYLE: "rgb(255, 255, 255)"
 
   @ENEMY:

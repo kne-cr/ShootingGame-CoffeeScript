@@ -48,7 +48,7 @@ $(window).load ->
     # 次のループへ
     timer = setTimeout main, Setting.INTERVAL
 
-    unless player.isAlive
+    unless player.isAlive()
       clearTimeout timer
       alert "GAME OVER : #{enemies.totalEXP()}"
       start()

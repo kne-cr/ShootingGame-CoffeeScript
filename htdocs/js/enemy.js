@@ -10,22 +10,19 @@ Enemy = (function(superClass) {
     this.totalEXP = 0;
     this.image = new Image;
     this.image.src = this.setting.IMAGE;
-    this.hitPoint = this.setting.HIT_POINT;
-    Enemy.__super__.constructor.call(this, new Position(0, 0, this.image.width, this.image.height, this.setting.SPEED), false);
+    Enemy.__super__.constructor.call(this, new Position(0, 0, this.image.width, this.image.height, this.setting.SPEED), 0);
   }
 
   Enemy.prototype.reset = function() {
-    this.isAlive = false;
     this.totalEXP = 0;
-    return this.hitPoint = this.setting.HIT_POINT;
+    return this.hitPoint = 0;
   };
 
   Enemy.prototype.move = function() {};
 
   Enemy.prototype.damage = function() {
-    console.log(this.hitPoint);
-    this.hitPoint--;
-    if (this.hitPoint <= 0) {
+    Enemy.__super__.damage.apply(this, arguments);
+    if (!this.isAlive()) {
       this.totalEXP += this.setting.EXP;
       return this.clear();
     }
@@ -34,8 +31,7 @@ Enemy = (function(superClass) {
   Enemy.prototype.comeBack = function() {
     this.position.x = Math.randomNumber(Setting.SCREEN.WIDTH);
     this.position.y = 1 - this.image.height;
-    this.hitPoint = this.setting.HIT_POINT;
-    return this.isAlive = true;
+    return this.hitPoint = this.setting.HIT_POINT;
   };
 
   Enemy.prototype.attack = function(opponent) {

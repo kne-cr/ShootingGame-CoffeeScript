@@ -7,7 +7,7 @@ Bullet = (function(superClass) {
 
   function Bullet() {
     this.style = Setting.PLAYER.BULLET.STYLE;
-    Bullet.__super__.constructor.call(this, new Position(0, 0, Setting.PLAYER.BULLET.WIDTH, Setting.PLAYER.BULLET.HEIGHT, Setting.PLAYER.BULLET.SPEED), false);
+    Bullet.__super__.constructor.call(this, new Position(0, 0, Setting.PLAYER.BULLET.WIDTH, Setting.PLAYER.BULLET.HEIGHT, Setting.PLAYER.BULLET.SPEED), 0);
   }
 
   Bullet.prototype.move = function() {
@@ -17,7 +17,7 @@ Bullet = (function(superClass) {
   Bullet.prototype.shoot = function(position) {
     this.position.x = position.centerX();
     this.position.y = position.topY();
-    return this.isAlive = true;
+    return this.hitPoint = Setting.PLAYER.BULLET.HIT_POINT;
   };
 
   Bullet.prototype.attack = function(opponents) {

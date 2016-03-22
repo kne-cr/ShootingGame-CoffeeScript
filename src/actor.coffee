@@ -1,16 +1,19 @@
 # 物体クラス。位置情報と生死判定
 class Actor
-  constructor: (@position, @isAlive) ->
+  constructor: (@position, @hitPoint) ->
 
   clear: ->
-    @isAlive = false
+    @hitPoint = 0
 
   damage: ->
-    @isAlive = false
+    @hitPoint--
+
+  isAlive: ->
+    0 < @hitPoint
 
   hits: (another) ->
-    @isAlive and
-    another.isAlive and
+    @isAlive() and
+    another.isAlive() and
     @position.overlaps another.position
 
   clearOffscreen: ->

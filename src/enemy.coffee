@@ -3,20 +3,17 @@ class Enemy extends Actor
     @totalEXP = 0
     @image = new Image
     @image.src = @setting.IMAGE
-    @hitPoint = @setting.HIT_POINT
-    super new Position(0, 0, @image.width, @image.height, @setting.SPEED), false
+    super new Position(0, 0, @image.width, @image.height, @setting.SPEED), 0
 
   reset: ->
-    @isAlive = false
     @totalEXP = 0
-    @hitPoint = @setting.HIT_POINT
+    @hitPoint = 0
 
   move: ->
 
   damage: ->
-    console.log @hitPoint
-    @hitPoint--
-    if @hitPoint <= 0
+    super
+    unless @isAlive()
       @totalEXP += @setting.EXP
       @clear()
 
@@ -24,7 +21,6 @@ class Enemy extends Actor
     @position.x = Math.randomNumber(Setting.SCREEN.WIDTH)
     @position.y = 1 - @image.height
     @hitPoint = @setting.HIT_POINT
-    @isAlive = true
 
   attack: (opponent) ->
     opponent.damage() if @hits opponent
