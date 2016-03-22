@@ -1,7 +1,6 @@
-# 敵1クラス
-class Macaron extends Enemy
+class YellowMacaron extends Enemy
   constructor: ->
-    super Setting.ENEMY.MACARON
+    super Setting.ENEMY.YELLOW_MACARON
 
   move: ->
     # ランダム移動

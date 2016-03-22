@@ -2,13 +2,19 @@ var Enemies;
 
 Enemies = (function() {
   function Enemies() {
-    var i, j, k, ref, ref1;
+    var i, j, k, l, m, ref, ref1, ref2, ref3;
     this.list = [];
-    for (i = j = 0, ref = Setting.ENEMY.MACARON.COUNT; 0 <= ref ? j < ref : j > ref; i = 0 <= ref ? ++j : --j) {
-      this.list.push(new Macaron);
+    for (i = j = 0, ref = Setting.ENEMY.YELLOW_MACARON.COUNT; 0 <= ref ? j < ref : j > ref; i = 0 <= ref ? ++j : --j) {
+      this.list.push(new YellowMacaron);
     }
-    for (i = k = 0, ref1 = Setting.ENEMY.COOKIE.COUNT; 0 <= ref1 ? k < ref1 : k > ref1; i = 0 <= ref1 ? ++k : --k) {
-      this.list.push(new Cookie);
+    for (i = k = 0, ref1 = Setting.ENEMY.BLUE_MACARON.COUNT; 0 <= ref1 ? k < ref1 : k > ref1; i = 0 <= ref1 ? ++k : --k) {
+      this.list.push(new BlueMacaron);
+    }
+    for (i = l = 0, ref2 = Setting.ENEMY.GREEN_MACARON.COUNT; 0 <= ref2 ? l < ref2 : l > ref2; i = 0 <= ref2 ? ++l : --l) {
+      this.list.push(new GreenMacaron);
+    }
+    for (i = m = 0, ref3 = Setting.ENEMY.PINK_MACARON.COUNT; 0 <= ref3 ? m < ref3 : m > ref3; i = 0 <= ref3 ? ++m : --m) {
+      this.list.push(new PinkMacaron);
     }
   }
 
@@ -42,6 +48,9 @@ Enemies = (function() {
   Enemies.prototype.apear = function() {
     var enemy, j, len, ref, results;
     if (Math.randomNumber(100) < Setting.ENEMY.APPEARANCE_RATE) {
+      this.list.sort(function() {
+        return Math.randomBoolean();
+      });
       ref = this.list;
       results = [];
       for (j = 0, len = ref.length; j < len; j++) {
