@@ -26,12 +26,18 @@ Setting = (function() {
   };
 
   Setting.ENEMY = {
-    COUNT: 7,
     APPEARANCE_RATE: 3,
     MACARON: {
+      COUNT: 5,
       IMAGE: "img/macaron.png",
       SPEED: 10,
       EXP: 100
+    },
+    COOKIE: {
+      COUNT: 3,
+      IMAGE: "img/cookie.png",
+      SPEED: 20,
+      EXP: 150
     }
   };
 

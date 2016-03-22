@@ -2,15 +2,14 @@ var Enemies;
 
 Enemies = (function() {
   function Enemies() {
-    var i;
-    this.list = (function() {
-      var j, ref, results;
-      results = [];
-      for (i = j = 0, ref = Setting.ENEMY.COUNT; 0 <= ref ? j < ref : j > ref; i = 0 <= ref ? ++j : --j) {
-        results.push(new Macaron);
-      }
-      return results;
-    })();
+    var i, j, k, ref, ref1;
+    this.list = [];
+    for (i = j = 0, ref = Setting.ENEMY.MACARON.COUNT; 0 <= ref ? j < ref : j > ref; i = 0 <= ref ? ++j : --j) {
+      this.list.push(new Macaron);
+    }
+    for (i = k = 0, ref1 = Setting.ENEMY.COOKIE.COUNT; 0 <= ref1 ? k < ref1 : k > ref1; i = 0 <= ref1 ? ++k : --k) {
+      this.list.push(new Cookie);
+    }
   }
 
   Enemies.prototype.reset = function() {

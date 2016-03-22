@@ -1,7 +1,9 @@
 # 敵のリストクラス
 class Enemies
   constructor: ->
-    @list = (new Macaron for i in [0...Setting.ENEMY.COUNT])
+    @list = []
+    @list.push(new Macaron) for i in [0...Setting.ENEMY.MACARON.COUNT]
+    @list.push(new Cookie) for i in [0...Setting.ENEMY.COOKIE.COUNT]
 
   reset: ->
     enemy.reset() for enemy in @list
