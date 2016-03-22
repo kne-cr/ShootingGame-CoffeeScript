@@ -23,19 +23,23 @@ class Setting
       COUNT: 7
       IMAGE: "img/yellowMacaron.png"
       SPEED: 10
+      HIT_POINT: 1
       EXP: 100
     BLUE_MACARON:
-      COUNT: 5
+      COUNT: 2
       IMAGE: "img/blueMacaron.png"
       SPEED: 30
-      EXP: 150
+      HIT_POINT: 10
+      EXP: 500
     GREEN_MACARON:
       COUNT: 5
       IMAGE: "img/greenMacaron.png"
       SPEED: 10
+      HIT_POINT: 1
       EXP: 200
     PINK_MACARON:
       COUNT: 3
       IMAGE: "img/pinkMacaron.png"
       SPEED: 25
+      HIT_POINT: 1
       EXP: 300

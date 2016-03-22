@@ -28,7 +28,7 @@ Bullet = (function(superClass) {
       if (!(this.hits(opponent))) {
         continue;
       }
-      opponent.die();
+      opponent.damage();
       results.push(this.clear());
     }
     return results;

@@ -5,7 +5,7 @@ class Actor
   clear: ->
     @isAlive = false
 
-  die: ->
+  damage: ->
     @isAlive = false
 
   hits: (another) ->

@@ -10,10 +10,8 @@ class GreenMacaron extends Enemy
 
   moveRight: ->
     @position.moveRight()
-    @position.moveRight()
     @goesToRight = false if @position.isRightEnd()
 
   moveLeft: ->
-    @position.moveLeft()
     @position.moveLeft()
     @goesToRight = true if @position.isLeftEnd()

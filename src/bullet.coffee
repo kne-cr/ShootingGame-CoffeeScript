@@ -12,8 +12,8 @@ class Bullet extends Actor
     @position.y = position.topY()
     @isAlive = true
 
-  # 当たった場合、相手も倒して自分も消える
+  # 当たった場合、相手にダメージを与え自分は消える
   attack: (opponents) ->
     for opponent in opponents when @hits opponent
-      opponent.die()
+      opponent.damage()
       @clear()

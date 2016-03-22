@@ -10,7 +10,7 @@ Actor = (function() {
     return this.isAlive = false;
   };
 
-  Actor.prototype.die = function() {
+  Actor.prototype.damage = function() {
     return this.isAlive = false;
   };
 

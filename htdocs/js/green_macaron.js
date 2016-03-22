@@ -21,14 +21,12 @@ GreenMacaron = (function(superClass) {
 
   GreenMacaron.prototype.moveRight = function() {
     this.position.moveRight();
-    this.position.moveRight();
     if (this.position.isRightEnd()) {
       return this.goesToRight = false;
     }
   };
 
   GreenMacaron.prototype.moveLeft = function() {
-    this.position.moveLeft();
     this.position.moveLeft();
     if (this.position.isLeftEnd()) {
       return this.goesToRight = true;
