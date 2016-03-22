@@ -28,4 +28,4 @@ class Setting
       COUNT: 3
       IMAGE: "img/cookie.png"
       SPEED: 20
-      EXP: 150
+      EXP: 200

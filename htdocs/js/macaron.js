@@ -6,17 +6,8 @@ Macaron = (function(superClass) {
   extend(Macaron, superClass);
 
   function Macaron() {
-    this.exp = Setting.ENEMY.MACARON.EXP;
-    this.totalEXP = 0;
-    this.image = new Image;
-    this.image.src = Setting.ENEMY.MACARON.IMAGE;
-    Macaron.__super__.constructor.call(this, new Position(0, 0, this.image.width, this.image.height, Setting.ENEMY.MACARON.SPEED), false);
+    Macaron.__super__.constructor.call(this, Setting.ENEMY.MACARON);
   }
-
-  Macaron.prototype.reset = function() {
-    this.isAlive = false;
-    return this.totalEXP = 0;
-  };
 
   Macaron.prototype.move = function() {
     if (Math.randomBoolean()) {
@@ -29,23 +20,6 @@ Macaron = (function(superClass) {
     }
   };
 
-  Macaron.prototype.die = function() {
-    this.totalEXP += this.exp;
-    return this.clear();
-  };
-
-  Macaron.prototype.comeBack = function() {
-    this.position.x = Math.randomNumber(Setting.SCREEN.WIDTH);
-    this.position.y = 1 - this.image.height;
-    return this.isAlive = true;
-  };
-
-  Macaron.prototype.attack = function(opponent) {
-    if (this.hits(opponent)) {
-      return opponent.die();
-    }
-  };
-
   return Macaron;
 
-})(Actor);
+})(Enemy);
