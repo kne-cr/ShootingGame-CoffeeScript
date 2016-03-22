@@ -42,7 +42,7 @@ Macaron = (function(superClass) {
 
   Macaron.prototype.attack = function(opponent) {
     if (this.hits(opponent)) {
-      return opponent.clear();
+      return opponent.die();
     }
   };
 

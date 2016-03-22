@@ -28,4 +28,4 @@ class Macaron extends Actor
     @isAlive = true
 
   attack: (opponent) ->
-    opponent.clear() if @hits opponent
+    opponent.die() if @hits opponent
