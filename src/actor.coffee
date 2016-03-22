@@ -5,6 +5,9 @@ class Actor
   clear: ->
     @isAlive = false
 
+  die: ->
+    @isAlive = false
+
   hits: (another) ->
     @isAlive and
     another.isAlive and

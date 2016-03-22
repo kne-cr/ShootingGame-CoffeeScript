@@ -7,7 +7,10 @@ Setting = (function() {
 
   Setting.SCREEN = {
     WIDTH: 800,
-    HEIGHT: 600
+    HEIGHT: 600,
+    SCORE: {
+      PADDING: 20
+    }
   };
 
   Setting.PLAYER = {

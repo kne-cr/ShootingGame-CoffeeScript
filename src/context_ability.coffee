@@ -36,7 +36,7 @@ class ContextAbility
       this.textBaseline = "top"
       this.font = "30px 'ヒラギノ角ゴ'"
       this.fillStyle = "#FFF"
-      this.fillText text, 0, 0
+      this.fillText text, Setting.SCREEN.SCORE.PADDING, Setting.SCREEN.SCORE.PADDING
 
   # 引数にメソッドを付与する
   @giveTo: (target) ->

@@ -48,7 +48,7 @@ ContextAbility = (function() {
       this.textBaseline = "top";
       this.font = "30px 'ヒラギノ角ゴ'";
       this.fillStyle = "#FFF";
-      return this.fillText(text, 0, 0);
+      return this.fillText(text, Setting.SCREEN.SCORE.PADDING, Setting.SCREEN.SCORE.PADDING);
     }
   };
 

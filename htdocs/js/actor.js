@@ -10,6 +10,10 @@ Actor = (function() {
     return this.isAlive = false;
   };
 
+  Actor.prototype.die = function() {
+    return this.isAlive = false;
+  };
+
   Actor.prototype.hits = function(another) {
     return this.isAlive && another.isAlive && this.position.overlaps(another.position);
   };
