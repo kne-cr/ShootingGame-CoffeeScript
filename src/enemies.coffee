@@ -6,6 +6,7 @@ class Enemies
     @list.push(new BlueMacaron) for i in [0...Setting.ENEMY.BLUE_MACARON.COUNT]
     @list.push(new GreenMacaron) for i in [0...Setting.ENEMY.GREEN_MACARON.COUNT]
     @list.push(new PinkMacaron) for i in [0...Setting.ENEMY.PINK_MACARON.COUNT]
+    @list.push(new Pancake) for i in [0...Setting.ENEMY.PANCAKE.COUNT]
 
   reset: ->
     enemy.reset() for enemy in @list

@@ -9,20 +9,32 @@ Position = (function() {
     this.speed = speed;
   }
 
-  Position.prototype.moveLeft = function() {
-    return this.x -= this.speed;
+  Position.prototype.moveLeft = function(distance) {
+    if (distance == null) {
+      distance = this.speed;
+    }
+    return this.x -= distance;
   };
 
-  Position.prototype.moveUp = function() {
-    return this.y -= this.speed;
+  Position.prototype.moveUp = function(distance) {
+    if (distance == null) {
+      distance = this.speed;
+    }
+    return this.y -= distance;
   };
 
-  Position.prototype.moveRight = function() {
-    return this.x += this.speed;
+  Position.prototype.moveRight = function(distance) {
+    if (distance == null) {
+      distance = this.speed;
+    }
+    return this.x += distance;
   };
 
-  Position.prototype.moveDown = function() {
-    return this.y += this.speed;
+  Position.prototype.moveDown = function(distance) {
+    if (distance == null) {
+      distance = this.speed;
+    }
+    return this.y += distance;
   };
 
   Position.prototype.leftX = function() {

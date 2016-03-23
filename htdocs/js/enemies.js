@@ -2,7 +2,7 @@ var Enemies;
 
 Enemies = (function() {
   function Enemies() {
-    var i, j, k, l, m, ref, ref1, ref2, ref3;
+    var i, j, k, l, m, n, ref, ref1, ref2, ref3, ref4;
     this.list = [];
     for (i = j = 0, ref = Setting.ENEMY.YELLOW_MACARON.COUNT; 0 <= ref ? j < ref : j > ref; i = 0 <= ref ? ++j : --j) {
       this.list.push(new YellowMacaron);
@@ -15,6 +15,9 @@ Enemies = (function() {
     }
     for (i = m = 0, ref3 = Setting.ENEMY.PINK_MACARON.COUNT; 0 <= ref3 ? m < ref3 : m > ref3; i = 0 <= ref3 ? ++m : --m) {
       this.list.push(new PinkMacaron);
+    }
+    for (i = n = 0, ref4 = Setting.ENEMY.PANCAKE.COUNT; 0 <= ref4 ? n < ref4 : n > ref4; i = 0 <= ref4 ? ++n : --n) {
+      this.list.push(new Pancake);
     }
   }
 

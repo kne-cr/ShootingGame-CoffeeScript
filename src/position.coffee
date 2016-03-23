@@ -3,17 +3,17 @@ class Position
   constructor: (@x, @y, @width, @height, @speed) ->
 
   # 移動
-  moveLeft: ->
-    @x -= @speed
+  moveLeft: (distance = @speed) ->
+    @x -= distance
 
-  moveUp: ->
-    @y -= @speed
+  moveUp: (distance = @speed) ->
+    @y -= distance
 
-  moveRight: ->
-    @x += @speed
+  moveRight: (distance = @speed) ->
+    @x += distance
 
-  moveDown: ->
-    @y += @speed
+  moveDown: (distance = @speed) ->
+    @y += distance
 
   # 端の座標
   leftX: ->

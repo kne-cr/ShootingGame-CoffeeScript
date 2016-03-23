@@ -6,3 +6,7 @@ Math.randomBoolean = ->
 # 指定された範囲内の数字をランダムで返す
 Math.randomNumber = (range) ->
   this.floor this.random() * range
+
+# 角度を元にsin値を算出する
+Math.sinBy = (angle) ->
+  this.sin(angle * this.PI / 180).toFixed(15)

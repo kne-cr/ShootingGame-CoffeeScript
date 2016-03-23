@@ -47,7 +47,7 @@ Setting = (function() {
       COUNT: 5,
       IMAGE: "img/greenMacaron.png",
       SPEED: 10,
-      HIT_POINT: 1,
+      HIT_POINT: 3,
       EXP: 200
     },
     PINK_MACARON: {
@@ -56,6 +56,17 @@ Setting = (function() {
       SPEED: 25,
       HIT_POINT: 1,
       EXP: 300
+    },
+    PANCAKE: {
+      COUNT: 1,
+      IMAGE: "img/pancake.png",
+      SPEED: 5,
+      HIT_POINT: 500,
+      EXP: 10000,
+      SWING: {
+        SPEED: 10,
+        RANGE: 5
+      }
     }
   };
 
