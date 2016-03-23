@@ -1,25 +1,22 @@
 class Pancake extends Enemy
   constructor: ->
     @angle = 0
-    @goesToRight = Math.randomBoolean()
+    HorizontallyReboundAbility.giveTo @
     super Setting.ENEMY.PANCAKE
 
   move: ->
     return unless @isAlive()
     unless @completedAppearance()
+      # 垂直に降りてきて登場
       @position.moveDown()
     else
-      @angle += Setting.ENEMY.PANCAKE.SWING.SPEED
-      @position.moveDown Math.sinBy(@angle) * Setting.ENEMY.PANCAKE.SWING.RANGE
-      if @goesToRight then @moveRight() else @moveLeft()
+      # 登場後は揺れながら動く
+      @swingVertically()
+      @moveHorizontally()
 
   completedAppearance: ->
     0 < @position.topY()
 
-  moveRight: ->
-    @position.moveRight()
-    @goesToRight = false if @position.isRightEnd()
-
-  moveLeft: ->
-    @position.moveLeft()
-    @goesToRight = true if @position.isLeftEnd()
+  swingVertically: ->
+    @angle += Setting.ENEMY.PANCAKE.SWING.SPEED
+    @position.moveDown Math.sinBy(@angle) * Setting.ENEMY.PANCAKE.SWING.RANGE

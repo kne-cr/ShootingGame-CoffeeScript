@@ -7,7 +7,7 @@ Pancake = (function(superClass) {
 
   function Pancake() {
     this.angle = 0;
-    this.goesToRight = Math.randomBoolean();
+    HorizontallyReboundAbility.giveTo(this);
     Pancake.__super__.constructor.call(this, Setting.ENEMY.PANCAKE);
   }
 
@@ -18,13 +18,8 @@ Pancake = (function(superClass) {
     if (!this.completedAppearance()) {
       return this.position.moveDown();
     } else {
-      this.angle += Setting.ENEMY.PANCAKE.SWING.SPEED;
-      this.position.moveDown(Math.sinBy(this.angle) * Setting.ENEMY.PANCAKE.SWING.RANGE);
-      if (this.goesToRight) {
-        return this.moveRight();
-      } else {
-        return this.moveLeft();
-      }
+      this.swingVertically();
+      return this.moveHorizontally();
     }
   };
 
@@ -32,18 +27,9 @@ Pancake = (function(superClass) {
     return 0 < this.position.topY();
   };
 
-  Pancake.prototype.moveRight = function() {
-    this.position.moveRight();
-    if (this.position.isRightEnd()) {
-      return this.goesToRight = false;
-    }
-  };
-
-  Pancake.prototype.moveLeft = function() {
-    this.position.moveLeft();
-    if (this.position.isLeftEnd()) {
-      return this.goesToRight = true;
-    }
+  Pancake.prototype.swingVertically = function() {
+    this.angle += Setting.ENEMY.PANCAKE.SWING.SPEED;
+    return this.position.moveDown(Math.sinBy(this.angle) * Setting.ENEMY.PANCAKE.SWING.RANGE);
   };
 
   return Pancake;

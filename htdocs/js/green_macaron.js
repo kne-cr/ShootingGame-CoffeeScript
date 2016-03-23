@@ -6,31 +6,13 @@ GreenMacaron = (function(superClass) {
   extend(GreenMacaron, superClass);
 
   function GreenMacaron() {
-    this.goesToRight = Math.randomBoolean();
+    HorizontallyReboundAbility.giveTo(this);
     GreenMacaron.__super__.constructor.call(this, Setting.ENEMY.GREEN_MACARON);
   }
 
   GreenMacaron.prototype.move = function() {
-    if (this.goesToRight) {
-      this.moveRight();
-    } else {
-      this.moveLeft();
-    }
+    this.moveHorizontally();
     return this.position.moveDown();
-  };
-
-  GreenMacaron.prototype.moveRight = function() {
-    this.position.moveRight();
-    if (this.position.isRightEnd()) {
-      return this.goesToRight = false;
-    }
-  };
-
-  GreenMacaron.prototype.moveLeft = function() {
-    this.position.moveLeft();
-    if (this.position.isLeftEnd()) {
-      return this.goesToRight = true;
-    }
   };
 
   return GreenMacaron;
