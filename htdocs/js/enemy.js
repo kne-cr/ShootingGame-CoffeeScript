@@ -33,8 +33,7 @@ Enemy = (function(superClass) {
   };
 
   Enemy.prototype.comeBack = function() {
-    this.position.x = Math.randomNumber(Setting.SCREEN.WIDTH);
-    this.position.y = 1 - this.image.height;
+    this.position.moveTo(Math.randomNumber(Setting.SCREEN.WIDTH), 1 - this.image.height);
     return this.hitPoint = this.setting.HIT_POINT;
   };
 

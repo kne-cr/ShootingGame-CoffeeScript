@@ -21,8 +21,7 @@ class Enemy extends Actor
       @clear()
 
   comeBack: ->
-    @position.x = Math.randomNumber(Setting.SCREEN.WIDTH)
-    @position.y = 1 - @image.height
+    @position.moveTo Math.randomNumber(Setting.SCREEN.WIDTH), 1 - @image.height
     @hitPoint = @setting.HIT_POINT
 
   attack: (opponent) ->

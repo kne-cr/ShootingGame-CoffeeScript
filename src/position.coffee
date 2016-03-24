@@ -15,6 +15,8 @@ class Position
   moveDown: (distance = @speed) ->
     @y += distance
 
+  moveTo: (@x, @y) ->
+
   # 端の座標
   leftX: ->
     @x

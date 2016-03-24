@@ -13,9 +13,8 @@ class Bullet extends Actor
   move: ->
     @position.moveUp()
 
-  shoot: (position) ->
-    @position.x = position.centerX()
-    @position.y = position.topY()
+  shoot: (shooter) ->
+    @position.moveTo shooter.centerX(), shooter.topY()
     @hitPoint = Setting.PLAYER.BULLET.HIT_POINT
 
   # 当たった場合、相手にダメージを与え自分は消える

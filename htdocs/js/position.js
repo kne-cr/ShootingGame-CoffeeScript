@@ -37,6 +37,11 @@ Position = (function() {
     return this.y += distance;
   };
 
+  Position.prototype.moveTo = function(x, y) {
+    this.x = x;
+    this.y = y;
+  };
+
   Position.prototype.leftX = function() {
     return this.x;
   };

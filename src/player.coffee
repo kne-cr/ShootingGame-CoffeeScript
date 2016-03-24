@@ -18,8 +18,7 @@ class Player extends Actor
 
   reset: ->
     @hitPoint = Setting.PLAYER.HIT_POINT
-    @position.x = Setting.SCREEN.WIDTH.center() - @image.width.half()
-    @position.y = Setting.SCREEN.HEIGHT - @image.height
+    @position.moveTo Setting.SCREEN.WIDTH.center() - @image.width.half(), Setting.SCREEN.HEIGHT - @image.height
     @command.reset()
     @bullets.reset()
 

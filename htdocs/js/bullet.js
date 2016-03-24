@@ -14,9 +14,8 @@ Bullet = (function(superClass) {
     return this.position.moveUp();
   };
 
-  Bullet.prototype.shoot = function(position) {
-    this.position.x = position.centerX();
-    this.position.y = position.topY();
+  Bullet.prototype.shoot = function(shooter) {
+    this.position.moveTo(shooter.centerX(), shooter.topY());
     return this.hitPoint = Setting.PLAYER.BULLET.HIT_POINT;
   };
 
