@@ -13,6 +13,10 @@ Enemy = (function(superClass) {
     Enemy.__super__.constructor.call(this, new Position(0, 0, this.image.width, this.image.height, this.setting.SPEED), 0);
   }
 
+  Enemy.prototype.isBoss = function() {
+    return false;
+  };
+
   Enemy.prototype.reset = function() {
     this.totalEXP = 0;
     return this.hitPoint = 0;

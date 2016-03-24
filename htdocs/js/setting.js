@@ -58,7 +58,6 @@ Setting = (function() {
       EXP: 300
     },
     PANCAKE: {
-      COUNT: 1,
       IMAGE: "img/pancake.png",
       SPEED: 5,
       HIT_POINT: 500,

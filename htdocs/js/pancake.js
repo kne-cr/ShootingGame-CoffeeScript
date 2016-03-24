@@ -11,6 +11,10 @@ Pancake = (function(superClass) {
     Pancake.__super__.constructor.call(this, Setting.ENEMY.PANCAKE);
   }
 
+  Pancake.prototype.isBoss = function() {
+    return true;
+  };
+
   Pancake.prototype.move = function() {
     if (!this.isAlive()) {
       return;

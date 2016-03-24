@@ -5,6 +5,9 @@ class Enemy extends Actor
     @image.src = @setting.IMAGE
     super new Position(0, 0, @image.width, @image.height, @setting.SPEED), 0
 
+  isBoss: ->
+    false
+
   reset: ->
     @totalEXP = 0
     @hitPoint = 0

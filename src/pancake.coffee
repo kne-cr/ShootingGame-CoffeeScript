@@ -4,6 +4,9 @@ class Pancake extends Enemy
     HorizontallyReboundAbility.giveTo @
     super Setting.ENEMY.PANCAKE
 
+  isBoss: ->
+    true
+
   move: ->
     return unless @isAlive()
     unless @completedAppearance()
