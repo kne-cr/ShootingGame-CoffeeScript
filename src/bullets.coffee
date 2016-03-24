@@ -17,6 +17,4 @@ class Bullets
 
   behave: (opponents) ->
     for bullet in @list
-      bullet.move()
-      bullet.attack opponents
-      bullet.clearOffscreen()
+      bullet.behave opponents

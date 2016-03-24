@@ -28,10 +28,10 @@ $(window).load ->
   main = ->
     # 敵の出現
     enemies.apear()
-    # プレイヤーの操作
-    player.behave enemies.list
     # 敵の操作
     enemies.behave player
+    # プレイヤーの操作
+    player.behave enemies.list
 
     # 画面の削除
     context.clear()
@@ -41,9 +41,9 @@ $(window).load ->
     # プレイヤーの再描画
     context.drawImageOf player
     # 弾の再描画
-    context.drawRectOfAlive player.bullets.list
+    context.drawRectOfActive player.bullets.list
     # 敵の再描画
-    context.drawImageOfAlive enemies.list
+    context.drawImageOfActive enemies.list
 
     # 次のループへ
     timer = setTimeout main, Setting.INTERVAL

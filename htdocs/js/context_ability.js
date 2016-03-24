@@ -10,12 +10,12 @@ ContextAbility = (function() {
     drawImageOf: function(actor) {
       return this.drawImage(actor.image, actor.position.x, actor.position.y);
     },
-    drawImageOfAlive: function(actors) {
+    drawImageOfActive: function(actors) {
       var actor, i, len, results;
       results = [];
       for (i = 0, len = actors.length; i < len; i++) {
         actor = actors[i];
-        if (actor.isAlive()) {
+        if (actor.isActive()) {
           results.push(this.drawImageOf(actor));
         }
       }
@@ -25,12 +25,12 @@ ContextAbility = (function() {
       this.fillStyle = actor.style;
       return this.fillRect(actor.position.x, actor.position.y, actor.position.width, actor.position.height);
     },
-    drawRectOfAlive: function(actors) {
+    drawRectOfActive: function(actors) {
       var actor, i, len, results;
       results = [];
       for (i = 0, len = actors.length; i < len; i++) {
         actor = actors[i];
-        if (actor.isAlive()) {
+        if (actor.isActive()) {
           results.push(this.drawRectOf(actor));
         }
       }

@@ -46,9 +46,7 @@ Bullets = (function() {
     results = [];
     for (j = 0, len = ref.length; j < len; j++) {
       bullet = ref[j];
-      bullet.move();
-      bullet.attack(opponents);
-      results.push(bullet.clearOffscreen());
+      results.push(bullet.behave(opponents));
     }
     return results;
   };

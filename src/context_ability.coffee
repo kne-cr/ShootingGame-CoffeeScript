@@ -10,8 +10,8 @@ class ContextAbility
       this.drawImage actor.image, actor.position.x, actor.position.y
 
     # 生きている物体のみ画像を描画する
-    drawImageOfAlive: (actors) ->
-      for actor in actors when actor.isAlive()
+    drawImageOfActive: (actors) ->
+      for actor in actors when actor.isActive()
         @drawImageOf actor
 
     # 図形を描画する
@@ -20,8 +20,8 @@ class ContextAbility
       this.fillRect actor.position.x, actor.position.y, actor.position.width, actor.position.height
 
     # 生きている物体のみ図形を描画する
-    drawRectOfAlive: (actors) ->
-      for actor in actors when actor.isAlive()
+    drawRectOfActive: (actors) ->
+      for actor in actors when actor.isActive()
         @drawRectOf actor
 
     showCenter: (text) ->

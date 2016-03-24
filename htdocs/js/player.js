@@ -15,6 +15,7 @@ Player = (function(superClass) {
 
   Player.prototype.reset = function() {
     this.hitPoint = Setting.PLAYER.HIT_POINT;
+    this.isDamaged = false;
     this.position.moveTo(Setting.SCREEN.WIDTH.center() - this.image.width.half(), Setting.SCREEN.HEIGHT - this.image.height);
     this.command.reset();
     return this.bullets.reset();

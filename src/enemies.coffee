@@ -31,6 +31,4 @@ class Enemies
 
   behave: (player) ->
     for enemy in @list
-      enemy.move()
-      enemy.attack player
-      enemy.clearOffscreen()
+      enemy.behave player

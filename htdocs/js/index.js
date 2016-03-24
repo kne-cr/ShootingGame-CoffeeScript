@@ -24,13 +24,13 @@ $(window).load(function() {
   main = function() {
     var timer;
     enemies.apear();
-    player.behave(enemies.list);
     enemies.behave(player);
+    player.behave(enemies.list);
     context.clear();
     context.showUpperLeft("SCORE : " + (enemies.totalEXP()));
     context.drawImageOf(player);
-    context.drawRectOfAlive(player.bullets.list);
-    context.drawImageOfAlive(enemies.list);
+    context.drawRectOfActive(player.bullets.list);
+    context.drawImageOfActive(enemies.list);
     timer = setTimeout(main, Setting.INTERVAL);
     if (!player.isAlive()) {
       clearTimeout(timer);

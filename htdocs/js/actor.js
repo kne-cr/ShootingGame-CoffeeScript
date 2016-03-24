@@ -4,6 +4,7 @@ Actor = (function() {
   function Actor(position, hitPoint) {
     this.position = position;
     this.hitPoint = hitPoint;
+    this.isDamaged = false;
   }
 
   Actor.prototype.clear = function() {
@@ -11,12 +12,28 @@ Actor = (function() {
   };
 
   Actor.prototype.damage = function() {
-    return this.hitPoint--;
+    this.hitPoint--;
+    return this.isDamaged = true;
   };
 
   Actor.prototype.isAlive = function() {
     return 0 < this.hitPoint;
   };
+
+  Actor.prototype.isActive = function() {
+    return this.isAlive() && !this.isDamaged;
+  };
+
+  Actor.prototype.behave = function(opponents) {
+    this.isDamaged = false;
+    this.move();
+    this.attack(opponents);
+    return this.clearOffscreen();
+  };
+
+  Actor.prototype.move = function() {};
+
+  Actor.prototype.attack = function(opponents) {};
 
   Actor.prototype.hits = function(another) {
     return this.isAlive() && another.isAlive() && this.position.overlaps(another.position);

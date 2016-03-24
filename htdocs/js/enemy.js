@@ -19,10 +19,9 @@ Enemy = (function(superClass) {
 
   Enemy.prototype.reset = function() {
     this.totalEXP = 0;
-    return this.hitPoint = 0;
+    this.hitPoint = 0;
+    return this.isDamaged = false;
   };
-
-  Enemy.prototype.move = function() {};
 
   Enemy.prototype.damage = function() {
     Enemy.__super__.damage.apply(this, arguments);

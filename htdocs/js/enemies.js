@@ -79,9 +79,7 @@ Enemies = (function() {
     results = [];
     for (j = 0, len = ref.length; j < len; j++) {
       enemy = ref[j];
-      enemy.move();
-      enemy.attack(player);
-      results.push(enemy.clearOffscreen());
+      results.push(enemy.behave(player));
     }
     return results;
   };

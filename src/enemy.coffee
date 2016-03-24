@@ -11,8 +11,7 @@ class Enemy extends Actor
   reset: ->
     @totalEXP = 0
     @hitPoint = 0
-
-  move: ->
+    @isDamaged = false
 
   damage: ->
     super
