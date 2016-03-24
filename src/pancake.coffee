@@ -1,6 +1,7 @@
 class Pancake extends Enemy
   constructor: ->
     @angle = 0
+    @appearanceFrame = Setting.ENEMY.PANCAKE.APPEARANCE_FRAME
     HorizontallyReboundAbility.giveTo @
     super Setting.ENEMY.PANCAKE
 

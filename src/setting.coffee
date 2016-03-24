@@ -50,6 +50,7 @@ class Setting
       SPEED: 5
       HIT_POINT: 500
       EXP: 10000
+      APPEARANCE_FRAME: 2000
       SWING:
         SPEED: 10
         RANGE: 5

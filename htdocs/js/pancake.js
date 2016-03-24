@@ -7,6 +7,7 @@ Pancake = (function(superClass) {
 
   function Pancake() {
     this.angle = 0;
+    this.appearanceFrame = Setting.ENEMY.PANCAKE.APPEARANCE_FRAME;
     HorizontallyReboundAbility.giveTo(this);
     Pancake.__super__.constructor.call(this, Setting.ENEMY.PANCAKE);
   }

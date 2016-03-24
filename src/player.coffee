@@ -27,10 +27,12 @@ class Player extends Actor
     # 弾を撃つ
     @bullets.shoot @position if @command.isRequested Command.SPACE
     # 移動する
+    @move()
+    # 弾の操作
+    @bullets.behave enemyList
+
+  move: ->
     @position.moveLeft() if @command.isRequested(Command.LEFT) and not @position.isLeftEnd()
     @position.moveUp() if @command.isRequested(Command.UP) and not @position.isTopEnd()
     @position.moveRight() if @command.isRequested(Command.RIGHT) and not @position.isRightEnd()
     @position.moveDown() if @command.isRequested(Command.DOWN) and not @position.isBottomEnd()
-
-    # 弾の操作
-    @bullets.behave enemyList

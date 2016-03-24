@@ -50,11 +50,12 @@ Enemies = (function() {
   };
 
   Enemies.prototype.apear = function() {
+    this.apearMob();
+    return this.apearBoss();
+  };
+
+  Enemies.prototype.apearMob = function() {
     var enemy, j, len, ref, results;
-    this.frameCount++;
-    if (this.frameCount === 2000) {
-      this.boss.comeBack();
-    }
     if (Math.randomNumber(100) < Setting.ENEMY.APPEARANCE_RATE) {
       this.list.sort(function() {
         return Math.randomBoolean();
@@ -70,6 +71,13 @@ Enemies = (function() {
         break;
       }
       return results;
+    }
+  };
+
+  Enemies.prototype.apearBoss = function() {
+    this.frameCount++;
+    if (this.frameCount === this.boss.appearanceFrame) {
+      return this.boss.comeBack();
     }
   };
 

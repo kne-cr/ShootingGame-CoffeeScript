@@ -25,6 +25,11 @@ Player = (function(superClass) {
     if (this.command.isRequested(Command.SPACE)) {
       this.bullets.shoot(this.position);
     }
+    this.move();
+    return this.bullets.behave(enemyList);
+  };
+
+  Player.prototype.move = function() {
     if (this.command.isRequested(Command.LEFT) && !this.position.isLeftEnd()) {
       this.position.moveLeft();
     }
@@ -35,9 +40,8 @@ Player = (function(superClass) {
       this.position.moveRight();
     }
     if (this.command.isRequested(Command.DOWN) && !this.position.isBottomEnd()) {
-      this.position.moveDown();
+      return this.position.moveDown();
     }
-    return this.bullets.behave(enemyList);
   };
 
   return Player;
