@@ -8,6 +8,7 @@ Pancake = (function(superClass) {
   function Pancake() {
     this.angle = 0;
     this.appearanceFrame = Setting.ENEMY.PANCAKE.APPEARANCE_FRAME;
+    this.bullets = new PancakeBullets;
     HorizontallyReboundAbility.giveTo(this);
     Pancake.__super__.constructor.call(this, Setting.ENEMY.PANCAKE);
   }
@@ -28,6 +29,11 @@ Pancake = (function(superClass) {
     }
   };
 
+  Pancake.prototype.reset = function() {
+    Pancake.__super__.reset.apply(this, arguments);
+    return this.bullets.reset();
+  };
+
   Pancake.prototype.completedAppearance = function() {
     return 0 < this.position.topY();
   };
@@ -35,6 +41,22 @@ Pancake = (function(superClass) {
   Pancake.prototype.swingVertically = function() {
     this.angle += Setting.ENEMY.PANCAKE.SWING.SPEED;
     return this.position.moveDown(Math.sinBy(this.angle) * Setting.ENEMY.PANCAKE.SWING.RANGE);
+  };
+
+  Pancake.prototype.comeBack = function() {
+    this.position.moveTo((Setting.SCREEN.WIDTH - this.image.width).center(), 1 - this.image.height);
+    return this.hitPoint = this.setting.HIT_POINT;
+  };
+
+  Pancake.prototype.behave = function(player) {
+    Pancake.__super__.behave.call(this, player);
+    if (!(this.completedAppearance() && this.isAlive())) {
+      return;
+    }
+    if (Math.randomNumber(100) < Setting.ENEMY.APPEARANCE_RATE) {
+      this.bullets.shoot(this.position);
+    }
+    return this.bullets.behave(player);
   };
 
   return Pancake;

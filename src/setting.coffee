@@ -54,3 +54,9 @@ class Setting
       SWING:
         SPEED: 10
         RANGE: 5
+      BULLET:
+        SHOOT_RATE: 5
+        COUNT: 20
+        SPEED: 10
+        IMAGE: "img/pancakeBullet.png"
+        HIT_POINT: 1

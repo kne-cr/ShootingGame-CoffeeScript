@@ -32,6 +32,7 @@ $(window).load ->
     enemies.behave player
     # プレイヤーの操作
     player.behave enemies.list
+    bullet.attack enemies.boss.bullets.list for bullet in player.bullets.list
 
     # 画面の削除
     context.clear()
@@ -42,6 +43,7 @@ $(window).load ->
     context.drawImageOf player
     # 弾の再描画
     context.drawRectOfActive player.bullets.list
+    context.drawImageOfActive enemies.boss.bullets.list
     # 敵の再描画
     context.drawImageOfActive enemies.list
 

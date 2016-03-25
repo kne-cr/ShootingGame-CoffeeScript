@@ -1,8 +1,7 @@
-# 弾のリストクラス。ファーストクラスコレクション設計
-class Bullets
+class PlayerBullets
   constructor: ->
     # forの戻り値が配列になるcoffeeっぽい書き方
-    @list = (new Bullet for i in [0...Setting.PLAYER.BULLET.COUNT])
+    @list = (new PlayerBullet for i in [0...Setting.PLAYER.BULLET.COUNT])
 
   reset: ->
     bullet.clear() for bullet in @list

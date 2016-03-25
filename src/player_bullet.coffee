@@ -1,5 +1,4 @@
-# 弾クラス
-class Bullet extends Actor
+class PlayerBullet extends Actor
   constructor: ->
     @style = Setting.PLAYER.BULLET.STYLE
     super new Position(
@@ -18,7 +17,7 @@ class Bullet extends Actor
     @hitPoint = Setting.PLAYER.BULLET.HIT_POINT
 
   # 当たった場合、相手にダメージを与え自分は消える
-  attack: (opponents) ->
-    for opponent in opponents when @hits opponent
-      opponent.damage()
+  attack: (enemyies) ->
+    for enemy in enemyies when @hits enemy
+      enemy.damage()
       @clear()

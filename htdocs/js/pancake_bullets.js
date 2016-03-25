@@ -1,19 +1,19 @@
-var Bullets;
+var PancakeBullets;
 
-Bullets = (function() {
-  function Bullets() {
+PancakeBullets = (function() {
+  function PancakeBullets() {
     var i;
     this.list = (function() {
       var j, ref, results;
       results = [];
-      for (i = j = 0, ref = Setting.PLAYER.BULLET.COUNT; 0 <= ref ? j < ref : j > ref; i = 0 <= ref ? ++j : --j) {
-        results.push(new Bullet);
+      for (i = j = 0, ref = Setting.ENEMY.PANCAKE.BULLET.COUNT; 0 <= ref ? j < ref : j > ref; i = 0 <= ref ? ++j : --j) {
+        results.push(new PancakeBullet);
       }
       return results;
     })();
   }
 
-  Bullets.prototype.reset = function() {
+  PancakeBullets.prototype.reset = function() {
     var bullet, j, len, ref, results;
     ref = this.list;
     results = [];
@@ -24,7 +24,7 @@ Bullets = (function() {
     return results;
   };
 
-  Bullets.prototype.shoot = function(position) {
+  PancakeBullets.prototype.shoot = function(position) {
     var bullet, j, len, ref, results;
     ref = this.list;
     results = [];
@@ -40,17 +40,17 @@ Bullets = (function() {
     return results;
   };
 
-  Bullets.prototype.behave = function(opponents) {
+  PancakeBullets.prototype.behave = function(player) {
     var bullet, j, len, ref, results;
     ref = this.list;
     results = [];
     for (j = 0, len = ref.length; j < len; j++) {
       bullet = ref[j];
-      results.push(bullet.behave(opponents));
+      results.push(bullet.behave(player));
     }
     return results;
   };
 
-  return Bullets;
+  return PancakeBullets;
 
 })();

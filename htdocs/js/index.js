@@ -22,14 +22,20 @@ $(window).load(function() {
     return main();
   };
   main = function() {
-    var timer;
+    var bullet, i, len, ref, timer;
     enemies.apear();
     enemies.behave(player);
     player.behave(enemies.list);
+    ref = player.bullets.list;
+    for (i = 0, len = ref.length; i < len; i++) {
+      bullet = ref[i];
+      bullet.attack(enemies.boss.bullets.list);
+    }
     context.clear();
     context.showUpperLeft("SCORE : " + (enemies.totalEXP()));
     context.drawImageOf(player);
     context.drawRectOfActive(player.bullets.list);
+    context.drawImageOfActive(enemies.boss.bullets.list);
     context.drawImageOfActive(enemies.list);
     timer = setTimeout(main, Setting.INTERVAL);
     if (!player.isAlive()) {

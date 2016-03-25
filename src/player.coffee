@@ -3,7 +3,7 @@ class Player extends Actor
   constructor: ->
     @image = new Image
     @image.src = Setting.PLAYER.IMAGE
-    @bullets = new Bullets
+    @bullets = new PlayerBullets
     @command = new Command
     super(
       new Position(

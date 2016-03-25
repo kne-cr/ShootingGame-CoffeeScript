@@ -1,38 +1,38 @@
-var Bullet,
+var PlayerBullet,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
 
-Bullet = (function(superClass) {
-  extend(Bullet, superClass);
+PlayerBullet = (function(superClass) {
+  extend(PlayerBullet, superClass);
 
-  function Bullet() {
+  function PlayerBullet() {
     this.style = Setting.PLAYER.BULLET.STYLE;
-    Bullet.__super__.constructor.call(this, new Position(0, 0, Setting.PLAYER.BULLET.WIDTH, Setting.PLAYER.BULLET.HEIGHT, Setting.PLAYER.BULLET.SPEED), 0);
+    PlayerBullet.__super__.constructor.call(this, new Position(0, 0, Setting.PLAYER.BULLET.WIDTH, Setting.PLAYER.BULLET.HEIGHT, Setting.PLAYER.BULLET.SPEED), 0);
   }
 
-  Bullet.prototype.move = function() {
+  PlayerBullet.prototype.move = function() {
     return this.position.moveUp();
   };
 
-  Bullet.prototype.shoot = function(shooter) {
+  PlayerBullet.prototype.shoot = function(shooter) {
     this.position.moveTo(shooter.centerX(), shooter.topY());
     return this.hitPoint = Setting.PLAYER.BULLET.HIT_POINT;
   };
 
-  Bullet.prototype.attack = function(opponents) {
-    var i, len, opponent, results;
+  PlayerBullet.prototype.attack = function(enemyies) {
+    var enemy, i, len, results;
     results = [];
-    for (i = 0, len = opponents.length; i < len; i++) {
-      opponent = opponents[i];
-      if (!(this.hits(opponent))) {
+    for (i = 0, len = enemyies.length; i < len; i++) {
+      enemy = enemyies[i];
+      if (!(this.hits(enemy))) {
         continue;
       }
-      opponent.damage();
+      enemy.damage();
       results.push(this.clear());
     }
     return results;
   };
 
-  return Bullet;
+  return PlayerBullet;
 
 })(Actor);
