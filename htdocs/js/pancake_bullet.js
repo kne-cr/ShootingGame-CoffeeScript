@@ -9,6 +9,10 @@ PancakeBullet = (function(superClass) {
     PancakeBullet.__super__.constructor.call(this, Setting.ENEMY.PANCAKE.BULLET);
   }
 
+  PancakeBullet.prototype.isBoss = function() {
+    return true;
+  };
+
   PancakeBullet.prototype.move = function() {
     return this.position.moveDown();
   };

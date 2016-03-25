@@ -2,7 +2,7 @@ var Enemies;
 
 Enemies = (function() {
   function Enemies() {
-    var i, j, k, l, m, ref, ref1, ref2, ref3;
+    var bullet, i, j, k, l, len, m, n, ref, ref1, ref2, ref3, ref4;
     this.frameCount = 0;
     this.list = [];
     for (i = j = 0, ref = Setting.ENEMY.YELLOW_MACARON.COUNT; 0 <= ref ? j < ref : j > ref; i = 0 <= ref ? ++j : --j) {
@@ -19,6 +19,11 @@ Enemies = (function() {
     }
     this.boss = new Pancake;
     this.list.push(this.boss);
+    ref4 = this.boss.bullets.list;
+    for (n = 0, len = ref4.length; n < len; n++) {
+      bullet = ref4[n];
+      this.list.push(bullet);
+    }
   }
 
   Enemies.prototype.reset = function() {

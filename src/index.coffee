@@ -32,7 +32,6 @@ $(window).load ->
     enemies.behave player
     # プレイヤーの操作
     player.behave enemies.list
-    bullet.attack enemies.boss.bullets.list for bullet in player.bullets.list
 
     # 画面の削除
     context.clear()

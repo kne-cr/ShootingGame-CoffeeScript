@@ -10,6 +10,7 @@ class Enemies
 
     @boss = new Pancake
     @list.push @boss
+    @list.push bullet for bullet in @boss.bullets.list
 
   reset: ->
     @frameCount = 0

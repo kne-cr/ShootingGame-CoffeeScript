@@ -57,6 +57,6 @@ class Setting
       BULLET:
         SHOOT_RATE: 5
         COUNT: 20
-        SPEED: 10
+        SPEED: 5
         IMAGE: "img/pancakeBullet.png"
         HIT_POINT: 1

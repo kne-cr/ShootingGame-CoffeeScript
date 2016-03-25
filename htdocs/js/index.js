@@ -22,15 +22,10 @@ $(window).load(function() {
     return main();
   };
   main = function() {
-    var bullet, i, len, ref, timer;
+    var timer;
     enemies.apear();
     enemies.behave(player);
     player.behave(enemies.list);
-    ref = player.bullets.list;
-    for (i = 0, len = ref.length; i < len; i++) {
-      bullet = ref[i];
-      bullet.attack(enemies.boss.bullets.list);
-    }
     context.clear();
     context.showUpperLeft("SCORE : " + (enemies.totalEXP()));
     context.drawImageOf(player);

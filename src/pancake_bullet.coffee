@@ -2,6 +2,9 @@ class PancakeBullet extends Enemy
   constructor: ->
     super Setting.ENEMY.PANCAKE.BULLET
 
+  isBoss: ->
+    true
+
   move: ->
     @position.moveDown()
 
