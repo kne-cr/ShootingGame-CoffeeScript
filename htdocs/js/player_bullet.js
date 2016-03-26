@@ -19,16 +19,20 @@ PlayerBullet = (function(superClass) {
     return this.hitPoint = Setting.PLAYER.BULLET.HIT_POINT;
   };
 
-  PlayerBullet.prototype.attack = function(enemyies) {
+  PlayerBullet.prototype.attack = function(enemyieList) {
     var enemy, i, len, results;
     results = [];
-    for (i = 0, len = enemyies.length; i < len; i++) {
-      enemy = enemyies[i];
-      if (!(this.hits(enemy))) {
-        continue;
+    for (i = 0, len = enemyieList.length; i < len; i++) {
+      enemy = enemyieList[i];
+      if (this.hits(enemy)) {
+        enemy.damage();
+        this.clear();
       }
-      enemy.damage();
-      results.push(this.clear());
+      if (enemy.bullets != null) {
+        results.push(this.attack(enemy.bullets.list));
+      } else {
+        results.push(void 0);
+      }
     }
     return results;
   };

@@ -7,6 +7,8 @@ Actor = (function() {
     this.isDamaged = false;
   }
 
+  Actor.prototype.reset = function() {};
+
   Actor.prototype.clear = function() {
     return this.hitPoint = 0;
   };
@@ -24,16 +26,16 @@ Actor = (function() {
     return this.isAlive() && !this.isDamaged;
   };
 
-  Actor.prototype.behave = function(opponents) {
+  Actor.prototype.behave = function(another) {
     this.isDamaged = false;
     this.move();
-    this.attack(opponents);
+    this.attack(another);
     return this.clearOffscreen();
   };
 
   Actor.prototype.move = function() {};
 
-  Actor.prototype.attack = function(opponents) {};
+  Actor.prototype.attack = function(another) {};
 
   Actor.prototype.hits = function(another) {
     return this.isAlive() && another.isAlive() && this.position.overlaps(another.position);

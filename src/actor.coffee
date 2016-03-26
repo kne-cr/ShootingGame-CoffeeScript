@@ -4,6 +4,8 @@ class Actor
     # 点滅用 trueの間は画面に表示しない
     @isDamaged = false
 
+  reset: ->
+
   clear: ->
     @hitPoint = 0
 
@@ -17,15 +19,15 @@ class Actor
   isActive: ->
     @isAlive() and not @isDamaged
 
-  behave: (opponents) ->
+  behave: (another) ->
     @isDamaged = false
     @move()
-    @attack opponents
+    @attack another
     @clearOffscreen()
 
   move: ->
 
-  attack: (opponents) ->
+  attack: (another) ->
 
   hits: (another) ->
     @isAlive() and

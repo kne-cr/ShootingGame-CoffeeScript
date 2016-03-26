@@ -36,9 +36,9 @@ Enemy = (function(superClass) {
     return this.hitPoint = this.setting.HIT_POINT;
   };
 
-  Enemy.prototype.attack = function(opponent) {
-    if (this.hits(opponent)) {
-      return opponent.damage();
+  Enemy.prototype.attack = function(another) {
+    if (this.hits(another)) {
+      return another.damage();
     }
   };
 

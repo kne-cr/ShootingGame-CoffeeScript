@@ -16,8 +16,10 @@ class PlayerBullet extends Actor
     @position.moveTo shooter.centerX(), shooter.topY()
     @hitPoint = Setting.PLAYER.BULLET.HIT_POINT
 
-  # 当たった場合、相手にダメージを与え自分は消える
-  attack: (enemyies) ->
-    for enemy in enemyies when @hits enemy
-      enemy.damage()
-      @clear()
+  attack: (enemyieList) ->
+    for enemy in enemyieList
+      if @hits enemy
+        enemy.damage()
+        @clear()
+      if enemy.bullets?
+        @attack enemy.bullets.list

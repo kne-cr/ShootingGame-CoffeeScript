@@ -15,8 +15,14 @@ ContextAbility = (function() {
       results = [];
       for (i = 0, len = actors.length; i < len; i++) {
         actor = actors[i];
-        if (actor.isActive()) {
-          results.push(this.drawImageOf(actor));
+        if (!(actor.isActive())) {
+          continue;
+        }
+        this.drawImageOf(actor);
+        if (actor.bullets != null) {
+          results.push(this.drawImageOfActive(actor.bullets.list));
+        } else {
+          results.push(void 0);
         }
       }
       return results;

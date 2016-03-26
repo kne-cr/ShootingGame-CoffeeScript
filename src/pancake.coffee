@@ -28,13 +28,14 @@ class Pancake extends Enemy
 
   swingVertically: ->
     @angle += Setting.ENEMY.PANCAKE.SWING.SPEED
-    @position.moveDown Math.sinBy(@angle) * Setting.ENEMY.PANCAKE.SWING.RANGE
+    @position.moveDown @angle.sin() * Setting.ENEMY.PANCAKE.SWING.RANGE
 
   comeBack: ->
     @position.moveTo (Setting.SCREEN.WIDTH - @image.width).center(), 1 - @image.height
     @hitPoint = @setting.HIT_POINT
 
   behave: (player) ->
-    super(player)
+    super player
     return unless @completedAppearance() and @isAlive()
     @bullets.shoot @position
+    @bullets.behave player

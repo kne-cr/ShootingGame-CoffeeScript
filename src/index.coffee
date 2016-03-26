@@ -42,7 +42,6 @@ $(window).load ->
     context.drawImageOf player
     # 弾の再描画
     context.drawRectOfActive player.bullets.list
-    context.drawImageOfActive enemies.boss.bullets.list
     # 敵の再描画
     context.drawImageOfActive enemies.list
 

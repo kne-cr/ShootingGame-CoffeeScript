@@ -13,6 +13,7 @@ class ContextAbility
     drawImageOfActive: (actors) ->
       for actor in actors when actor.isActive()
         @drawImageOf actor
+        @drawImageOfActive actor.bullets.list if actor.bullets?
 
     # 図形を描画する
     drawRectOf: (actor) ->

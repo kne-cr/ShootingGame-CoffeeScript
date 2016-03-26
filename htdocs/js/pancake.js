@@ -40,7 +40,7 @@ Pancake = (function(superClass) {
 
   Pancake.prototype.swingVertically = function() {
     this.angle += Setting.ENEMY.PANCAKE.SWING.SPEED;
-    return this.position.moveDown(Math.sinBy(this.angle) * Setting.ENEMY.PANCAKE.SWING.RANGE);
+    return this.position.moveDown(this.angle.sin() * Setting.ENEMY.PANCAKE.SWING.RANGE);
   };
 
   Pancake.prototype.comeBack = function() {
@@ -53,7 +53,8 @@ Pancake = (function(superClass) {
     if (!(this.completedAppearance() && this.isAlive())) {
       return;
     }
-    return this.bullets.shoot(this.position);
+    this.bullets.shoot(this.position);
+    return this.bullets.behave(player);
   };
 
   return Pancake;

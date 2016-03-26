@@ -9,10 +9,6 @@ PancakeBullet = (function(superClass) {
     PancakeBullet.__super__.constructor.call(this, Setting.ENEMY.PANCAKE.BULLET);
   }
 
-  PancakeBullet.prototype.isBoss = function() {
-    return true;
-  };
-
   PancakeBullet.prototype.move = function() {
     return this.position.moveDown();
   };
@@ -20,13 +16,6 @@ PancakeBullet = (function(superClass) {
   PancakeBullet.prototype.shoot = function(shooter) {
     this.position.moveTo(shooter.centerX() - this.image.width.half(), shooter.bottomY());
     return this.hitPoint = Setting.ENEMY.PANCAKE.BULLET.HIT_POINT;
-  };
-
-  PancakeBullet.prototype.attack = function(player) {
-    if (this.hits(player)) {
-      player.damage();
-      return this.clear();
-    }
   };
 
   return PancakeBullet;

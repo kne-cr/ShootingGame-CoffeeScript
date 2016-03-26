@@ -23,5 +23,6 @@ class Enemy extends Actor
     @position.moveTo Math.randomNumber(Setting.SCREEN.WIDTH), 1 - @image.height
     @hitPoint = @setting.HIT_POINT
 
-  attack: (opponent) ->
-    opponent.damage() if @hits opponent
+  attack: (another) ->
+    if @hits another
+      another.damage()

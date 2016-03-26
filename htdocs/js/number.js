@@ -5,3 +5,7 @@ Number.prototype.center = function() {
 Number.prototype.half = function() {
   return this / 2;
 };
+
+Number.prototype.sin = function() {
+  return Math.sin(this * Math.PI / 180).toFixed(15);
+};

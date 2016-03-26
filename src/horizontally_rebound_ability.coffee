@@ -1,6 +1,7 @@
 class HorizontallyReboundAbility
   @methods:
     moveHorizontally: ->
+      # trueの場合は右、falseの場合は左に移動
       if @goesToRight then @moveRight() else @moveLeft()
 
     moveRight: ->

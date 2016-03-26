@@ -30,7 +30,6 @@ $(window).load(function() {
     context.showUpperLeft("SCORE : " + (enemies.totalEXP()));
     context.drawImageOf(player);
     context.drawRectOfActive(player.bullets.list);
-    context.drawImageOfActive(enemies.boss.bullets.list);
     context.drawImageOfActive(enemies.list);
     timer = setTimeout(main, Setting.INTERVAL);
     if (!player.isAlive()) {
