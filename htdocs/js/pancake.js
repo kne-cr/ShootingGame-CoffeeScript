@@ -54,9 +54,8 @@ Pancake = (function(superClass) {
       return;
     }
     if (Math.randomNumber(100) < Setting.ENEMY.APPEARANCE_RATE) {
-      this.bullets.shoot(this.position);
+      return this.bullets.shoot(this.position);
     }
-    return this.bullets.behave(player);
   };
 
   return Pancake;
