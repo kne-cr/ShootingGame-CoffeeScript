@@ -5,11 +5,11 @@ var Player,
 Player = (function(superClass) {
   extend(Player, superClass);
 
-  function Player() {
+  function Player(command) {
+    this.command = command;
     this.image = new Image;
     this.image.src = Setting.PLAYER.IMAGE;
     this.bullets = new PlayerBullets;
-    this.command = new Command;
     Player.__super__.constructor.call(this, new Position(0, 0, this.image.width, this.image.height, Setting.PLAYER.SPEED), Setting.PLAYER.HIT_POINT);
   }
 

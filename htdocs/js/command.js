@@ -1,6 +1,8 @@
 var Command;
 
 Command = (function() {
+  Command.ENTER = 13;
+
   Command.SPACE = 32;
 
   Command.LEFT = 37;
@@ -16,6 +18,7 @@ Command = (function() {
   }
 
   Command.prototype.reset = function() {
+    this.requested[Command.ENTER] = false;
     this.requested[Command.SPACE] = false;
     this.requested[Command.LEFT] = false;
     this.requested[Command.UP] = false;

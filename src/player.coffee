@@ -1,10 +1,9 @@
 # プレイヤークラス
 class Player extends Actor
-  constructor: ->
+  constructor: (@command) ->
     @image = new Image
     @image.src = Setting.PLAYER.IMAGE
     @bullets = new PlayerBullets
-    @command = new Command
     super(
       new Position(
         0,

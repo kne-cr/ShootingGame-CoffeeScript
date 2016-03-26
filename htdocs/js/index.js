@@ -1,28 +1,42 @@
 $(window).load(function() {
-  var context, enemies, main, mainScreen, player, start;
+  var clear, command, context, enemies, gameOver, main, mainScreen, player, start, timer;
   mainScreen = $("#screen")[0];
   mainScreen.width = Setting.SCREEN.WIDTH;
   mainScreen.height = Setting.SCREEN.HEIGHT;
-  player = new Player;
-  enemies = new Enemies;
   context = mainScreen.getContext("2d");
   ContextAbility.giveTo(context);
-  context.showCenter("PUSH START");
+  context.showCenter("PRESS ENTER");
+  command = new Command;
+  player = new Player(command);
+  enemies = new Enemies;
+  timer = 0;
   document.onkeydown = function(event) {
     event.preventDefault();
-    return player.command.request(event.keyCode);
+    command.request(event.keyCode);
+    if (command.isRequested(Command.ENTER)) {
+      return start();
+    }
   };
   document.onkeyup = function(event) {
     event.preventDefault();
-    return player.command.cancel(event.keyCode);
+    return command.cancel(event.keyCode);
   };
   start = function() {
+    clearTimeout(timer);
     player.reset();
     enemies.reset();
     return main();
   };
-  main = function() {
-    var timer;
+  gameOver = function() {
+    clearTimeout(timer);
+    alert("GAME OVER : " + (enemies.totalEXP()));
+    return start();
+  };
+  clear = function() {
+    clearTimeout(timer);
+    return context.showCenter("CLEAR！！");
+  };
+  return main = function() {
     enemies.apear();
     enemies.behave(player);
     player.behave(enemies.list);
@@ -33,17 +47,10 @@ $(window).load(function() {
     context.drawImageOfActive(enemies.list);
     timer = setTimeout(main, Setting.INTERVAL);
     if (!player.isAlive()) {
-      clearTimeout(timer);
-      alert("GAME OVER : " + (enemies.totalEXP()));
-      start();
+      gameOver();
     }
     if (enemies.boss.isKilled()) {
-      clearTimeout(timer);
-      return context.showCenter("CLEAR！！");
+      return clear();
     }
   };
-  return $("#start").click(function() {
-    $(this).attr("disabled", true);
-    return start();
-  });
 });

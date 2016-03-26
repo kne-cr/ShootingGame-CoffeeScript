@@ -4,26 +4,39 @@ $(window).load ->
   mainScreen.width = Setting.SCREEN.WIDTH
   mainScreen.height = Setting.SCREEN.HEIGHT
 
-  player = new Player
-  enemies = new Enemies
-
   # スクリーンとしての能力を与える
   context = mainScreen.getContext "2d"
   ContextAbility.giveTo context
-  context.showCenter "PUSH START"
+  context.showCenter "PRESS ENTER"
+
+  command = new Command
+  player = new Player command
+  enemies = new Enemies
+  timer = 0
 
   document.onkeydown = (event) ->
     event.preventDefault()
-    player.command.request event.keyCode
+    command.request event.keyCode
+    start() if command.isRequested(Command.ENTER)
 
   document.onkeyup = (event) ->
     event.preventDefault()
-    player.command.cancel event.keyCode
+    command.cancel event.keyCode
 
   start = ->
+    clearTimeout timer
     player.reset()
     enemies.reset()
     main()
+
+  gameOver = ->
+    clearTimeout timer
+    alert "GAME OVER : #{enemies.totalEXP()}"
+    start()
+
+  clear = ->
+    clearTimeout timer
+    context.showCenter "CLEAR！！"
 
   main = ->
     # 敵の出現
@@ -49,14 +62,7 @@ $(window).load ->
     timer = setTimeout main, Setting.INTERVAL
 
     unless player.isAlive()
-      clearTimeout timer
-      alert "GAME OVER : #{enemies.totalEXP()}"
-      start()
+      gameOver()
 
     if enemies.boss.isKilled()
-      clearTimeout timer
-      context.showCenter "CLEAR！！"
-
-  $("#start").click ->
-    $(this).attr "disabled", true
-    start()
+      clear()

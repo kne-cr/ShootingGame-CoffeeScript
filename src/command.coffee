@@ -1,5 +1,5 @@
-# コマンドクラス。ユーザーの入力をプレイヤーに伝える
 class Command
+  @ENTER: 13
   @SPACE: 32
   @LEFT: 37
   @UP: 38
@@ -10,6 +10,7 @@ class Command
     @requested = new Array(240)
 
   reset: ->
+    @requested[Command.ENTER] = false
     @requested[Command.SPACE] = false
     @requested[Command.LEFT] = false
     @requested[Command.UP] = false
