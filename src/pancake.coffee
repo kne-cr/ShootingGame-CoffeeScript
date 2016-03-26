@@ -1,6 +1,6 @@
 class Pancake extends Enemy
   constructor: ->
-    @angle = 0
+    @angle = new Angle Setting.ENEMY.PANCAKE.SWING.SPEED, Setting.ENEMY.PANCAKE.SWING.RANGE
     @appearanceFrame = Setting.ENEMY.PANCAKE.APPEARANCE_FRAME
     @bullets = new PancakeBullets
     HorizontallyReboundAbility.giveTo @
@@ -27,8 +27,7 @@ class Pancake extends Enemy
     0 < @position.topY()
 
   swingVertically: ->
-    @angle += Setting.ENEMY.PANCAKE.SWING.SPEED
-    @position.moveDown @angle.sin() * Setting.ENEMY.PANCAKE.SWING.RANGE
+    @position.moveDown @angle.nextSin()
 
   comeBack: ->
     @position.moveTo (Setting.SCREEN.WIDTH - @image.width).center(), 1 - @image.height

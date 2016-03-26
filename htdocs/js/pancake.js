@@ -6,7 +6,7 @@ Pancake = (function(superClass) {
   extend(Pancake, superClass);
 
   function Pancake() {
-    this.angle = 0;
+    this.angle = new Angle(Setting.ENEMY.PANCAKE.SWING.SPEED, Setting.ENEMY.PANCAKE.SWING.RANGE);
     this.appearanceFrame = Setting.ENEMY.PANCAKE.APPEARANCE_FRAME;
     this.bullets = new PancakeBullets;
     HorizontallyReboundAbility.giveTo(this);
@@ -39,8 +39,7 @@ Pancake = (function(superClass) {
   };
 
   Pancake.prototype.swingVertically = function() {
-    this.angle += Setting.ENEMY.PANCAKE.SWING.SPEED;
-    return this.position.moveDown(this.angle.sin() * Setting.ENEMY.PANCAKE.SWING.RANGE);
+    return this.position.moveDown(this.angle.nextSin());
   };
 
   Pancake.prototype.comeBack = function() {
