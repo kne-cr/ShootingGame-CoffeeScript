@@ -11,14 +11,12 @@ $(window).load(function() {
   enemies = new Enemies;
   timer = 0;
   document.onkeydown = function(event) {
-    event.preventDefault();
     command.request(event.keyCode);
     if (command.isRequested(Command.ENTER)) {
       return start();
     }
   };
   document.onkeyup = function(event) {
-    event.preventDefault();
     return command.cancel(event.keyCode);
   };
   start = function() {

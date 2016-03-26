@@ -6,8 +6,8 @@ Setting = (function() {
   Setting.INTERVAL = 20;
 
   Setting.SCREEN = {
-    WIDTH: 800,
-    HEIGHT: 600,
+    WIDTH: 1000,
+    HEIGHT: 750,
     SCORE: {
       PADDING: 20
     }
