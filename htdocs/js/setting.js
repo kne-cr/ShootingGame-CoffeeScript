@@ -68,7 +68,7 @@ Setting = (function() {
         RANGE: 5
       },
       BULLET: {
-        SHOOT_RATE: 5,
+        SHOOT_RATE: 3,
         COUNT: 20,
         SPEED: 10,
         IMAGE: "img/pancakeBullet.png",

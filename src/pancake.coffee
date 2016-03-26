@@ -37,4 +37,4 @@ class Pancake extends Enemy
   behave: (player) ->
     super(player)
     return unless @completedAppearance() and @isAlive()
-    @bullets.shoot @position if Math.randomNumber(100) < Setting.ENEMY.APPEARANCE_RATE
+    @bullets.shoot @position

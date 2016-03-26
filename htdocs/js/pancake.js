@@ -53,9 +53,7 @@ Pancake = (function(superClass) {
     if (!(this.completedAppearance() && this.isAlive())) {
       return;
     }
-    if (Math.randomNumber(100) < Setting.ENEMY.APPEARANCE_RATE) {
-      return this.bullets.shoot(this.position);
-    }
+    return this.bullets.shoot(this.position);
   };
 
   return Pancake;

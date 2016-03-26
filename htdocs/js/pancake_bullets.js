@@ -1,6 +1,10 @@
-var PancakeBullets;
+var PancakeBullets,
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
 
-PancakeBullets = (function() {
+PancakeBullets = (function(superClass) {
+  extend(PancakeBullets, superClass);
+
   function PancakeBullets() {
     var i;
     this.list = (function() {
@@ -13,44 +17,12 @@ PancakeBullets = (function() {
     })();
   }
 
-  PancakeBullets.prototype.reset = function() {
-    var bullet, j, len, ref, results;
-    ref = this.list;
-    results = [];
-    for (j = 0, len = ref.length; j < len; j++) {
-      bullet = ref[j];
-      results.push(bullet.clear());
-    }
-    return results;
-  };
-
   PancakeBullets.prototype.shoot = function(position) {
-    var bullet, j, len, ref, results;
-    ref = this.list;
-    results = [];
-    for (j = 0, len = ref.length; j < len; j++) {
-      bullet = ref[j];
-      if (!bullet.isAlive()) {
-        bullet.shoot(position);
-        break;
-      } else {
-        results.push(void 0);
-      }
+    if (Math.randomNumber(100) < Setting.ENEMY.PANCAKE.BULLET.SHOOT_RATE) {
+      return PancakeBullets.__super__.shoot.call(this, position);
     }
-    return results;
-  };
-
-  PancakeBullets.prototype.behave = function(player) {
-    var bullet, j, len, ref, results;
-    ref = this.list;
-    results = [];
-    for (j = 0, len = ref.length; j < len; j++) {
-      bullet = ref[j];
-      results.push(bullet.behave(player));
-    }
-    return results;
   };
 
   return PancakeBullets;
 
-})();
+})(Bullets);
