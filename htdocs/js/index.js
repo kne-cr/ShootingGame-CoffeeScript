@@ -35,7 +35,11 @@ $(window).load(function() {
     if (!player.isAlive()) {
       clearTimeout(timer);
       alert("GAME OVER : " + (enemies.totalEXP()));
-      return start();
+      start();
+    }
+    if (enemies.boss.isKilled()) {
+      clearTimeout(timer);
+      return context.showCenter("CLEAR！！");
     }
   };
   return $("#start").click(function() {

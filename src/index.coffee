@@ -53,6 +53,10 @@ $(window).load ->
       alert "GAME OVER : #{enemies.totalEXP()}"
       start()
 
+    if enemies.boss.isKilled()
+      clearTimeout timer
+      context.showCenter "CLEAR！！"
+
   $("#start").click ->
     $(this).attr "disabled", true
     start()

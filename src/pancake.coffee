@@ -38,3 +38,6 @@ class Pancake extends Enemy
     return unless @completedAppearance() and @isAlive()
     @bullets.shoot @position
     @bullets.behave player
+
+  isKilled: ->
+    0 < @totalEXP

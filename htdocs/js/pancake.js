@@ -56,6 +56,10 @@ Pancake = (function(superClass) {
     return this.bullets.behave(player);
   };
 
+  Pancake.prototype.isKilled = function() {
+    return 0 < this.totalEXP;
+  };
+
   return Pancake;
 
 })(Enemy);
