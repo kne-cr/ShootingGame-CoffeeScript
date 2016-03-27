@@ -15,12 +15,10 @@ $(window).load ->
   timer = 0
 
   document.onkeydown = (event) ->
-    # event.preventDefault()
     command.request event.keyCode
     start() if command.isRequested(Command.ENTER)
 
   document.onkeyup = (event) ->
-    # event.preventDefault()
     command.cancel event.keyCode
 
   start = ->
