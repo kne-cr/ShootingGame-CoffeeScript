@@ -6,5 +6,5 @@ class PancakeBullet extends Enemy
     @position.moveDown()
 
   shoot: (shooter) ->
-    @position.moveTo shooter.centerX() - @image.width.half(), shooter.bottomY()
+    @position.moveTo shooter.centerX() - @position.width.half(), shooter.bottomY()
     @hitPoint = Setting.ENEMY.PANCAKE.BULLET.HIT_POINT

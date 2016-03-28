@@ -4,47 +4,59 @@ class Setting
   @SCREEN:
     WIDTH: 1000
     HEIGHT: 750
+    BACKGROUND:
+      IMAGE: "img/background.gif"
     SCORE:
       PADDING: 20
+    FONT:
+      COLOR: "#FFFFFF"
+    SHADOW:
+      COLOR: "#FF6DBE"
+      BLUR: 30
 
   @PLAYER:
     IMAGE: "img/player.png"
     SPEED: 20
     HIT_POINT: 1
     BULLET:
-      WIDTH: 1
+      WIDTH: 3
       HEIGHT: 20
       COUNT: 10
       SPEED: 20
       HIT_POINT: 1
-      STYLE: "rgb(255, 255, 255)"
+      COLOR: "#FFFFFF"
 
   @ENEMY:
     APPEARANCE_RATE: 3
+
     YELLOW_MACARON:
       COUNT: 7
       IMAGE: "img/yellowMacaron.png"
       SPEED: 10
       HIT_POINT: 1
       EXP: 100
+
     BLUE_MACARON:
       COUNT: 2
       IMAGE: "img/blueMacaron.png"
       SPEED: 30
       HIT_POINT: 10
       EXP: 500
+
     GREEN_MACARON:
       COUNT: 5
       IMAGE: "img/greenMacaron.png"
       SPEED: 10
       HIT_POINT: 3
       EXP: 200
+
     PINK_MACARON:
       COUNT: 3
       IMAGE: "img/pinkMacaron.png"
       SPEED: 25
       HIT_POINT: 1
       EXP: 300
+
     PANCAKE:
       IMAGE: "img/pancake.png"
       SPEED: 5

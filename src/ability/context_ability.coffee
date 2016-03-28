@@ -1,6 +1,17 @@
 # canvas.contextの拡張
 class ContextAbility
   @methods:
+    initialize: ->
+      this.rect  0, 0, Setting.SCREEN.WIDTH, Setting.SCREEN.HEIGHT
+      this.shadowColor = Setting.SCREEN.SHADOW.COLOR
+      this.shadowBlur = Setting.SCREEN.SHADOW.BLUR
+      @background = @pattern()
+
+    pattern: ->
+      img = new Image
+      img.src = Setting.SCREEN.BACKGROUND.IMAGE
+      this.createPattern img, "repeat"
+
     # 画面内をすべて削除
     clear: ->
       this.clearRect 0, 0, Setting.SCREEN.WIDTH, Setting.SCREEN.HEIGHT
@@ -29,15 +40,19 @@ class ContextAbility
       this.textAlign = "center"
       this.textBaseline = "middle"
       this.font = "90px 'ヒラギノ角ゴ'"
-      this.fillStyle = "#FFF"
+      this.fillStyle = Setting.SCREEN.FONT.COLOR
       this.fillText text, Setting.SCREEN.WIDTH.center(), Setting.SCREEN.HEIGHT.center()
 
     showUpperLeft: (text) ->
       this.textAlign = "left"
       this.textBaseline = "top"
       this.font = "30px 'ヒラギノ角ゴ'"
-      this.fillStyle = "#FFF"
+      this.fillStyle = Setting.SCREEN.FONT.COLOR
       this.fillText text, Setting.SCREEN.SCORE.PADDING, Setting.SCREEN.SCORE.PADDING
+
+    fillBackground: ->
+      this.fillStyle = @background
+      this.fill()
 
   # 引数にメソッドを付与する
   @giveTo: (target) ->

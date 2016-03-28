@@ -1,6 +1,7 @@
 do ->
   # 画像のプリロード
   images = [
+    "img/background.gif"
     "img/player.png"
     "img/yellowMacaron.png"
     "img/blueMacaron.png"
@@ -22,6 +23,9 @@ $(window).load ->
   # スクリーンとしての能力を与える
   context = mainScreen.getContext "2d"
   ContextAbility.giveTo context
+
+  context.initialize()
+  context.fillBackground()
   context.showCenter "PRESS ENTER"
 
   command = new Command
@@ -49,7 +53,7 @@ $(window).load ->
 
   clear = ->
     clearTimeout timer
-    context.showCenter "CLEAR！！"
+    context.showCenter "congratulations!!"
 
   main = ->
     # 敵の出現
@@ -61,6 +65,8 @@ $(window).load ->
 
     # 画面の削除
     context.clear()
+    # 背景の描画
+    context.fillBackground()
 
     # スコアの描画
     context.showUpperLeft "SCORE : #{enemies.totalEXP()}"

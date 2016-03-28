@@ -1,6 +1,6 @@
 class PlayerBullet extends Actor
   constructor: ->
-    @style = Setting.PLAYER.BULLET.STYLE
+    @style = Setting.PLAYER.BULLET.COLOR
     super new Position(
       0,
       0,
@@ -13,7 +13,7 @@ class PlayerBullet extends Actor
     @position.moveUp()
 
   shoot: (shooter) ->
-    @position.moveTo shooter.centerX(), shooter.topY()
+    @position.moveTo shooter.centerX() - @position.width.half(), shooter.topY()
     @hitPoint = Setting.PLAYER.BULLET.HIT_POINT
 
   attack: (enemyieList) ->
