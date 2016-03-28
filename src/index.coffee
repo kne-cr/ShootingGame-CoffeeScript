@@ -1,3 +1,18 @@
+do ->
+  # 画像のプリロード
+  images = [
+    "img/player.png"
+    "img/yellowMacaron.png"
+    "img/blueMacaron.png"
+    "img/greenMacaron.png"
+    "img/pinkMacaron.png"
+    "img/pancake.png"
+    "img/pancakeBullet.png"
+  ]
+  imagesDiv = $("#images")
+  for image in images
+    imagesDiv.append "<img src=#{image} class=\"actor\">"
+
 $(window).load ->
   # スクリーンの初期化
   mainScreen = $("#screen")[0]
