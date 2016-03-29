@@ -60,7 +60,7 @@ class Setting
     PANCAKE:
       IMAGE: "img/pancake.png"
       SPEED: 5
-      HIT_POINT: 500
+      HIT_POINT: 400
       EXP: 10000
       APPEARANCE_FRAME: 2000
       SWING:
