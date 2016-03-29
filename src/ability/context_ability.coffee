@@ -5,7 +5,6 @@ class ContextAbility
       this.rect  0, 0, Setting.SCREEN.WIDTH, Setting.SCREEN.HEIGHT
       this.shadowColor = Setting.SCREEN.SHADOW.COLOR
       this.shadowBlur = Setting.SCREEN.SHADOW.BLUR
-      @background = @pattern()
 
     pattern: ->
       img = new Image
@@ -50,10 +49,7 @@ class ContextAbility
       this.fillStyle = Setting.SCREEN.FONT.COLOR
       this.fillText text, Setting.SCREEN.SCORE.PADDING, Setting.SCREEN.SCORE.PADDING
 
-    fillBackground: ->
-      this.fillStyle = @background
-      this.fill()
-
   # 引数にメソッドを付与する
   @giveTo: (target) ->
     target[methodName] = methodContent for methodName, methodContent of @methods
+    target.initialize()

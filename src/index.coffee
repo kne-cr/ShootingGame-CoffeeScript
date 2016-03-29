@@ -1,7 +1,6 @@
 do ->
   # 画像のプリロード
   images = [
-    "img/background.gif"
     "img/player.png"
     "img/yellowMacaron.png"
     "img/blueMacaron.png"
@@ -15,7 +14,12 @@ do ->
     imagesDiv.append "<img src=#{image} class=\"actor\">"
 
 $(window).load ->
-  # スクリーンの初期化
+  # 背景の初期化
+  backScreen = $("#background")
+  backScreen.css "width", Setting.SCREEN.WIDTH
+  backScreen.css "height", Setting.SCREEN.HEIGHT
+
+  # メインスクリーンの初期化
   mainScreen = $("#screen")[0]
   mainScreen.width = Setting.SCREEN.WIDTH
   mainScreen.height = Setting.SCREEN.HEIGHT
@@ -24,8 +28,6 @@ $(window).load ->
   context = mainScreen.getContext "2d"
   ContextAbility.giveTo context
 
-  context.initialize()
-  context.fillBackground()
   context.showCenter "PRESS ENTER"
 
   command = new Command
@@ -65,8 +67,6 @@ $(window).load ->
 
     # 画面の削除
     context.clear()
-    # 背景の描画
-    context.fillBackground()
 
     # スコアの描画
     context.showUpperLeft "SCORE : #{enemies.totalEXP()}"

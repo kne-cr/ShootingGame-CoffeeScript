@@ -4,10 +4,14 @@ html, body {
   margin: 0 auto;
 }
 
+#background {
+  background-image: url(/img/background.gif);
+  background-repeat: repeat;
+  margin: 10 auto;
+}
+
 #screen {
   display: block;
-  margin: 10 auto;
-  background-color: #000;
 }
 
 .actor {
