@@ -46,15 +46,18 @@ $(window).load ->
     player.reset()
     enemies.reset()
     main()
+    ga "send", "event", "Game", "load", "start"
 
   gameOver = ->
     clearTimeout timer
     alert "GAME OVER : #{enemies.totalEXP()}"
     start()
+    ga "send", "event", "Game", "load", "gameOver", enemies.totalEXP()
 
   clear = ->
     clearTimeout timer
     context.showCenter "You are the No.1 sweets!!"
+    ga "send", "event", "Game", "load", "clear", enemies.totalEXP()
 
   main = ->
     # 敵の出現
