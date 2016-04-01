@@ -1,37 +1,69 @@
+do ->
+  # 画像のプリロード
+  images = [
+    "img/player.png"
+    "img/yellowMacaron.png"
+    "img/blueMacaron.png"
+    "img/greenMacaron.png"
+    "img/pinkMacaron.png"
+    "img/pancake.png"
+    "img/pancakeBullet.png"
+  ]
+  imagesDiv = $("#images")
+  for image in images
+    imagesDiv.append "<img src=#{image} class=\"actor\">"
+
 $(window).load ->
-  # スクリーンの初期化
+  # 背景の初期化
+  backScreen = $("#background")
+  backScreen.css "width", Setting.SCREEN.WIDTH
+  backScreen.css "height", Setting.SCREEN.HEIGHT
+
+  # メインスクリーンの初期化
   mainScreen = $("#screen")[0]
   mainScreen.width = Setting.SCREEN.WIDTH
   mainScreen.height = Setting.SCREEN.HEIGHT
 
-  player = new Player
-  enemies = new Enemies
-
   # スクリーンとしての能力を与える
   context = mainScreen.getContext "2d"
   ContextAbility.giveTo context
-  context.showCenter "PUSH START"
+
+  context.showCenter "PRESS ENTER"
+
+  command = new Command
+  player = new Player command
+  enemies = new Enemies
+  timer = 0
 
   document.onkeydown = (event) ->
-    event.preventDefault()
-    player.command.request event.keyCode
+    command.request event.keyCode
+    start() if command.isRequested(Command.ENTER)
 
   document.onkeyup = (event) ->
-    event.preventDefault()
-    player.command.cancel event.keyCode
+    command.cancel event.keyCode
 
   start = ->
+    clearTimeout timer
     player.reset()
     enemies.reset()
     main()
 
+  gameOver = ->
+    clearTimeout timer
+    alert "GAME OVER : #{enemies.totalEXP()}"
+    start()
+
+  clear = ->
+    clearTimeout timer
+    context.showCenter "congratulations!!"
+
   main = ->
     # 敵の出現
     enemies.apear()
-    # プレイヤーの操作
-    player.behave enemies.list
     # 敵の操作
     enemies.behave player
+    # プレイヤーの操作
+    player.behave enemies.list
 
     # 画面の削除
     context.clear()
@@ -41,18 +73,15 @@ $(window).load ->
     # プレイヤーの再描画
     context.drawImageOf player
     # 弾の再描画
-    context.drawRectOfAlive player.bullets.list
+    context.drawRectOfActive player.bullets.list
     # 敵の再描画
-    context.drawImageOfAlive enemies.list
+    context.drawImageOfActive enemies.list
 
     # 次のループへ
     timer = setTimeout main, Setting.INTERVAL
 
-    unless player.isAlive
-      clearTimeout timer
-      alert "GAME OVER : #{enemies.totalEXP()}"
-      start()
+    unless player.isAlive()
+      gameOver()
 
-  $("#start").click ->
-    $(this).attr "disabled", true
-    start()
+    if enemies.boss.isKilled()
+      clear()
