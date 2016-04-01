@@ -28,8 +28,6 @@ $(window).load ->
   context = mainScreen.getContext "2d"
   ContextAbility.giveTo context
 
-  context.showCenter "PRESS ENTER"
-
   command = new Command
   player = new Player command
   enemies = new Enemies
@@ -43,19 +41,23 @@ $(window).load ->
     command.cancel event.keyCode
 
   start = ->
+    $("#description").remove()
     clearTimeout timer
     player.reset()
     enemies.reset()
     main()
+    ga "send", "event", "Game", "load", "start"
 
   gameOver = ->
     clearTimeout timer
     alert "GAME OVER : #{enemies.totalEXP()}"
     start()
+    ga "send", "event", "Game", "load", "gameOver", enemies.totalEXP()
 
   clear = ->
     clearTimeout timer
-    context.showCenter "congratulations!!"
+    context.showCenter "You are the No.1 sweets!!"
+    ga "send", "event", "Game", "load", "clear", enemies.totalEXP()
 
   main = ->
     # 敵の出現
