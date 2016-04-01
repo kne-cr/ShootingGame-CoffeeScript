@@ -8,10 +8,56 @@ html, body {
   background-image: url(/img/background.gif);
   background-repeat: repeat;
   margin: 10 auto;
+  position: relative;
+  text-shadow: 0 0 30px #FF6DBE;
+}
+
+#description {
+  position: absolute;
+  width: 100%;
+  z-index: 0;
+  color: #FFFFFF;
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+  font-size: 80px;
+}
+
+@keyframes Flash {
+  50% {
+    opacity: 0;
+  }
+}
+
+.creamPuff {
+  width: 50px;
+  height: 50px;
+}
+
+.content1 {
+  font-size: 20px;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.content2 {
+  font-size: 20px;
+  width: 70%;
+  margin: 100 auto 70;
+}
+
+.content3 {
+  font-size: 60px;
+  margin: 0 auto;
+  animation: Flash 1.5s infinite;
 }
 
 #screen {
   display: block;
+  position: absolute;
+  z-index: 1;
 }
 
 .actor {

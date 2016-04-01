@@ -38,7 +38,7 @@ class ContextAbility
     showCenter: (text) ->
       this.textAlign = "center"
       this.textBaseline = "middle"
-      this.font = "90px 'ヒラギノ角ゴ'"
+      this.font = "70px 'ヒラギノ角ゴ'"
       this.fillStyle = Setting.SCREEN.FONT.COLOR
       this.fillText text, Setting.SCREEN.WIDTH.center(), Setting.SCREEN.HEIGHT.center()
 
