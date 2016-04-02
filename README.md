@@ -34,7 +34,7 @@ command + c
 #### ファイル
 ##### coffee
 `$ gulp`内で全ての.coffeeを結合・圧縮してindex.jsに出力します。  
-新しく.coffeeファイルを作成した場合はgulp.coffeeファイルを修正してください。  
+新しく.coffeeファイルを作成した場合はgulp.coffeeファイルのtask 'coffee'を修正してください。  
 依存関係はここで解決するため、依存されるファイルは先に記載します。  
 
 ##### image
