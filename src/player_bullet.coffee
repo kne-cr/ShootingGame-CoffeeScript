@@ -19,7 +19,7 @@ class PlayerBullet extends Actor
   attack: (enemyieList) ->
     for enemy in enemyieList
       if @hits enemy
-        enemy.damage()
-        @clear()
+        enemy.takeDamage()
+        @hide()
       if enemy.bullets?
         @attack enemy.bullets.list

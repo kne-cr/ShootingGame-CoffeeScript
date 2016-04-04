@@ -19,10 +19,10 @@ class Enemies
       a + b
 
   appear: ->
-    @appearMob()
-    @appearBoss()
+    @showMob()
+    @showBoss()
 
-  appearMob: ->
+  showMob: ->
     # 出現率を下回った場合のみ敵を出現させる
     # 出現率70の場合、70を下回った場合出現、上回った場合は出現しない
     if Math.randomNumber(100) < Setting.ENEMY.APPEARANCE_RATE
@@ -32,7 +32,7 @@ class Enemies
         enemy.comeBack()
         break
 
-  appearBoss: ->
+  showBoss: ->
     @boss.appear()
 
   behave: (player) ->

@@ -11,7 +11,7 @@ class Pancake extends Enemy
 
   move: ->
     return unless @isAlive()
-    unless @completedAppearance()
+    unless @isCompletedAppearance()
       # 垂直に降りてきて登場
       @position.moveDown()
     else
@@ -24,7 +24,7 @@ class Pancake extends Enemy
     @untilAppearance = Setting.ENEMY.PANCAKE.APPEARANCE_FRAME
     @bullets.reset()
 
-  completedAppearance: ->
+  isCompletedAppearance: ->
     0 < @position.topY()
 
   swingVertically: ->
@@ -40,7 +40,7 @@ class Pancake extends Enemy
 
   behave: (player) ->
     super player
-    return unless @completedAppearance() and @isAlive()
+    return unless @isCompletedAppearance() and @isAlive()
     @bullets.shoot @position
     @bullets.behave player
 

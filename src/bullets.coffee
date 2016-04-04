@@ -3,7 +3,7 @@ class Bullets
     @list = []
 
   reset: ->
-    bullet.clear() for bullet in @list
+    bullet.hide() for bullet in @list
 
   shoot: (position) ->
     for bullet in @list

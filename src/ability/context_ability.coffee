@@ -6,11 +6,6 @@ class ContextAbility
       this.shadowColor = Setting.SCREEN.SHADOW.COLOR
       this.shadowBlur = Setting.SCREEN.SHADOW.BLUR
 
-    pattern: ->
-      img = new Image
-      img.src = Setting.SCREEN.BACKGROUND.IMAGE
-      this.createPattern img, "repeat"
-
     # 画面内をすべて削除
     clear: ->
       this.clearRect 0, 0, Setting.SCREEN.WIDTH, Setting.SCREEN.HEIGHT

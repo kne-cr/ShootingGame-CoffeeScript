@@ -11,7 +11,7 @@ do ->
   ]
   imagesDiv = $("#images")
   for image in images
-    imagesDiv.append "<img src=#{image} class=\"actor\">"
+    imagesDiv.append "<img src=#{image} class=\"invisible\">"
 
 $(window).load ->
   # 背景の初期化
