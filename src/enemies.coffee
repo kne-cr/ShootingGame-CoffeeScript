@@ -1,7 +1,6 @@
 # 敵のリストクラス
 class Enemies
   constructor: ->
-    @frameCount = 0
     @list = []
     @list.push(new YellowMacaron) for i in [0...Setting.ENEMY.YELLOW_MACARON.COUNT]
     @list.push(new BlueMacaron) for i in [0...Setting.ENEMY.BLUE_MACARON.COUNT]
@@ -19,11 +18,11 @@ class Enemies
     (enemy.totalEXP for enemy in @list).reduce (a, b) ->
       a + b
 
-  apear: ->
-    @apearMob()
-    @apearBoss()
+  appear: ->
+    @appearMob()
+    @appearBoss()
 
-  apearMob: ->
+  appearMob: ->
     # 出現率を下回った場合のみ敵を出現させる
     # 出現率70の場合、70を下回った場合出現、上回った場合は出現しない
     if Math.randomNumber(100) < Setting.ENEMY.APPEARANCE_RATE
@@ -33,10 +32,8 @@ class Enemies
         enemy.comeBack()
         break
 
-  apearBoss: ->
-    # 一定のフレーム数でボスが登場する
-    @frameCount++
-    @boss.comeBack() if @frameCount is @boss.appearanceFrame
+  appearBoss: ->
+    @boss.appear()
 
   behave: (player) ->
     for enemy in @list

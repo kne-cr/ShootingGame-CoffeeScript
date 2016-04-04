@@ -50,7 +50,7 @@ $(window).load ->
 
   gameOver = ->
     clearTimeout timer
-    alert "GAME OVER : #{enemies.totalEXP()}"
+    alert "GAME OVER"
     start()
     ga "send", "event", "Game", "load", "gameOver", enemies.totalEXP()
 
@@ -61,7 +61,7 @@ $(window).load ->
 
   main = ->
     # 敵の出現
-    enemies.apear()
+    enemies.appear()
     # 敵の操作
     enemies.behave player
     # プレイヤーの操作
@@ -70,14 +70,17 @@ $(window).load ->
     # 画面の削除
     context.clear()
 
-    # スコアの描画
-    context.showUpperLeft "SCORE : #{enemies.totalEXP()}"
     # プレイヤーの再描画
     context.drawImageOf player
     # 弾の再描画
     context.drawRectOfActive player.bullets.list
     # 敵の再描画
     context.drawImageOfActive enemies.list
+
+    # その他情報の描画
+    context.showUpperLeft "SCORE : #{enemies.totalEXP()}"
+    if enemies.boss.untilAppearance > 0
+      context.showUpperRight "TIME : #{enemies.boss.untilAppearance}"
 
     # 次のループへ
     timer = setTimeout main, Setting.INTERVAL

@@ -4,7 +4,18 @@ html, body {
   margin: 0 auto;
 }
 
+.left {
+  float: left;
+  text-align: left;
+}
+
+.right {
+  float: right;
+  text-align: right;
+}
+
 #background {
+  clear: both;
   background-image: url(/img/background.gif);
   background-repeat: repeat;
   margin: 10 auto;
