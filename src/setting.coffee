@@ -6,8 +6,7 @@ class Setting
     HEIGHT: 750
     BACKGROUND:
       IMAGE: "img/background.gif"
-    SCORE:
-      PADDING: 20
+    PADDING: 20
     FONT:
       COLOR: "#FFFFFF"
     SHADOW:
@@ -39,7 +38,7 @@ class Setting
     BLUE_MACARON:
       COUNT: 2
       IMAGE: "img/blueMacaron.png"
-      SPEED: 30
+      SPEED: 20
       HIT_POINT: 10
       EXP: 500
 

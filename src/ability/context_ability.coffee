@@ -6,11 +6,6 @@ class ContextAbility
       this.shadowColor = Setting.SCREEN.SHADOW.COLOR
       this.shadowBlur = Setting.SCREEN.SHADOW.BLUR
 
-    pattern: ->
-      img = new Image
-      img.src = Setting.SCREEN.BACKGROUND.IMAGE
-      this.createPattern img, "repeat"
-
     # 画面内をすべて削除
     clear: ->
       this.clearRect 0, 0, Setting.SCREEN.WIDTH, Setting.SCREEN.HEIGHT
@@ -47,7 +42,14 @@ class ContextAbility
       this.textBaseline = "top"
       this.font = "30px 'ヒラギノ角ゴ'"
       this.fillStyle = Setting.SCREEN.FONT.COLOR
-      this.fillText text, Setting.SCREEN.SCORE.PADDING, Setting.SCREEN.SCORE.PADDING
+      this.fillText text, Setting.SCREEN.PADDING, Setting.SCREEN.PADDING
+
+    showUpperRight: (text) ->
+      this.textAlign = "right"
+      this.textBaseline = "top"
+      this.font = "30px 'ヒラギノ角ゴ'"
+      this.fillStyle = Setting.SCREEN.FONT.COLOR
+      this.fillText text, Setting.SCREEN.WIDTH - Setting.SCREEN.PADDING, Setting.SCREEN.PADDING
 
   # 引数にメソッドを付与する
   @giveTo: (target) ->

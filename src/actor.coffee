@@ -6,10 +6,10 @@ class Actor
 
   reset: ->
 
-  clear: ->
+  hide: ->
     @hitPoint = 0
 
-  damage: ->
+  takeDamage: ->
     @hitPoint--
     @isDamaged = true
 
@@ -23,7 +23,7 @@ class Actor
     @isDamaged = false
     @move()
     @attack another
-    @clearOffscreen()
+    @hideOffscreen()
 
   move: ->
 
@@ -34,5 +34,5 @@ class Actor
     another.isAlive() and
     @position.overlaps another.position
 
-  clearOffscreen: ->
-    @clear() unless @position.isInScreen()
+  hideOffscreen: ->
+    @hide() unless @position.isInScreen()

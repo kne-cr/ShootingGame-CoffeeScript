@@ -13,11 +13,11 @@ class Enemy extends Actor
     @hitPoint = 0
     @isDamaged = false
 
-  damage: ->
+  takeDamage: ->
     super
     unless @isAlive()
       @totalEXP += @setting.EXP
-      @clear()
+      @hide()
 
   comeBack: ->
     @position.moveTo Math.randomNumber(Setting.SCREEN.WIDTH), 1 - @image.height
@@ -25,4 +25,4 @@ class Enemy extends Actor
 
   attack: (another) ->
     if @hits another
-      another.damage()
+      another.takeDamage()
