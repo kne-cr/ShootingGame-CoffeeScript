@@ -16,7 +16,7 @@ html, body {
 
 #background {
   clear: both;
-  background-image: url(/img/background.gif);
+  background-image: url(../img/background.gif);
   background-repeat: repeat;
   margin: 10 auto;
   position: relative;

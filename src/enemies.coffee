@@ -27,7 +27,8 @@ class Enemies
     # 出現率70の場合、70を下回った場合出現、上回った場合は出現しない
     if Math.randomNumber(100) < Setting.ENEMY.APPEARANCE_RATE
       # 敵の出現が偏らないようシャッフル。完全に混ざらないのは気にしない
-      @list.sort -> Math.randomBoolean()
+      @list.sort -> Math.randomSort()
+
       for enemy in @list when enemy.isBoss() is no and enemy.isAlive() is false
         enemy.comeBack()
         break
