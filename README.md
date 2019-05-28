@@ -2,7 +2,7 @@
 
 ## 遊び方
 ### ゲーム画面
-[http://shootinggame.webcrow.jp/](http://shootinggame.webcrow.jp/)
+[http://kne-cr.github.io/ShootingGame-CoffeeScript/](http://kne-cr.github.io/ShootingGame-CoffeeScript/)
 
 ### 動作環境
 Google Chromeのみ確認  
